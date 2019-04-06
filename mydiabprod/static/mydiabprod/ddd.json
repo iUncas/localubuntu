@@ -1,0 +1,17 @@
+datejson='[{"date": "2018-04-30", "pubholidayx": [], "eventx": [{"eventname": " ", "eventhour": " ", "eventdescp": " "}]}, '+
+'{"date": "2018-05-01", "pubholidayx": [{"pubtype": "PL", "pubname": "\u015awi\u0119to Pa\u0144stwowe"}, '+
+'{"pubtype": "DE", "pubname": "guru"}], "eventx": '+
+'[{"eventname": " ", "eventhour": " ", "eventdescp": " "}]}, {"date": "2018-05-02", "pubholidayx": [], "eventx": '+
+'[{"eventname": " ", "eventhour": " ", "eventdescp": " "}]}, {"date": "2018-05-03", "pubholidayx": '+
+'[{"pubtype": "PL", "pubname": "\u015awi\u0119to 3 Maja"}, '+
+'{"pubtype": "DE", "pubname": "smuru"}], "eventx": '+
+'[{"eventname": " ", "eventhour": " ", "eventdescp": " "}]}, {"date": "2018-05-04", "pubholidayx": [], "eventx": '+
+'[{"eventname": "on duty", "eventhour": "21:00:00", "eventdescp": "on duty"}]}, {"date": "2018-05-05", "pubholidayx": [], "eventx": '+
+'[{"eventname": " ", "eventhour": " ", "eventdescp": " "}]}, {"date": "2018-05-06", "pubholidayx": [{"pubtype": "PL", "pubname": "S\u00f8ndag"}],'+
+' "eventx": [{"eventname": "test addevent", "eventhour": "09:00:00", "eventdescp": "test functionality"}]}]';
+datevent = '[{"date":"2016-12-13", "eventx":[{"eventhour":"07:15", "eventdescp":"kontakt", "eventname":"internista"},'+
+'{"eventhour":"16:15", "eventdescp":"running park", "eventname":"run"},'+
+'{"eventhour":"16:15", "eventdescp":"chess play", "eventname":"chess round up"},'+
+'{"eventhour":"19:15", "eventdescp":"going out", "eventname":"restaurant"},'+
+'{"eventhour":"19:45", "eventdescp":"going out", "eventname":"coffe"},'+
+'{"eventhour":"20:15", "eventdescp":"monitoring", "eventname":"on duty"}]}]'

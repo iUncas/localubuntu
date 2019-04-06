@@ -1,0 +1,465 @@
+<html lang="en">
+  <head>
+  <!--adding comments to check samba save-->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>WJS Blog</title>
+	
+ 
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+crossorigin="anonymous"></script>-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+{% csrf_token %}
+<script type="text/javascript">
+$(document).ready(function() {
+var csrf = $("meta[name='csrf']").attr("content");  
+var peks = '{{ bloghtml|safe }}';
+document.getElementById("ajaxgone").innerHTML = peks;
+var files = [];
+var cccx;
+var url;
+var ccc;
+var el;
+var callbacks = $.Callbacks();
+var imgNode;
+});
+//
+</script>
+<style>
+body {
+    width:100%;
+	}
+/*.row {
+   	padding-righ: 0px;*/
+.col-3 {
+    /*background-color: #99b3ff;*/
+	background-color: #ffffff;
+	width:100%;
+	padding-top: 5px;
+/*	padding-left: 5px;
+	padding-right: 5px;*/66
+	font-family: Verdana;
+	font-size: 12px;
+	/*float: left;*/
+}
+.card {
+    padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+.top-span {
+    width: 100%;
+    padding-top: 15px;
+	}
+
+.card-img-top {
+    padding-top: 15px;
+	}
+/*#iframe_preview {
+    display:none;
+    background-color: red;
+	width: 300px;
+    height:400px;
+	}*/
+.modalx {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 200000; /* Sit on top */
+    /*border-style: solid;*/
+    padding-top:50px; /* Location of the box */
+    padding-left:200px;
+    left:50px;
+   /* top: 120px;*/
+    max-width: 100%; /* Full width */
+    max-height: 100% /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+.modalx_content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 0.5px solid #cdd2d8;
+    width: 650px;
+    max-height: 100%;
+	radius: 14px;
+}	
+.modaly {
+    display: none; /* Hidden by default */
+    //float:right;
+    position: absolute; /* Stay in place */
+    z-index: 200000; /* Sit on top */
+    /*border-style: solid;*/
+    padding-top:50px; /* Location of the box */
+    right:50px;
+    /*left:50px;*/
+   /* top: 120px;*/
+    max-width: 100%; /* Full width */
+    max-height: 100% /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+.modaly_content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 0.5px solid #cdd2d8;
+    width: 250px;
+    max-height: 100%;
+	radius: 14px;
+}	
+.note-popover {
+    display:none;
+}
+.note-editable {
+font-size: 16;
+}
+img {
+padding: 2px;
+}
+{% load static %}
+</style>
+ </head>
+ <body>
+<body style="font-family:verdana;font-size:12px;color:#515971;width:100%">
+<!--<div id="container1", style="width:100%; height:14%; background-color:#f2f4f7;">-->
+    <nav class="navbar navbar-light" style="width:100%; height:60px; background-color: #27497c;">
+        <!--<div style="float:right; heigth:10%">-->
+    <div class="container">
+    <div class="col-sm" style="float:left">
+	<p style="font-family:verdana;font-size:16px;color:#ffffff;margin:0px;" align="left">{{text2}} {{firstname}}</p>
+	</div>
+	<div class="col-sm" style="float:right"></div>
+	
+	<div class="col-sm" style="float:right">
+  
+    <p>
+        <form action="javascript:mext()" method="POST" align="right">
+
+            <select class="custom-select custom-select" style="width:140px" name="setting" id="setting" onchange="this.form.submit()">
+                <option value=""> myDiabBlog </option>
+                <option value="1"> Patient Check IN </option>
+                <option value="2"> Settings a </option>
+                <option value="3"> Logout </option>
+            </select>
+        </form>
+    </p></div></div>
+    </nav>
+<div class="modaly"  id="yiframe_preview">
+<div class="modaly_content">
+<!--<iframe frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="iframe_preview">
+<br>
+<br>
+<p id="preview_paragraph"></p></iframe>-->
+<br>
+<br>
+<div id="ycud">place for dismissible menu</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="dismiss" onclick="jsssy()">
+</div>
+<script>
+function jsssy() {
+document.getElementById("yiframe_preview").style.display = "none";
+alert("fuck");
+}
+function jsss() {
+document.getElementById("iframe_preview").style.display = "none";
+alert("fuck");
+}
+</script>
+
+</div>
+<div class="modalx"  id="iframe_preview">
+<div class="modalx_content">
+<!--<iframe frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="iframe_preview">
+<br>
+<br>
+<p id="preview_paragraph"></p></iframe>-->
+<br>
+<br>
+<div id="cud"></div>
+<br>
+<input type="submit" onclick="jsss()">
+</div>
+<script>
+function jsss() {
+document.getElementById("iframe_preview").style.display = "none";
+alert("fuck");
+}
+</script>
+
+</div>
+
+<div style="margin-left:20px; margin-right:20px">
+  <div class="row">
+    <div class="col-2" id="col1" style="float:left">
+	<p>blog options here or right?</p>
+	<br>
+	<br>
+	<!--<p><a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a></p>-->
+        <br>
+<div class="card" style="width:14rem; border-style: solid">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+	  <li class="list-group-item">Vestibulum at eros</li>
+	    <li class="list-group-item">Vestibulum at eros</li>
+		  <li class="list-group-item">Vestibulum at eros</li>
+		    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+	</div>
+
+<div class="col-9" id="col2">
+<div class="top-span"></div>
+<div class="container" style="border-style:none">
+{% csrf_token %}
+<!-- csrf -->
+<form id="myrichupload" method="POST" >
+<br>
+{% csrf_token %}
+<div style="float:right; margin-bottom:5px"><button type="submit" class="btn btn-info" value="postblog">Publish</button><a>    </a><button class="btn btn-info"  value="preview">Preview</button></div>
+ <textarea id="title" style="border-style: none; font-size:35px; width:100%; height:55px; margin-bottom:15px" placeholder="Add title..."></textarea>
+ <br>
+{% csrf_token %} 
+<div id="summernote" name="editordata"></div>
+</br>
+{% csrf_token %}
+<!--<button  type="submit">Preview</button>-->
+</form>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#summernote').summernote({
+	    //insertNode: "imgNode",
+	placeholder: "text or media",
+        height: 400,
+        fontSize: 18,
+        callbacks: {
+	        onImageUpload: function(files, el){	
+                var ccc = files.length;
+                console.log("current file length: "+ccc);				
+                for (i=0;i<files.length; i++){
+		            var cccx = files[i];
+					var gore = "C\:\\Users\\a574788\\Desktop\\March2019\\flickr\\";
+					var tex = cccx.name.toString();
+					var goretex = gore+tex;
+					
+                    var fileType = cccx["type"];
+                    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+                    if ($.inArray(fileType, validImageTypes) >  0) {
+		                console.log("current file type: " +fileType);
+				        sendFiles(files[i], goretex,this);
+	                }
+                }
+            },
+            onMediaDelete: function(target){
+                deletefile(target[0].src);
+				}
+        }
+    });
+});
+
+function sendFiles(file, goretex, el){
+    var filename = file.name;
+    console.log("received file: " +filename);
+	var fileurl = goretex;
+	console.log("received file url: " +fileurl);
+    var images = new FormData();
+    images.append('file', file);
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+    console.log(csrftoken);
+    $.ajax({
+        url: "{% url 'mydiabprod:instantimage' %}",
+        headers: {"X-CSRFToken":csrftoken},
+        type: "POST",
+        enctype: "multipart/form-data",
+        cache: false,
+        data: images,
+        processData: false,
+        contentType: false,
+        success: function(url) {
+            $(el).summernote('editor.insertImage', url);
+             //$("#summernote").append("</br></br><p id='counter'></p>");
+            //$("#counter").append("</br><p>image</p></br><p><img  alt='Smiley face' height='200' width='300' src="+url+"></img></p>");
+            console.log("updated and received back");
+        }
+    });
+}
+function deletefile(target){
+    //var filenamex = target.name;
+    //console.log("received file: " +filenamex);
+	//var fileurlx = target.src;
+	console.log("received file url: " +target);
+    //var imagesx = new FormData();
+    //imagesx.append('targetsrc', target);
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+    console.log(csrftoken);
+    $.ajax({
+        url: "{% url 'mydiabprod:instantimageremove' %}",
+        headers: {"X-CSRFToken":csrftoken},
+        type: "POST",
+        data: {'targetsrc': target},
+        success: function(infoback) {
+            //$(el).summernote('editor.insertImage', url);
+             //$("#summernote").append("</br></br><p id='counter'></p>");
+            //$("#counter").append("</br><p>image</p></br><p><img  alt='Smiley face' height='200' width='300' src="+url+"></img></p>");
+            console.log("updated and received back: "+infoback);
+        }
+    });
+}
+</script>
+<script type="text/javascript">
+
+function mext() {
+    alert("reloaded"); 
+    }
+
+	function richtext(event, file) {
+    var myfilexs = new FormData($('#myrichupload').get(0));
+    event.preventDefault();
+    var blogtitle = $("#title").val();
+    var richtextblogx = $("#summernote").summernote('code');
+    console.log("html value for ajax: " +richtextblogx);
+    myfilexs.append('richtextblogx', richtextblogx);
+    myfilexs.append('title', blogtitle);
+    $.ajax({
+        url: "{% url 'mydiabprod:richtextblog' %}",
+        type: $(this).attr('method'),
+        enctype: 'multipart/form-data',
+        cache: false,
+        data: myfilexs,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            alert("New blog page has been added");
+            $('#myrichupload').val('');
+            $("#ajaxgone").remove();
+            $("#returnajax").append("<div id='ajaxgone'></div>")
+            $("#summernote").summernote('code', '<p>your blog entry has been published, add another entry...</p>');
+            $("#returnajax").append(richtextblogx);
+            console.log('ajax call with html success');
+            
+        }
+    });
+    console.log("completed function");
+    return false;
+}
+      
+$(function(){
+    $("#myrichupload button").click(function (ev) {
+    //ev.preventDefault()
+        if ($(this).attr("value") == "postblog") {             
+            alert("First Button is pressed - Form will submit");
+            $('#myrichupload').submit(richtext);
+        }
+        if ($(this).attr("value") == "preview") {
+            ev.preventDefault(); 
+            console.log("this will load summernote html for preview");
+            zzxp =  document.getElementById("iframe_preview");
+            var preview_page = $("#summernote").summernote('code');
+            $("#cud").append(preview_page);
+            zzxp.style.display = "block";
+        }
+    });
+});
+
+</script>
+</div>
+<br><br>
+<div class="top-span"></div>
+ <div clss="container" id="returnajax" style="border-style:none; padding-left:15px; padding-right:15px">
+<div id="ajaxgone"></div>
+</br>
+</br>
+</div>
+<div class="top-span"></div>
+<div class="container" style="border-style:none">
+
+	<div class="card" id="43" style="border-style:none">
+  <div class="card-header">
+    Featured
+  </div>
+   {% if variable1 == "admin_view" %}
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">This is for the admin only.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  {% elif variable1 == "doctor_view" %}
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">This is for the doctor portal.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  {% elif variable1 == "user_view" %}
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">This is for the user portal.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  {% else %}
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">you don't have permission to access this part.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+    {% endif %}
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

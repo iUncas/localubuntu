@@ -1,0 +1,656 @@
+<html>
+<head>
+<title>myDiab @sznurawa.pl </title>
+<!-- pussy -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+<!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">-->
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--<script src="js/bootstrap.min.js"></script>-->
+<!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--<link rel="stylesheet" href="navbar-fixed-top.css" rel="stylesheet">-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<!--<script type="text/javascript" src="jquery.js"></script>-->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>-->
+   <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
+
+<script type="text/javascript">
+ $( function() {$("#datepicker").datepicker(
+ {
+  dateFormat: "yy-mm-dd"
+});
+});
+$( function() {$("#datepicker2").datepicker(
+ {
+  dateFormat: "yy-mm-dd"
+});
+});
+
+$(document).ready(function() {
+
+$('#tableclass').DataTable({order: [[0, "desc"]]});
+//pas = document.getElementById("tableclass").innerHTML;
+  //  kwas = pas.replace("wojtek", "chuj");
+    //document.getElementById("tableclass").innerHTML = kwas;
+});
+</script>
+
+{% load static %}
+<!--<link rel="stylesheet" href=" {% static 'mydiabprod/style.css' %}">-->
+</head>
+<body style="font-family:verdana;font-size:12px;color:#515971;width:100%">
+<!--<div id="container1", style="width:100%; height:14%; background-color:#f2f4f7;">-->
+    <nav class="navbar navbar-light" style="width:100%; height:60px; background-color: #27497c;">
+        <!--<div style="float:right; heigth:10%">-->
+    <div class="container">
+    <div class="col-sm" style="float:left">
+	<p style="font-family:verdana;font-size:16px;color:#ffffff;margin:0px;" align="left">{{text2}} {{firstname}}</p>
+	</div>
+	<div class="col-sm" style="float:right"></div>
+	
+	<div class="col-sm" style="float:right">
+        {% csrf_token %}
+    <p>
+        <form action="{% url 'mydiabprod:logout' %}" method="POST" align="right">
+       {% csrf_token %}
+            <select class="custom-select custom-select" style="width:140px" name="setting" id="setting" onchange="this.form.submit()">
+                <option value=""> myDiab </option>
+                <option value="1"> Patient Check IN </option>
+                <option value="2"> Settings a </option>
+                <option value="3"> Logout </option>
+            </select>
+        </form>
+    </p></div></div>
+    </nav>
+<!--</div>-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <div id="container177" style="float:left;" class="container177">
+        <p>
+        <form action="javascript:loadDoc()">
+           <!-- <p> Please select results </p>-->
+            <select name="usess" class="custom-select custom-select mb-0" style="width:180px" id="myselect" onchange="this.form.submit()">
+                <option value="">Please select results </options>
+                <option value="R"> MORNING </option>
+                <option value="L"> LUNCHTIME </option>
+                <option value="A"> AFTERNOON </option>
+                <option value="S"> SUPPER </option>
+                <option value="N"> NIGHT </option>
+                <option value="HGB"> GLYCATED HEMOGLOBIN </option>
+                <option value="ALLX"> BACK T2O HOME </option>
+            </select>
+        </form>
+    </p>
+
+    </div>
+    <div id="container166" style="float:left; width:75%;" class="container166">
+            {% if latest_question_list %}
+        <table id="tableclass" style="font-family:verdana; font-size:12px;" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>DateTime</th>
+                    <th>UserName</th>
+                    <th>HGB</th>
+                    <th>TypeOf</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for result in latest_question_list %}
+                <tr>
+                    <td> {{result.DateTime}} </td>
+                    <td> {{result.UserName}} </td>
+                    <td> {{result.HGB}} </td>
+                    <td> {{result.TypeOf}} </td>
+            {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+            {% else %}
+            <p>No polls are available.</p>
+            {% endif %}
+    </div>
+    </div>
+    <div class="col-sm">
+</br>
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div id="firstx" style="width:100%">
+<div class="row" id="showchart1" style="width:100%">
+    <div id="accordion" class="container" style="border:solid 1px #d7d9dd; border-radius: 10px; width:100%">
+<div>
+    <br>
+        <h4><span class="badge badge-secondary">R</span></h4>
+        <h6>Morning average </h6>
+        <p class="card-text"><a style="font-family:verdana; font-size:32px; float:left">{{averagex}}</a><a style="font-family:verdana; font-size:22px; float:right">
+            Latest
+        </a></p>
+        <br>
+        <div id="placeholder" style="float:left; width:100%">
+        <button id="stopper" style="font-family:verdana; font-size:14px; float:left;" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="#collapseOne" onclick="djangon()" >
+          get chart
+        </button>
+            <br>
+            </div>
+    </div>
+      <div id="collapseOne" class="collapse in" aria-labelledby="firstx" data-parent="showchart1" style="float:left; width:100%;" >
+      <div class="card-body" style="float:left; width:100%">
+      <div id="line_graph" style="width: 280px; height:220px; float:left"></div>
+      </div>
+  </div>
+  </div>
+</div>
+    </div>
+    <br>
+<div id="secondx" style="width:100%">
+    <div class="row" id="showchart2" style="width:100%">
+ <div id="accordion1" class="container" style="border:solid 1px #d7d9dd; border-radius: 10px; width:100%">
+<div>
+    <br>
+        <h4><span class="badge badge-secondary">N</span></h4>
+        <h6>Nighty average </h6>
+        <p class="card-text"><a style="font-family:verdana; font-size:32px; float:left">{{averagey}}</a><a style="font-family:verdana; font-size:22px; float:right">
+            Latest
+        </a></p>
+        <br>
+        <div id="placeholder1" style="float:left; width:100%">
+        <button id="stopper1" style="font-family:verdana; font-size:14px; float:left;" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="true" aria-controls="#collapseOne1" onclick="djangon()" >
+          get chart
+        </button>
+            <br>
+            </div>
+    </div>
+      <div id="collapseOne1" class="collapse in"  aria-labelledby="secondx" data-parent="#showchart2" style="float:left; width:100%;" >
+      <div class="card-body" style="float:left; width:100%">
+      <div id="line_graph1" style="width: 280px; height:220px; float:left"></div>
+      </div>
+  </div>
+  </div>
+    </div>
+        </div>
+    <br>
+<div id="thirdx" style="width:100%">
+    <div class="row" id="showchart3" style="width:100%">
+ <div id="accordion2" class="container" style="border:solid 1px #d7d9dd; border-radius: 10px; width:100%">
+<div>
+    <br>
+        <h4><span class="badge badge-secondary">HGB</span></h4>
+        <h6>HGB average </h6>
+        <p class="card-text"><a style="font-family:verdana; font-size:32px; float:left">{{averagex}}</a><a style="font-family:verdana; font-size:22px; float:right">
+            Latest
+        </a></p>
+        <br>
+        <div id="placeholder2" style="float:left; width:100%">
+        <button id="stopper2" style="font-family:verdana; font-size:14px; float:left;" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="#collapseOne2" onclick="djangon()" >
+          get chart
+        </button>
+            <br>
+            </div>
+    </div>
+      <div id="collapseOne2" class="collapse in" aria-labelledby="thirdx" data-parent="#showchart3" style="float:left; width:100%;" >
+      <div class="card-body" style="float:left; width:100%">
+      <div id="line_graph2" style="width: 280px; height:220px; float:left"></div>
+      </div>
+  </div>
+  </div>
+    </div>
+        </div>
+
+    </br>
+</br>
+</br>
+</div>
+ <div class="col-sm">
+<div style="float:right; width:100%; font-size:12px" id="addfilesx">
+</br>
+    <p style="float:right; font-size:12px">
+        <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2" style="font-size:12px">Upload Documentation</button>
+    </p>
+</div>
+    <div class="row" style="float:right; width:100%; text-align:left;">
+        <div class="col" style="float:right; width:100%">
+            <div class="collapse multi-collapse" id="multiCollapseExample2" style="float:right; width:100%" aria-labelledby="addfilesx" data-parent="#addfilesx">
+                <div class="card card-body" style="float:right; width:100%;">
+                   <form id="myfile" class="form-control-file" enctype="multipart/form-data"  method="POST">
+                         <!-- <form enctype="multipart/form-data">-->
+{% csrf_token %}
+                       <label for="filedescription">Add document description</label>
+    <textarea class="form-control" style="font-family:verdana; font-size:10px;" id="filedescription" rows="2"></textarea>
+                       <br>
+                       <div class="form-row" style="text-align:left; width:100%">
+                       <div class="form-group col-md-6" style="text-align:left">
+                               <label for="datepicker" >Add document date</label>
+                 <input type="text" id="datepicker2" class="form-control" name="datepicker"></input>
+                       </div>
+                       <div class="form-group col-md-6" style="text-align:left;">
+                           <label for="typepickers" >Add document type</label>
+                 <select id="typepicker" class="form-control" name="timepicker" style="font-size:12px">
+                     <option value="">  </option>
+                     <option value="CSV"> CSV Results </option>
+                <option value="XML"> XML Forms </option>
+                <option value="PDF"> PDF Documentation </option>
+                <option value="MEDIA"> MEDIA Files </option>
+                <option value="TXT"> TEXT Documents  </option>
+                     </select>
+                       </div>
+                       </div>
+                       <div>
+                            <label for="file-select" >Add files</label>
+                        <input type="file" id="file-select" class="form-control-file" name="myfiles"  multiple/>
+                       </div>
+                       <br>
+                        <button type="submit" id="upload-button" class="form-control-file">Upload</button>
+                    </form>
+<br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="alert_placeholder" style="width:100%; float:right;"></div>
+    </div>
+ <div style="text-align:right">
+     <label for="list-groupx" style="font-size:14px">Latest documents</label>
+     <div class="list-group" style="width:100%" id="list-groupx">
+
+  <a target="_blank" href="{{docmax1_url}}" class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{docmax1}}</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">{{docmax1_desc}}</p>
+ <!--   <small>Donec id elit non mi porta.</small> -->
+  </a>
+  <a target="_blank" href="{{docmax2_url}}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{docmax2}}</h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">{{docmax2_desc}}</p>
+    <!--<small class="text-muted">Donec id elit non mi porta.</small>-->
+  </a>
+  <a target="_blank" href="{{docmax3_url}}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{docmax3}}</h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">{{docmax3_desc}}</p>
+   <!-- <small class="text-muted">Donec id elit non mi porta.</small> -->
+  </a>
+</div>
+     <br>
+ </div>
+     <!--<div><br><br><br></div>-->
+          <br><br><br>
+     <div  id="pexx">
+     <div id="addeventx" style="float:right; width:100%; font-size:12px">
+       <p style="float:right; font-size:12px">
+         <button class="btn btn-info" type="button" data-toggle="collapse" id="eventcollapse1" data-target="#eventcollapse" aria-expanded="false" aria-controls="eventcollapse" style="font-size:12px">Add Calendar event</button>
+     </p>
+
+         </div>
+		 </br>
+		 <div id="addeventx" style="float:right; width:100%; font-size:12px">
+       <p style="float:right; font-size:12px">
+         <a class="btn btn-success" type="button"  style="font-size:12px" href="{% url 'mydiabprod:calendarium' %}" target="_blank">Go for full calendar</a>
+     </p>
+
+         </div>
+		 
+		  <div id="addeventx" style="float:right; width:100%; font-size:12px">
+       <p style="float:right; font-size:12px">
+         <a class="btn btn-success" type="button"  style="font-size:12px" href="{% url 'mydiabprod:eventum' %}" target="_blank">eventuym</a>
+     </p>
+
+         </div>
+		 <div id="addeventx" style="float:right; width:100%; font-size:12px">
+       <p style="float:right; font-size:12px">
+         <a class="btn btn-success" type="button"  style="font-size:12px" href="{% url 'mydiabprod:quotidie' %}" target="_blank">daytuym</a>
+     </p>
+
+         </div>
+		 <div id="addeventx" style="float:right; width:100%; font-size:12px">
+       <p style="float:right; font-size:12px">
+         <a class="btn btn-success" type="button"  style="font-size:12px" href="{% url 'mydiabprod:pers_blog' %}" target="_blank">edit blog</a>
+     </p>
+
+         </div>
+		 <div id="addeventx" style="float:right; width:100%; font-size:12px">
+       <p style="float:right; font-size:12px">
+         <a class="btn btn-success" type="button"  style="font-size:12px" href="{% url 'mydiabprod:blog_counter' %}" target="_blank">preview blog</a>
+     </p>
+
+         </div>
+     <div class="row" style="float:left; width:100%; text-align:left;">
+     <div class="collapse multi-collapse" id="eventcollapse" aria-labelledby="addeventx" style="float:right; width:100%" data-parent="#pexx">
+     <div style="font-family:verdana; font-size:14px; float:right">
+         <form id="myeventx" method="POST">
+             {% csrf_token %}
+                 <div class="form-group">
+             <label for="eventname"> Calendar Event</label>
+                     <input type="text" class="form-control" id="eventname" rows="1" name="eventname"></input>
+                 </div>
+              <div class="form-row">
+             <div class="form-group col-md-6" style="text-align:left">
+                 <label for="datepicker" >Add Date</label>
+                 <input type="text" id="datepicker" class="form-control" name="datepicker"></input>
+             </div>
+             <div class="form-group col-md-6" style="text-align:left">
+                 <label for="timepicker">Add Time</label>
+                 <select id="timepicker" class="form-control" name="timepicker" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+       <!--  <input type="text" id="timepicker" class="form-control" name="timepicker">-->
+                <option value="x">  </option>
+                <option value="00:00"> 00:00 </option>
+                <option value="00:30"> 00:30 </option>
+                <option value="01:00"> 01:00 </option>
+                <option value="01:30"> 01:30 </option>
+                <option value="02:00"> 02:00  </option>
+                <option value="02:30"> 02:30 </option>
+                <option value="03:00"> 03:00</option>
+                <option value="03:30"> 03:30 </option>
+                <option value="04:00"> 04:00 </option>
+                <option value="04:30"> 04:30 </option>
+                <option value="05:00"> 05:00 </option>
+                <option value="05:30"> 05:30  </option>
+                <option value="06:00"> 06:00 </option>
+                <option value="15UT"> 06:30</option>
+                <option value="06:30"> 07:00 </option>
+                <option value="07:30"> 07:30 </option>
+                <option value="08:00"> 08:00</option>
+                <option value="08:30"> 08:30 </option>
+                <option value="09:00"> 09:00 </option>
+                <option value="09:30"> 09:30 </option>
+                <option value="10:00"> 10:00 </option>
+                <option value="10:30"> 10:30  </option>
+                <option value="11:00"> 11:00 </option>
+                <option value="11:30"> 11:30</option>
+                <option value="12:00"> 12:00 </option>
+                <option value="12:30"> 12:30 </option>
+                <option value="13:00"> 13:00 </option>
+                <option value="13:30"> 13:30 </option>
+                <option value="14:00"> 14:00  </option>
+                <option value="14:30"> 14:30 </option>
+                <option value="15:00"> 15:00</option>
+                <option value="15:30"> 15:30 </option>
+                <option value="16:00"> 16:00 </option>
+                <option value="16:30"> 16:30 </option>
+                <option value="17:00"> 17:00 </option>
+                <option value="17:30"> 17:30  </option>
+                <option value="18:00"> 18:00 </option>
+                <option value="18:30"> 18:30</option>
+                <option value="19:00"> 19:00 </option>
+                <option value="19:30"> 19:30 </option>
+                <option value="20:00"> 20:00 </option>
+                <option value="20:30"> 20:30 </option>
+                <option value="21:00"> 21:00  </option>
+                <option value="21:30"> 21:30 </option>
+                <option value="22:00"> 22:00 </option>
+                <option value="22:30"> 22:30 </option>
+                <option value="23:00"> 23:00 </option>
+                <option value="23:30"> 23:30 </option>
+                 </select>
+             </div>
+                   </div>
+                  <div class="form-group" style="width:100%; text-align:left">
+                      <label for="eventdesc">Event details </label>
+                      <textarea class="form-control" id="eventdesc" rows="2" name="eventdesc" style="font-size:12px"></textarea>
+                      </div>
+                  <div style="float:right">
+                  <button type="submit" class="btn btn-dark" id="eventbutton" style="float:right; font-size:14px">Add Calendar Event</button>
+                      </div>
+             <div id="alert_placeholder2" style="width:50%; float:right;"></div>
+<br>
+             <br>
+         </form>
+         <br>
+     </div>
+     </div>
+<br>
+     </div>
+     </div>
+     <div id="wojtekrow" style="float:right;">
+     <div style="width:95%; float:right; font-size:12px;" align="right" id="eventdiv">
+        <label for="list-group" style="font-size:14px;">Latest Calendar events</label>
+     <div id="wojtek" align="left" style="float:right">
+  <div class="card" id="wojtekkarta1">
+    <div class="card-header" id="wojtek1" style="background-color: #4D4E7E;">
+      <h5 class="mb-0">
+        <button id="buttonwojtek1" class="btn btn-link collapsed" data-toggle="collapse" data-target="#wojtekkol1" aria-expanded="true" aria-controls="#wojtekkol1">
+            <a style="font-size:12px; text-align:left; font-color:#F4F4F9;"><font color="#F4F4F9">  {{eventmax1_name}} upcoming  {{eventmax1_date}} </font></a>
+        </button>
+      </h5>
+    </div>
+
+    <div id="wojtekkol1" class="collapse" aria-labelledby="wojtek" data-parent="#wojtek1">
+      <div class="card-body" id="wojtekdesc1">
+   {{eventmax1_desc}}
+      </div>
+    </div>
+  </div>
+  <div class="card" style="background-color:white;" id="wojtekkarta2">
+    <div class="card-header" id="eventcol2" style="background-color:white;" id="wojtek2">
+      <h5 class="mb-0">
+        <button id="buttonwojtek2" class="btn btn-link collapsed" data-toggle="collapse" data-target="#wojtekkol2" aria-expanded="false" aria-controls="#wojtekkol2">
+        <a style="font-size:12px; text-align:left">  {{eventmax2_name}} upcoming  {{eventmax2_date}}</a>
+        </button>
+      </h5>
+    </div>
+    <div id="wojtekkol2" class="collapse" aria-labelledby="wojtek" data-parent="#wojtek2">
+      <div class="card-body" id="wojtekdesc2">
+     {{eventmax2_desc}}
+      </div>
+    </div>
+  </div>
+  <div class="card"  style="background-color:white;" id="wojtekkarta3">
+    <div class="card-header" id="eventcol3" style="background-color:white;" id="wojtek3">
+     <h5 class="mb-0">
+        <button id="buttonwojtek3" class="btn btn-link collapsed" data-toggle="collapse" data-target="#wojtekkol3" aria-expanded="false" aria-controls="#wojtekkol3">
+          <a style="font-size:12px; text-align:left">  {{eventmax3_name}} upcoming  {{eventmax3_date}}</a>
+        </button>
+      </h5>
+    </div>
+    <div id="wojtekkol3" class="collapse" aria-labelledby="wojtek" data-parent="#wojtek3">
+      <div class="card-body" id="wojtekdesc3">
+          {{eventmax3_desc}}
+     </div>
+    </div>
+  </div>
+</div>
+     </br>
+     </br>
+     </div>
+</div>
+ </div>
+  </div>
+</div>
+</body>
+    <script>
+
+function loadDoc() {
+alert($('#myselect').val());
+var lex = $('#myselect').val();
+
+$(document).ready( function () {
+         $('#tableclass').dataTable( {
+             order: [[0, "desc"]],
+             "processing": true,
+              "destroy": true,
+             //"paging": false,
+
+             "ajax": {
+                 "processing": true,
+                 "data": {
+                  "lex": lex
+                  },
+                 "url": "{% url 'mydiabprod:specific' %}",
+                "dataSrc": "",
+
+             },
+             "columns": [
+                     { "data": "DateTime" },
+                      { "data": "UserName" },
+                      { "data": "HGB" },
+                       { "data": "TypeOf" }
+
+                ]
+         } );
+
+} );
+ }
+function upload(event) {
+bootstrap_alert = function() {}
+bootstrap_alert.warning = function(message) {
+            $('#alert_placeholder').html('<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Info!</strong> uploaded</div>')
+        }
+event.preventDefault();
+
+var myfiles = new FormData($('#myfile').get(0));
+var textarea = $('#filedescription').val();
+var datepix = $('#datepicker2').val();
+myfiles.append('textarea', textarea);
+myfiles.append('datepix', datepix);
+$.ajax({
+    //url: $(this).attr('action'),
+    url: "{% url 'mydiabprod:upload_file' %}",
+    type: $(this).attr('method'),
+    enctype: 'multipart/form-data',
+    data: myfiles,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function(data) {
+    //var res = this.response.text;
+
+        bootstrap_alert.warning("file has been uploaded");
+        $('#file-select').val('');
+        $('#filedescription').val('');
+    }
+});
+console.log("kotecek");
+return false;
+}
+
+$(function() {
+    $('#myfile').submit(upload);
+});
+//textarea = $('#filedescription').val();
+</script>
+<script>
+
+function eventsubmit(event) {
+bootstrap_alert = function() {}
+bootstrap_alert.warning = function(message) {
+            $('#alert_placeholder2').html('<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Info!</strong> event added </div>');
+        }
+event.preventDefault();
+var myevent = new FormData($('#myeventx').get(0));
+var eventname = $('#eventname').val();
+var eventdesc = $('#eventdesc').val();
+var eventdate = $('#datepicker').val();
+var eventtime = $('#timepicker').val();
+myevent.append('eventname', eventname);
+myevent.append('eventdesc', eventdesc);
+myevent.append('eventdate', eventdate);
+myevent.append('eventtime', eventtime);
+
+$.ajax({
+    url: "{% url 'mydiabprod:eventlogx' %}",
+    type: $(this).attr('method'),
+    cache: false,
+    data: myevent,
+    processData: false,
+    contentType: false,
+    success: function(data) {
+    //var res = this.response.text;
+       bootstrap_alert.warning("New event has been added to the Calendar");
+           $('#myeventx')[0].reset();
+    }
+});
+console.log("kotecek2");
+return false;
+}
+$(function() {
+    $('#myeventx').submit(eventsubmit);
+
+});
+
+</script>
+<script type="text/javascript">
+
+function djangon() {
+$(document).ready( function () {
+
+//event.preventDefault();
+//$('#collapseOne').on('shown.bs.collapse', function() {
+alert("kotecek");
+//
+ google.charts.load('current', {packages: ['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+
+
+
+
+
+    var foka = "R";
+    var jsonData = $.getJSON("{% url 'mydiabprod:charts' %}", {foka}, function(data1){ //function(data1) = callback
+
+
+        console.log(data1);
+             var data = new google.visualization.DataTable(jsonData);
+                data.addColumn('string', 'DateTime');
+                data.addColumn('number', 'HGB');
+                var rows = data1.map(function(x){return [x.DateTime, x.HGB];});
+                [
+                ["kotecek", "gupecek"],["chujecek", "gupeceka"]
+                ];
+                [
+                {a: "kotecek", b: "gupecek"},{a: "chujecek", b: "gupeceka"}
+                ];
+                data.addRows(rows);
+                data.sort([{column: 0, asc: true}]);
+
+
+                var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+               var chart = new google.visualization.LineChart(document.getElementById('line_graph'));
+               chart.draw(data, options);
+//var disableSelection = function(){
+//    $("#stopper").prop("disabled", true);
+//};
+    });
+
+return false;
+        }
+$('#placeholder').html('<button id="stopper" style="font-family:verdana; font-size:14px;" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> get chart </button>');
+
+      //  });
+        });
+        }
+
+</script>
+
+
+</html>

@@ -1,0 +1,291 @@
+	{% load static %}
+body {
+    width:100%;
+	background-color: F6FAFB;
+	font-family: Verdana;
+	font-size: 12px;
+	}
+#firstcontainer {
+    background-color: white;
+    width: 67%;
+	min-height: 100%;
+	margin-top: 1rem;
+	float: center;
+	}
+img {
+    max-width: 100%;
+	height: auto;
+	}
+#innertextcontainer {
+  border-top:0.3px solid #30CF98;
+  border-bottom:0.3px solid #30CF98;
+}
+#innertextcontainer1 {
+border-bottom:0.3px solid #30CF98;
+}
+.modalpx {
+    display: block; /* Hidden by default */
+    position: absolute; /* Stay in place */
+	top: 48%;
+	left: 19%;
+    z-index: 200000; /* Sit on top */
+    /*border-style: solid;*/
+    /*padding-top:50px; Location of the box */
+    max-width: 10%; /* Full width */
+    max-height: 10% /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+.modal_content {
+    background-color: #666363;
+    margin: auto;
+	/*padding-top: 2px;*/
+    padding:8px;
+	line-height: 12px;
+    /*border: 0.5px solid #cdd2d8;*/
+    width: 205px;
+    height: 95px;
+	radius: 14px;
+    opacity: 0.6;
+	font: tahoma, sans-serif;
+	font-size: 20px;
+	color: #f7fcfa;
+}	
+#maincover {
+    /*height: 300px;*/
+	width: 100%;
+	content: url('/192.168.2.50/web/static/mydiabprod/main.jpg');
+	}
+@media (max-height: 600px) and (max-width: 1000px) {
+    #maincover {
+	    text-align: center;
+        content: url('{% static "mydiabprod/mobile.jpg" %}');
+    }
+	#firstcontainer {
+             background-color: white;
+             width: 99%;
+	         min-height: 100%;
+	         margin-top: 1rem;
+	         float: center;
+	    }
+    .modalpx {
+            display: block; /* Hidden by default */
+            position: absolute; /* Stay in place */
+	        top: 400px;
+	        left: 30px;
+            z-index: 200000; /* Sit on top */
+            /*border-style: solid;*/
+            /*padding-top:50px; Location of the box */
+            max-width: 10%; /* Full width */
+            max-height: 10% /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+        }
+	 img {
+	  text-align: center;
+	    max-width: 300px;
+		heigth: auto;
+	}
+    .note-video-clip {
+	    width: auto;
+		height: auto;
+		}
+    }
+	
+@media (min-height: 601px) and (max-width: 1000px) {
+    #maincover {
+	 text-align: center;
+        content: url('{% static "mydiabprod/mobile.jpg" %}');
+    }
+	#firstcontainer {
+             background-color: white;
+             width: 98%;
+	         min-height: 100%;
+	         margin-top: 1rem;
+	         float: center;
+	    }
+    .modalpx {
+            display: block; /* Hidden by default */
+            position: absolute; /* Stay in place */
+	        top: 450px;
+	        left: 30px;
+            z-index: 200000; /* Sit on top */
+            /*border-style: solid;*/
+            /*padding-top:50px; Location of the box */
+            max-width: 10%; /* Full width */
+            max-height: 10% /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+        }
+    img {
+	 text-align: center;
+	    max-width: 360px;
+		heigth: auto;
+	}
+    .note-video-clip {
+	    width: auto;
+		height: auto;
+		}
+@media (orientation: portrait) {
+    @media (min-height: 1001px) {
+        #maincover {
+		 text-align: center;
+            content: url('{% static "mydiabprod/mobile.jpg" %}');
+        }
+	    #firstcontainer {
+             background-color: white;
+             width: 98%;
+	         min-height: 100%;
+	         margin-top: 1rem;
+	         float: left;
+	    }
+        .modalpx {
+            display: block; /* Hidden by default */
+            position: absolute; /* Stay in place */
+	        top: 450px;
+	        left: 30px;
+            z-index: 200000; /* Sit on top */
+            /*border-style: solid;*/
+            /*padding-top:50px; Location of the box */
+            max-width: 10%; /* Full width */
+            max-height: 10% /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+        }
+	img {
+	 text-align: center;
+	    max-width: 340px;
+		heigth: auto;
+	}
+    .note-video-clip {
+	    width: auto;
+		height: auto;
+		}
+    }
+    @media (min-width: 1001px) {
+        #maincover {
+		 text-align: center;
+            content: url('{% static "mydiabprod/mobile.jpg" %}');
+        }
+	#firstcontainer {
+             background-color: white;
+             width: 98%;
+	         min-height: 100%;
+	         margin-top: 1rem;
+	         float: center;
+	    }
+        .modalpx {
+            display: block; /* Hidden by default */
+            position: absolute; /* Stay in place */
+	        top: 450px;
+	        left: 30px;
+            z-index: 200000; /* Sit on top */
+            /*border-style: solid;*/
+            /*padding-top:50px; Location of the box */
+            max-width: 10%; /* Full width */
+            max-height: 10% /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+        }
+	img {
+	 text-align: center;
+	    max-width: 360px;
+		heigth: auto;
+	}
+    .note-video-clip {
+	    width: auto;
+		height: auto;
+		}
+    }
+}
+@media (orientation: landscape) {
+    @media (min-height: 500px) {
+        #maincover {
+            content: url('{% static "mydiabprod/main_horizontal.jpg" %}');
+        }
+    }
+    @media (min-width: 1001px) {
+        #maincover {
+            content: url('{% static "mydiabprod/main_horizontal.jpg" %}');
+        }
+    }
+    @media (min-width: 1921px) {
+        #maincover {
+            content: url('{% static "mydiabprod/main.jpg" %}');
+        }
+    }
+}
+#fontisx {
+    font-size: 16px;
+	font-family: Verdana;
+	line-height: 14px;
+	}
+#myImg:hover {opacity: 0.7;}
+/*new part for image onclick*/ /* The Modal (background) */ .modalimage {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+/* Modal Content (image) */ .modalimage-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+/* Add Animation */ .modalimage-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+/* The Close Button */ .close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.close:hover, .close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+@media only screen and (max-width: 700px){
+  .modaliamge-content {
+    width: 100%;
+  }
+}

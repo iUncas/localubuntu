@@ -1,0 +1,93 @@
+<html> 
+<head> 
+<title>myDiab @sznurawa.pl </title> 
+<!-- pussy -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--<script src="js/bootstrap.min.js"></script>-->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!--<link rel="stylesheet" href="navbar-fixed-top.css" rel="stylesheet">-->
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>-->
+<!--<script type="text/javascript" src="jquery.js"></script>-->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+{% load static %}
+<!--<link rel="stylesheet" href=" {% static 'mydiabprod/style.css' %}">--> 
+<script type="text/javascript"> 
+$(document).ready(function() {
+$('#example').DataTable({order: [[0, "desc"]]});
+});
+</script>
+</head>
+<body style="font-family:verdana;font-size:12px;color:#515971;margin:15px;">
+<div id="container1", style="width:100%;">
+<p style="font-family:verdana;font-size:12px;color:#515971;margin:15px;" align="right">{{text2}} {{firstname}}</p>
+<p><form action="home1.pl" method="POST" align="right">
+<select name="setting" id="setting" onchange="this.form.submit()"?>
+<option value="" disabled select> MORE </option>
+<option value="1"> Patient Check </option>
+<option value="2"> Settings a </option>
+<option value="3"> Logout </option>
+</select>
+</form>
+
+</br>
+</div>
+<div id="sortable">
+<br>
+<br>
+<div id="container177" style="width:50%;" class="container177">
+<p> Please select results </p>
+<form action="{% url 'mydiabprod:specific' %}"  method="POST">
+{% csrf_token %}
+<select name="myselect" id="myselect" onchange="this.form.submit()">
+<option value="" >Please select results </options>
+<option value="R"> MORNING </option>
+<option value="L"> LUNCHTIME </option>
+<option value="A"> AFTERNOON </option>
+<option value="S"> SUPPER </option>
+<option value="N"> NIGHT </option>
+<option value="HGB"> GLYCATED HEMOGLOBIN </option>
+<option value="%"> BACK T2O HOME </option>
+</select>
+</form>
+</div>
+<div id="container166" style="width:50%;" class="container166">
+{% if latest_question_list %}
+<table id="example" style="font-family:verdana; font-size:12px;" class="table table-striped table-bordered dataTable">
+<thead>
+  <tr>
+    <th>DateTime</th>
+    <th>UserName</th>
+    <th>HGB</th>
+    <th>TypeOf</th>
+</thead>  
+</tr>
+    {% for result in latest_question_list %}
+      <tr>
+        <td><a href="{% url 'mydiabprod:results'  result.id }}/">{{ result.DateTime }}</a></td>
+        <td> {{result.id}} </td>
+        <td> {{result.HGB}} </td>
+        <td> {{result.TypeOf}} </td>
+    {% endfor %}
+   </tr>
+</table>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</div>
+</div>
+</body>
+</html>

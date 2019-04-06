@@ -1,0 +1,1132 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>-->
+    <!-- Bootstrap CSS -->
+   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+	    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>-->
+   <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>-->
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+<!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">-->
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--<script src="js/bootstrap.min.js"></script>-->
+<!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--<link rel="stylesheet" href="navbar-fixed-top.css" rel="stylesheet">-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<!--<script type="text/javascript" src="jquery.js"></script>-->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      {% load static %}
+  <!--<script src="{% static "mydiabprod/datejson.json" %}"type="text/javascript"></script> -->
+	<style>
+	.containerx:hover {
+	 background-color:#f9fafc;
+	 }
+	 .containery:hover {
+	 background-color:#f9fafc;
+	 }
+.alert-info {
+display:none;
+}
+.hoverforimage {
+	 display: none;
+	 }
+.modaly {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+	/*outline: none;*/
+    z-index: 1; /* Sit on top */
+    padding-top: 150px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    /*backdrop: static;*/
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modaly-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 0.5px solid #cdd2d8;
+    width: 15%;
+    min-height: 54%;
+	radius: 14px;
+}
+
+.modalx {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    padding-top:150px; /* Location of the box */
+    left:250px;
+    top: 20px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+
+}
+
+/* Modal Content */
+.modalx-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 0.5px solid #cdd2d8;
+    width: 400px;
+    height: 230px;
+	radius: 14px;
+}
+
+/* The Close Button */
+.closey {
+    color: #aaaaaa;
+    float: right;
+    font-size: 12px;
+}
+
+.closey:hover,
+.closey:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.closex {
+    color: #aaaaaa;
+    float: right;
+    font-size: 12px;
+}
+
+.closex:hover,
+.closex:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modalpp {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 0; /* Sit on top */
+    padding-top:150px; /* Location of the box */
+    left:0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+
+}
+
+/* Modal Content */
+.modalpp-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 0.5px solid #cdd2d8;
+    width: 400px;
+    height: 450px;
+	radius: 14px;
+}
+.foralign {
+vertical-align: top;
+}
+.pointers {
+opacity: 1;
+}
+.pointers:hover {
+cursor:pointer;
+opacity: 0.8;
+}
+.forradius{
+border-radius:4px;
+}
+.btn-x {
+background-color:#546582;
+}
+	</style>
+	<script type="text/javascript">
+$(window).load(function() {
+alert("check");
+    onemorekotecek();
+	});
+	$(document).ready(function() {
+	//var commonmodal = document.getElementById("mainforlist");
+	var choice1 = $('#mainforlist').attr('id');
+	var commonmodal = document.getElementById(choice1);
+	//console.log("masz " +commonmodal);
+$(window).click(function(event) {
+//var commonmodal = document.getElementById("mainforlist");
+//var choice1 = $('#mainforlist').attr('id');
+//var target = $(event.target);
+var choice3 = $('#mainforevent').attr('id');
+	var eventmod = document.getElementById(choice3);
+var choice2 = $('#details').attr('id');
+var detailsmodal = document.getElementById(choice2);
+    if (event.target == commonmodal) {
+	//if (target.is(document.getElementById("mainforlist"))) {
+	//console.log("close 1st modal");
+        commonmodal.style.display = "none";
+		$('#commonlistbody').empty();
+		//$('#mainforlist').removeAttr('style').hide();
+		return false;
+		} else if (event.target == detailsmodal) {
+	//} else if  (target.is($('#details'))) {
+	console.log("close 2nd modal");
+	detailsmodal.style.display = "none";
+	$('#details').empty();
+	return false;
+	} else if (event.target == eventmod) {
+	//} else if  (target.is($('#details'))) {
+	console.log("close 2nd modal");
+	eventmod.style.display = "none";
+	$('#details').empty();
+	return false;
+	}
+});
+});
+</script>
+	<script type="text/javascript">
+	
+function onemorekotecek(setcal){
+var setcal = new Date;
+
+//setcal.setMonth();
+var calmonth0 = setcal.getMonth();
+var calyear = setcal.getFullYear();
+var calmonth = calmonth0+1;
+//datejson=[];
+var dane = $.getJSON("{% url 'mydiabprod:calendarx' %}", {"month":calmonth, "year":calyear}, function(datejson) {
+//console.log("month now");
+//console.log("take " +datejson);
+//onemorekotecek();
+var datebold = setcal.toString();
+var monthbold = datebold.substring(4, 7);
+
+document.getElementById('forbolddate').innerHTML = monthbold + " " + calyear;
+//$("#contender").html(" ");
+$("#appender").html(" ");
+//$("#falisander").html(" ");
+//var fetty = JSON.parse(datejson);
+//should be for getsjon
+//console.log("start");
+var pates = datejson.map(function(x) {
+  return [x.date, x.eventx.map(function(y) {
+    return [y.eventhour, y.eventdescp, y.eventname];
+	}),
+	x.pubholidayx.map(function(z) {
+	return [z.pubname, z.pubtype];}
+	)];
+	});
+
+var counter=1;
+
+$.each((pates), function(key, val) {
+
+var xex = val[0];
+var pexver = new Date(xex);
+if (setcal.toDateString() == pexver.toDateString()) {
+var backgroundtoday = "#fff5ea"; } else {
+var backgroundtoday = "#ffffff";
+}
+var myeventlist = val[1];
+var mypubholiday = val[2];
+myeventlist.toString().replace(",", ", ");
+var xexold = new Date(xex);
+var actualtdate = xexold.toString();
+var xexalt = actualtdate.substring(4, 10);
+var xexday = actualtdate.substring(8, 10);
+var imid = "im"+xex+counter;
+var imix = "umd"+xex+counter;
+	    if (counter < 8) {
+	$("#appender").append("<div id="+counter+" class='containerx' style='background-color:"+backgroundtoday+"; width:155px;"+
+	"height:120px; border:solid 0.5px #f7faff; float:left; margin-top:-2px;' onmouseover='showdiv(\""+imix+"\")' onmouseout='hidediv(\""+imix+"\")'>"+
+	"<div class='foralign' style='width:100%;'>"+
+	"<div style='padding-top:5px; height:14px;'><div class='container' style='width:70%; float:right'>"+
+	"<a style='float:right; font-size:12px'>"+xexalt+"</a>"+
+	"<a id='a"+counter+"' style='float:right; font-size:12px;  padding-right:5px'></a></div>"+
+	"<div id='"+imix+"' class='hoverforimage' style='height:22px'><a href='#' style='float:left; margin-left:10px;'>"+
+	"<img class='closex' title='add event' style='float:left' src='{% static 'mydiabprod/add-icone111.png' %}' width='20px' height='20px' onclick='addevent(\""+xex+"\")'>"+
+	"</a></div>"+
+	"</div></div><br>"+
+    "<div><div class='col-sm' style='float:right'>"+
+	"<div id='d"+counter+"' style='text-align:right; font-size:8px padding-top:0px; height:70%'></div></div></div></div>");
+	//console.log("kotecek widzi "+myeventlist);
+	} else if (counter > 7 ) {
+    $("#appender").append("<div id="+counter+" class='divcontainery1' style='background-color:"+backgroundtoday+"; width:155px; height:115px; border:solid 0.5px #f7faff;"+
+	"float:left;' margin-top:-2px; onmouseover='showdiv(\""+imix+"\")' onmouseout='hidediv(\""+imix+"\")'><div class='foralign' style='width:100%; margin-top:-2px'>"+
+    "<div style='padding-top:5px; height:18px;'><div id='"+imix+"' class='hoverforimage'><a href='#' style='float:left; margin-left:10px;'>"+
+	"<img class='closex' title='add event' style='float:left' src='{% static "mydiabprod/add-icone111.png" %}' width='18px' height='18px' onclick='addevent(\""+xex+"\")'>"+
+	"</a></div>"+
+	"<div class='container' style='width:70%; float:right'>"+
+	"<a style='float:right; font-size:12px;'>"+xexday+"</a></div></div></div>"+
+    "<div><div class='col-sm' style='float:right;'>"+
+	"<div id='d"+counter+"' class='xx' style='text-align:right; padding-top:2px; height:70%'></div></div></div></div>");
+	//console.log("kotecek widzi1 "+myeventlist);
+	};
+	var eventcount = 1;
+	var i = 1;
+//var addcolortobutton=1;
+	$.each(mypubholiday, function(keyz, valz) {
+var pubfieda = valz[0];
+var pubtype = valz[1];
+
+  if (!pubfieda) {
+	$('#d'+counter).html(" ");
+	//console.log("puik");
+	} else { 
+		var modaltarget = 'details';
+  var modaldiv = 'detail'+xex+eventcount;
+  if (toString(pubfieda).length > 15) {
+  var lenghty = 15;
+  var holidfieda = pubfieda.substring(0, lenghty)+'...';
+  } else if (toString(pubfieda).length <15) {
+  holidfieda = toString(pubfieda);
+  } 
+  if (pubtype=='PL') {
+var buttonforpubhol="#53826d;";
+} else if (pubtype=='DE') {
+var buttonforpubhol="#91126d";
+} else if (pubtype=='PT') {
+var buttonforpubhol="#ffe4d1";
+}
+$('#d'+counter).append('<div style="margin-top:1px;"><button type="button" class="btn btn-sm" style="padding: 0px 10px; color:#ffffff; font-size:11px;'+
+ 'background-color:'+buttonforpubhol+'"'+
+	'title="'+pubfieda+'" onclick="showeventdetails(\''+modaltarget+'\', \''+modaldiv+'\', \''+pubfieda+'\', \''+xex+'\', \''+eventcount+'\')">'+
+	''+holidfieda+'</button>'+
+	'<div class="modalx" id="'+modaltarget+'"></div>');
+//	addcolortobutton++;
+eventcount++;
+return eventcount;
+//return pubfieda;
+}
+});
+
+$.each(myeventlist, function(keyx, valx) {
+  var kiper =1;
+  var breda = valx[0];
+  var kreda = valx[1];
+  var fieda = valx[2];
+   if (fieda.substring(0, 5)=='inter') {
+var spancolor="#d8a497";
+} else if (fieda.substring(0, 5)=='on du') {
+var spancolor="#7abc92";
+} else if (fieda.substring(0, 3)=='run') {
+var spancolor="#ff6363";
+} else {
+var spancolor="#7e97bf";
+}
+  //var modaltarget = 'modetail'+xex+eventcount;
+  var modaltarget = 'details';
+  var modaldiv = 'detail'+xex+eventcount;
+   var toappend = 'app'+xex+eventcount;
+  //var modal2 = 'mo'+xex+eventcount;
+  var modal2 = 'pierwszy';
+  var butan = 'bu'+xex+eventcount;
+  var mutan = 'mu'+xex+eventcount;
+  var kutan = 'kobe'+mutan;
+   if (fieda.length > 18) {
+  var lenghty = 18;
+  var holidfiedax = fieda.substring(0, lenghty)+'...';
+  } else if (fieda.length <18) {
+  holidfiedax = fieda;
+  } 
+  
+	if (eventcount<4) {
+	$('#d'+counter).append('<div id="'+toappend+'" style="margin-top:1px; margin-bottom:2px">'+
+	'<span type="link" class="pointers" style="background-color:'+spancolor+'; color:#ffffff; width:100%; padding: 0px 5px; font-size:12px; float:right; margin-top:1px"'+
+	'onclick="showeventdetails(\''+modaltarget+'\', \''+modaldiv+'\', \''+breda+'\', \''+kreda+'\', \''+fieda+'\', \''+xex+'\', \''+eventcount+'\')">'+
+	''+holidfiedax+'</span></div>'+
+	'<div class="modalx" id="'+modaltarget+'"></div>');
+	if (fieda==" ") {
+	$('#'+toappend).html(" ");
+	//console.log("puik");
+	};
+	eventcount++;
+
+    } else if (eventcount == 4) {
+	$('#d'+counter).append('<div style="margin-top:-3px; margin-bottom:2px"><button id="pop'+xex+eventcount+'" type="button" class="btn btn-link" title="more events"'+
+	'style="padding: 0px 0px; font-size:12px"'+
+	'titile="more events"'+
+	'onclick="showcommonlist'+
+	'(\''+xex+'\')">...</button></div>');
+	eventcount++;
+	} else if (eventcount > 4) {
+	console.log('moreevents');
+	}
+	});
+	counter++;
+	});
+	var zona = counter;
+	console.log("verify total number: " +zona);
+	if (zona == 28 ) {
+	    $('.divcontainery1').height(153);
+	} 
+	if (zona > 29 < 37) {
+        $('.divcontainery1').height(115);
+    } 
+	if (zona > 37) {
+        $('.divcontainery1').height(92);
+    }
+	var flex_day_names = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
+	var counterx = 1;
+	for (i in flex_day_names) {
+	$('#a'+counterx).append(flex_day_names[i].substring(0, 3));
+	counterx++;
+
+}
+});
+}
+function showeventdetails(modaltarget,modaldiv,breda,fieda,kreda,xex,eventcount) {
+	var modalevent = document.getElementById('mainforevent');
+//modalevent.style.display = "none";
+var modaldet = modaltarget;
+//var alert_ev_del = "al"+xex+eventcount;
+$('#details').append('<div class="modalx-content">'+
+    '<nav class="navbar navbar-light bg-primary" style="color:#ffffff; width:100%; height:80px">'+
+	'<div class="container"><div class="row"><div class="col-sm">'+
+    '<a style="float:left"><h5 class="modalx-title" id="h1'+xex+eventcount+'">'+fieda+'</h5></a>'+
+    '</div><div class="col-sm">'+
+    '<a href="#">'+
+    //'<meta name="_token" content="{% csrf_token %}">'+
+    '<a><img class="closex" style="float:right" src="{% static 'mydiabprod/close-window-xxl.png' %}" width="33%" height="70%" onclick="closemodalx()" ></a>'+
+	'<a><img class="closex" style="float:right" src="{% static 'mydiabprod/trash-2-xxl.png' %}" width="33%" height="70%"'+
+    'onclick="delevent(\''+xex+'\', \''+breda+'\', \''+fieda+'\')" ></a>'+
+	'<a><img class="closex" style="float:right" src="{% static 'mydiabprod/view-details-xxl.png' %}" width="33%" height="70%" onclick="closemodalx()" ></a></a>'+
+    '</div></div></div>'+
+	'</nav>'+
+    '<div class="modalx-body" id="mobo'+xex+eventcount+'" style="padding-top:20px; padding-bottom:20px">'+
+	'<div class="container" style="float:right; font-size:14px">'+
+	'<p><a style="padding-right:10px">'+xex+'</a><a>'+
+	'<img class="closex" style="float:right" src="{% static 'mydiabprod/Time-And-Date-Today-icon.png' %}" width="8%" height="14%">'+
+	'</a></p>'+
+	'<p><a style="padding-right:10px">'+breda+'</a><a>'+
+	'<img class="closex" style="float:right" src="{% static 'mydiabprod/Clock-icon.png' %}" width="8%" height="14%"></a></p>'+
+	'<p><a style="padding-right:10px">'+kreda+'</a><a>'+
+	'<img class="closex" style="float:right" src="{% static 'mydiabprod/Information-icon.png' %}" width="8%" height="14%"></a></p>'+
+	'</div></div>'+
+    '</div>');
+	var modalx = document.getElementById(modaltarget);
+    modalx.style.display = "block";
+
+	}
+
+function showcommonlist(xex) {
+console.log("frist step");
+//document.getElementById('mainforevent').style.display="none";
+//modalevent.style.display = "none";
+var datefordetail = xex.substr(5, 5);
+//console.log('datecommon: ' +datefordetail);
+//var common = JSON.parse(datevent);
+//should be for getsjon
+var dane = $.getJSON("{% url 'mydiabprod:calendarmainlist' %}", {"datex":xex}, function(datejson) {
+var xcommonpates = datejson.map(function(x) {
+  return [x.date, x.eventx.map(function(y) {
+    return [y.eventhour, y.eventdescp, y.eventname];
+	})];
+	});
+var commonpates = datejson.map(function(x) {
+  return [x.date, x.eventx.map(function(y) {
+    return [y.eventhour, y.eventdescp, y.eventname];
+	}),
+	x.pubholidayx.map(function(z) {
+	return [z.pubname, z.pubtype];}
+	)];
+	});
+var countercommon=1;
+var eventcountcommon = 1;
+	var i = 1;
+
+$.each((commonpates), function(key, val) {
+
+var xex = val[0];
+
+var commoneventlist = val[1];
+var mypubholiday = val[2];
+$.each(mypubholiday, function(keyz, valz) {
+var pubfieda = valz[0];
+var pubtype = valz[1];
+
+  if (!pubfieda) {
+	$('#commonlistbody').html(" ");
+	//console.log("puik");
+	} else { 
+		var modaltarget = 'details';
+  var modaldiv = 'detail'+xex+eventcountcommon;
+  
+  if (pubfieda.length > 20) {
+  var lenghty = 20;
+  var holidfieda = pubfieda.substring(0, lenghty)+'...';
+  } else if (pubfieda.length <20) {
+  holidfieda = pubfieda;
+  } 
+  if (pubtype=='PL') {
+var buttonforpubhol="#53826d;";
+} else if (pubtype=='DE') {
+var buttonforpubhol="#91126d";
+} else if (pubtype=='PT') {
+var buttonforpubhol="#ffe4d1";
+}
+$('#commonlistbody').append('<div class="container" style="float:right; width:100%; margin-top:2px;"><button type="button" class="btn btn-sm"'+
+  ' style="padding: 0px 4px; color:#ffffff; font-size:13.5px;'+
+ 'background-color:'+buttonforpubhol+'"'+
+	'title="'+pubfieda+'" onclick="showeventdetails(\''+modaltarget+'\', \''+modaldiv+'\', \''+pubfieda+'\', \''+xex+'\', \''+eventcountcommon+'\')">'+
+	''+holidfieda+'</button>'+
+	'<div class="modalx" id="'+modaltarget+'"></div>');
+//	addcolortobutton++;
+eventcountcommon++;
+return eventcountcommon;
+//return pubfieda;
+}
+});
+commoneventlist.toString().replace(",", ", ");
+$.each(commoneventlist, function(keyx, valx) {
+  var kiper =1;
+  var breda = valx[0];
+  var kreda = valx[1];
+  var fieda = valx[2];
+  if (fieda=='Christmas') {
+  buttoncolor='btn btn-success btn-sm';
+  } else if (fieda=='on duty') {
+  buttoncolor='btn btn-secondary btn-sm';
+  } else if (fieda=='diab') {
+  buttoncolor='btn btn-warning btn-sm';
+  } else {
+  buttoncolor='btn btn-info btn-sm';
+  }
+  //var modaltarget = 'modetail'+xex+eventcount;
+  var modaltarget = 'details';
+  var modaldiv = 'detail'+xex+eventcountcommon;
+  //var modal2 = 'mo'+xex+eventcount;
+  var modal2 = 'pierwszy';
+  var butan = 'bu'+xex+eventcountcommon;
+  var mutan = 'mu'+xex+eventcountcommon;
+  var kutan = 'kobe'+mutan;
+  if (fieda.substring(0, 5)=='inter') {
+var spancolor="#d8a497";
+} else if (fieda.substring(0, 5)=='on du') {
+var spancolor="#7abc92";
+} else if (fieda.substring(0, 3)=='run') {
+var spancolor="#ff6363";
+} else {
+var spancolor="#7e97bf";
+}
+$('#commonlistbody').append('<div class="container" style="float:right; width:100%; margin-top:2px;">'+
+	'<span type="link" class="pointers" style="background-color:'+spancolor+'; color:#ffffff; width:100%; padding: 0px 10px; font-size:14px; float:right; margin-top:1px"'+
+	'titile="more events"'+
+	'onclick="showeventdetails(\''+modaltarget+'\', \''+modaldiv+'\', \''+breda+'\', \''+kreda+'\', \''+fieda+'\', \''+xex+'\', \''+eventcountcommon+'\')">'+
+	''+fieda+'</span>'+
+	'<div class="modalx" id="drugi"></div>'+
+	'</div>');
+
+
+
+});
+/*var daysmainlist = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var datemainlist = new Date(xex);
+var dayinfomain = daysmainlist[datemainlist.getDay()].substring(0, 3);
+var daynumbformain = datemainlist.toString();
+$('#dayformain').html(dayinfomain);
+$('#daynumbformain').html(daynumbformain.substring(8, 10));*/
+});
+
+});
+	$('#header1').html(datefordetail);
+var modalcommon = document.getElementById('mainforlist');
+    modalcommon.style.display = "block";
+var daysmainlist = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var datemainlist = new Date(xex);
+var dayinfomain = daysmainlist[datemainlist.getDay()].substring(0, 3);
+var daynumbformain = datemainlist.toString();
+$('#dayformain').html(dayinfomain);
+$('#daynumbformain').html(daynumbformain.substring(8, 10));
+}
+
+function addevent(xex){
+
+var modalevent = document.getElementById('mainforevent');
+modalevent.style.display = "block";
+document.getElementById("datepicker").value = xex;
+var daysmainlist = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var datemainlist = new Date(xex);
+var dayinfomain = daysmainlist[datemainlist.getDay()].substring(0, 3);
+var daynumbformain = datemainlist.toString();
+$('#dayformainx').html(dayinfomain+", "+daynumbformain.substring(8, 10));
+//$('#daynumbformain').html(daynumbformain.substring(8, 10));
+//document.getElementById('datepicker').innerHTML=xex;
+}
+//$(document).ready(function() {
+$( function() {$("#datepicker").datepicker(
+ {
+  dateFormat: "yy-mm-dd"
+});
+});
+//});
+$(document).ready(function() {
+var countcal=1;
+//var d = { "production_date": new Date() }
+var setcal = new Date;
+$("#plusdate").click(function(event) {
+var dcal = setcal.getMonth();
+var zcal = dcal+1;
+setcal.setMonth(zcal);
+//console.log("new date is:" +setcal);
+var calmonth0 = setcal.getMonth();
+var calyear = setcal.getFullYear();
+var calmonth = calmonth0+1;
+//datejson=[];
+//var dane = $.getJSON("{% url 'mydiabprod:calendarx' %}", {"month":calmonth, "year":calyear}, function(datejson) {
+//console.log("month plus");
+onemorekotecek_duble(setcal);
+//});
+return setcal;
+})
+$("#minusdate").click(function(event) {
+var ucal = setcal.getMonth();
+var xcal = ucal-1;
+setcal.setMonth(xcal);
+//console.log("new date is:" +setcal);
+var calmonth0 = setcal.getMonth();
+var calyear = setcal.getFullYear();
+var calmonth = calmonth0+1;
+//datejson=[];
+//var dane = $.getJSON("{% url 'mydiabprod:calendarx' %}", {"month":calmonth, "year":calyear}, function(datejson) {
+//console.log("month minus");
+onemorekotecek_duble(setcal);
+//});
+
+return setcal;
+})
+$("#nowdate").click(function(event) {
+setcal = new Date;
+//setcal.setMonth();
+var calmonth0 = setcal.getMonth();
+var calyear = setcal.getFullYear();
+var calmonth = calmonth0+1;
+//datejson=[];
+//var dane = $.getJSON("{% url 'mydiabprod:calendarx' %}", {"month":calmonth, "year":calyear}, function(datejson) {
+//console.log("month now");
+onemorekotecek_duble(setcal);
+//});
+
+return setcal;
+})
+
+})
+
+function eventsubmit(eventxx) {
+eventxx.preventDefault();
+var myevent = new FormData($('#myeventx').get(0));
+var eventname = $('#eventname').val();
+var eventdesc = $('#eventdesc').val();
+var eventdate = $('#datepicker').val();
+var eventtime = $('#timepicker').val();
+myevent.append('eventname', eventname);
+myevent.append('eventdesc', eventdesc);
+myevent.append('eventdate', eventdate);
+myevent.append('eventtime', eventtime);
+
+$.ajax({
+    url: "{% url 'mydiabprod:eventlogx' %}",
+    type: $(this).attr('method'),
+    cache: false,
+    data: myevent,
+    processData: false,
+    contentType: false,
+    success: function(data) {
+    //var res = this.response.text;
+      
+           $('#myeventx')[0].reset();
+		   var deldated = new Date(eventdate);
+		   alert("event has been included");
+		   onemorekotecek_duble(deldated);
+    }
+
+});
+	var modalev = document.getElementById("mainforevent");
+    modalev.style.display = "none";
+//console.log("kotecek2");
+return false;
+}
+$(function() {
+    $('#myeventx').submit(eventsubmit);
+
+});
+
+
+</script>
+  </head>
+  <body> <div  style="width:100%;">
+ <nav class="navbar navbar-light" style="width:100%; height:60px; background-color: #27497c;">
+        <!--<div style="float:right; heigth:10%">-->
+		      {% csrf_token %}
+    <div class="container">
+	<div class="row" style="width:100%; height:50px; padding-top:2px">
+    <div class="col-sm" style="float:left">
+	<p id="forbolddate" style="font-family:verdana;font-size:16px;color:#ffffff;margin-top:5px;" align="left"></p>
+	</div>
+   	<div class="col-sm">
+	<p style="font-family:verdana;font-size:14px;color:#ffffff;margin-top:5px;" align="right">
+      <button  class="btn btn-outline-light" id="minusdate"><<<</button>
+	  </p>
+    </div>
+<div class="col-sm">
+		<p style="font-family:verdana;font-size:14px;color:#ffffff;margin-top:5px;" align="center">
+      <button  class="btn btn-outline-light" id="nowdate">TODAY</button>
+	  </p>
+    </div>
+	 <div class="col-sm">
+	<p style="font-family:verdana;font-size:14px;color:#ffffff;margin-top:5px;" align="left">
+     <button  class="btn btn-outline-light" id="plusdate">>>></button>
+	 </p>
+    </div>
+	<div class="col-sm" style="float:left">
+	<a href="#" style="float:right; padding-top:10px" id="pressfortogle1">
+    <img src="{% static 'mydiabprod/settings-20-xxl.png' %}" width="26px" height="26px" data-toggle="dropdown" onclick="pressfortoggle()"></a>
+	<div id="showfortoggle" class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
+  <p>
+    show calendar options
+  </p>
+  <p class="mb-0">
+    show public holidays
+  </p>
+</div>
+	</div>
+	<div class="col-sm" style="float:right">
+        {% csrf_token %}
+    <p style="margin-bottom:5px;">
+        <form action="{% url 'mydiabprod:logout' %}" method="POST" align="right">
+       {% csrf_token %}
+            <select class="custom-select custom-select mb-3" style="width:140px;" name="setting" id="setting" onchange="this.form.submit()">
+                <option value=""> myDiab </option>
+                <option value="1"> Patient Check IN </option>
+                <option value="2"> Settings a </option>
+                <option value="3"> Logout </option>
+            </select>
+        </form>
+    </p></div></div></div>
+   </nav> 
+	</div>
+	<div id="appender" class="container" style="float:center; width:1220px; height:580px">
+</div>
+<div class="modaly" id="mainforlist">
+<div class="modaly-dialog" role="document">
+    <div class="modaly-content">
+    <div class="container" style="background-color:#ffffff; width:100%; height:70px">
+	<div class="xx" style="width:100%">
+	<div style="width:50%; float:left; font-size:16px">
+    <a id="dayformain" style="float:left; padding-top:5px"></a></div>
+	<div style="width:50%; float:right">
+    <a href="#" style="float:right; padding-top:10px">
+    <img src="{% static 'mydiabprod/closemainlist2.png' %}" width="13px" height="13px" alt="" onclick="closemodal()"/></a></div>
+	</div>
+	<div class="xx" style="width:100%; font-size:18px; float:left"><a id="daynumbformain" style="float:left; padding-top:5px; font-size:24px"></a></div>
+    </div>
+    <div class="modaly-body" id="commonlistbody" style="padding-top:10px; padding-bottom:5px"></div>
+</div></div></div>
+	<div class="modalx" id="details"></div>
+<div class="modalpp" id="mainforevent">
+<div class="modalpp-dialog" role="document">
+    <div class="modalpp-content">
+	<div class="forradius" style="background-color:#27497c; color:#ffffff; width:100%; height:70px">
+	<div ><div class="row"><div class="col-sm">
+    <a id="dayformainx" style="float:left; padding-top:8px; margin-left:14px; color:#ffffff; font-size:18px;"></a>
+	</div><div class="col-sm"></div><div class="col-sm" style="float:right"><a href="#" style="float:right; padding-top:6px; margin-right:14px">
+	<img class="closey" style="align:right" src="{% static 'mydiabprod/closebutton.png' %}" width="30px" height="30px" onclick="closemodalev()"/>
+	<!--<button type="button" class="closey" id="commonbutton" style="float:right" onclick="closemodal()">&times;</button>--></a></div></div></div>
+	</div>
+    <div class="modalpp-body" id="commonlistbody" style="padding-top:10px; padding-bottom:5px">
+<div style="font-family:verdana; font-size:14px;">
+         <form id="myeventx" method="POST">{% csrf_token %}
+         <!--    {% csrf_token %} -->
+                 <div class="form-group" style="text-align:right">
+             <label for="eventname"> Calendar Event</label>
+                     <input type="text" class="form-control" id="eventname" rows="1" name="eventname"></input>
+                 </div>
+              <div class="form-row">
+             <div class="form-group col-md-6" style="text-align:right">
+                 <label for="datepicker" >Add Date</label>
+                 <input type="text" id="datepicker" class="form-control" name="datepicker"></input>
+             </div>
+             <div class="form-group col-md-6" style="text-align:right">
+                 <label for="timepicker">Add Time</label>
+                 <select id="timepicker" class="form-control" name="timepicker" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+       <!--  <input type="text" id="timepicker" class="form-control" name="timepicker">-->
+                <option value="x">  </option>
+                <option value="00:00"> 00:00 </option>
+                <option value="00:30"> 00:30 </option>
+                <option value="01:00"> 01:00 </option>
+                <option value="01:30"> 01:30 </option>
+                <option value="02:00"> 02:00  </option>
+                <option value="02:30"> 02:30 </option>
+                <option value="03:00"> 03:00</option>
+                <option value="03:30"> 03:30 </option>
+                <option value="04:00"> 04:00 </option>
+                <option value="04:30"> 04:30 </option>
+                <option value="05:00"> 05:00 </option>
+                <option value="05:30"> 05:30  </option>
+                <option value="06:00"> 06:00 </option>
+                <option value="15UT"> 06:30</option>
+                <option value="06:30"> 07:00 </option>
+                <option value="07:30"> 07:30 </option>
+                <option value="08:00"> 08:00</option>
+                <option value="08:30"> 08:30 </option>
+                <option value="09:00"> 09:00 </option>
+                <option value="09:30"> 09:30 </option>
+                <option value="10:00"> 10:00 </option>
+                <option value="10:30"> 10:30  </option>
+                <option value="11:00"> 11:00 </option>
+                <option value="11:30"> 11:30</option>
+                <option value="12:00"> 12:00 </option>
+                <option value="12:30"> 12:30 </option>
+                <option value="13:00"> 13:00 </option>
+                <option value="13:30"> 13:30 </option>
+                <option value="14:00"> 14:00  </option>
+                <option value="14:30"> 14:30 </option>
+                <option value="15:00"> 15:00</option>
+                <option value="15:30"> 15:30 </option>
+                <option value="16:00"> 16:00 </option>
+                <option value="16:30"> 16:30 </option>
+                <option value="17:00"> 17:00 </option>
+                <option value="17:30"> 17:30  </option>
+                <option value="18:00"> 18:00 </option>
+                <option value="18:30"> 18:30</option>
+                <option value="19:00"> 19:00 </option>
+                <option value="19:30"> 19:30 </option>
+                <option value="20:00"> 20:00 </option>
+                <option value="20:30"> 20:30 </option>
+                <option value="21:00"> 21:00  </option>
+                <option value="21:30"> 21:30 </option>
+                <option value="22:00"> 22:00 </option>
+                <option value="22:30"> 22:30 </option>
+                <option value="23:00"> 23:00 </option>
+                <option value="23:30"> 23:30 </option>
+                 </select>
+             </div>
+                   </div>
+                  <div class="form-group" style="width:100%; text-align:right">
+                      <label for="eventdesc">Event details </label>
+                      <textarea class="form-control" id="eventdesc" rows="2" name="eventdesc" style="font-size:12px"></textarea>
+                      </div>
+                  <div style="float:right">
+                  <button type="submit" class="btn btn-sm" id="eventbutton" style="float:right; font-size:12px;  color:#ffffff; background-color:#27497c">Add Calendar Event</button>
+                      </div>
+             <div id="alert_placeholder2" style="width:50%; float:right;"></div>
+
+
+         </form>
+     </div>
+
+	</div>
+</div></div></div>
+
+
+</body>
+
+<script>
+
+function closemodal() {
+var modaly = document.getElementById("mainforlist");
+modaly.style.display = "none";
+$('#commonlistbody').empty();
+}
+function closemodalx() {
+var modalx = document.getElementById("details");
+modalx.style.display = "none";
+$('#details').empty();
+}
+function closemodalev() {
+var modalev = document.getElementById("mainforevent");
+modalev.style.display = "none";
+//$('#mainforevent').empty();
+}
+</script>
+<script>
+function onemorekotecek_duble(setcal){
+
+//setcal = new Date;
+//setcal.setMonth();
+var netcal = new Date();
+var calmonth0 = setcal.getMonth();
+var calyear = setcal.getFullYear();
+var calmonth = calmonth0+1;
+//datejson=[];
+var datebold = setcal.toString();
+var monthbold = datebold.substring(4, 7);
+document.getElementById('forbolddate').innerHTML = monthbold + " " + calyear;
+var dane = $.getJSON("{% url 'mydiabprod:calendarx' %}", {"month":calmonth, "year":calyear}, function(datejson) {
+//console.log("month now");
+//console.log("take " +datejson);
+//onemorekotecek();
+
+
+//$("#contender").html(" ");
+$("#appender").html(" ");
+//$("#falisander").html(" ");
+//var fetty = JSON.parse(datejson);
+//should be for getsjon
+//console.log("start");
+var pates = datejson.map(function(x) {
+  return [x.date, x.eventx.map(function(y) {
+    return [y.eventhour, y.eventdescp, y.eventname];
+	}),
+	x.pubholidayx.map(function(z) {
+	return [z.pubname, z.pubtype];}
+	)];
+	});
+
+var counter=1;
+
+$.each((pates), function(key, val) {
+
+var xex = val[0];
+var pexver = new Date(xex);
+if (setcal.toDateString() == pexver.toDateString()) {
+var backgroundtoday = "#fff5ea"; } else {
+var backgroundtoday = "#ffffff";
+}
+var myeventlist = val[1];
+var mypubholiday = val[2];
+myeventlist.toString().replace(",", ", ");
+var xexold = new Date(xex);
+var actualtdate = xexold.toString();
+var xexalt = actualtdate.substring(4, 10);
+var xexday = actualtdate.substring(8, 10);
+var imid = "im"+xex+counter;
+var imix = "umd"+xex+counter;
+	    if (counter < 8) {
+	$("#appender").append("<div id="+counter+" class='containerx' style='background-color:"+backgroundtoday+"; width:155px;"+
+	"height:120px; border:solid 0.5px #f7faff; float:left; margin-top:-2px;' onmouseover='showdiv(\""+imix+"\")' onmouseout='hidediv(\""+imix+"\")'>"+
+	"<div class='foralign' style='width:100%;'>"+
+	"<div style='padding-top:5px; height:14px;'><div class='container' style='width:70%; float:right'>"+
+	"<a style='float:right; font-size:12px'>"+xexalt+"</a>"+
+	"<a id='a"+counter+"' style='float:right; font-size:12px;  padding-right:5px'></a></div>"+
+	"<div id='"+imix+"' class='hoverforimage' style='height:22px'><a href='#' style='float:left; margin-left:10px;'>"+
+	"<img class='closex' title='add event' style='float:left' src='{% static 'mydiabprod/add-icone111.png' %}' width='20px' height='20px' onclick='addevent(\""+xex+"\")'>"+
+	"</a></div>"+
+	"</div></div><br>"+
+    "<div><div class='col-sm' style='float:right'>"+
+	"<div id='d"+counter+"' style='text-align:right; font-size:8px padding-top:0px; height:70%'></div></div></div></div>");
+	//console.log("kotecek widzi "+myeventlist);
+	} else if (counter > 7 ) {
+    $("#appender").append("<div id="+counter+" class='divcontainery1' style='background-color:"+backgroundtoday+"; width:155px; height:115px; border:solid 0.5px #f7faff;"+
+	"float:left; margin-top:-2px;' onmouseover='showdiv(\""+imix+"\")' onmouseout='hidediv(\""+imix+"\")'><div class='foralign' style='width:100%'; margin-top:-4px;>"+
+    "<div style='padding-top:5px; height:18px;'><div id='"+imix+"' class='hoverforimage'><a href='#' style='float:left; margin-left:10px;'>"+
+	"<img class='closex' title='add event' style='float:left' src='{% static "mydiabprod/add-icone111.png" %}' width='18px' height='18px' onclick='addevent(\""+xex+"\")'>"+
+	"</a></div>"+
+	"<div class='container' style='width:70%; float:right'>"+
+	"<a style='float:right; font-size:12px;'>"+xexday+"</a></div></div></div>"+
+    "<div><div class='col-sm' style='float:right;'>"+
+	"<div id='d"+counter+"' class='xx' style='text-align:right; padding-top:2px; height:70%'></div></div></div></div>");
+	//console.log("kotecek widzi1 "+myeventlist);
+	};
+	var eventcount = 1;
+	var i = 1;
+//	var addcolortobutton=1;
+$.each(mypubholiday, function(keyz, valz) {
+var pubfieda = valz[0];
+var pubtype = valz[1];
+  if (!pubfieda) {
+	$('#d'+counter).html(" ");
+	//console.log("puik");
+	} else { 
+		var modaltarget = 'details';
+  var modaldiv = 'detail'+xex+eventcount;
+   if (toString(pubfieda).length > 15) {
+  var lenghty = 15;
+  var holidfieda = pubfieda.substring(0, lenghty)+'...';
+  } else if (toString(pubfieda).length <15) {
+  holidfieda = toString(pubfieda);
+  } 
+    if (pubtype=='PL') {
+var buttonforpubhol="#53826d;";
+} else if (pubtype=='DE') {
+var buttonforpubhol="#91126d";
+} else if (pubtype=='PT') {
+var buttonforpubhol="#ffe4d1";
+}
+$('#d'+counter).append('<div style="margin-top:1px;"><button type="button" class="btn btn-sm" style="padding: 0px 10px; color:#ffffff; font-size:12px;'+
+ 'background-color:'+buttonforpubhol+'"'+
+	'title="'+pubfieda+'" onclick="showeventdetails(\''+modaltarget+'\', \''+modaldiv+'\', \''+pubfieda+'\', \''+xex+'\', \''+eventcount+'\')">'+
+	''+holidfieda+'</button>'+
+	'<div class="modalx" id="'+modaltarget+'"></div>');
+//addcolortobutton++;
+eventcount++;
+return eventcount;
+//return pubfieda;
+}
+});
+$.each(myeventlist, function(keyx, valx) {
+  var kiper =1;
+  
+  var breda = valx[0];
+  var kreda = valx[1];
+  var fieda = valx[2];
+   if (fieda.substring(0, 5)=='inter') {
+var spancolor="#d8a497";
+} else if (fieda.substring(0, 5)=='on du') {
+var spancolor="#7abc92";
+} else if (fieda.substring(0, 3)=='run') {
+var spancolor="#ff6363";
+} else {
+var spancolor="#7e97bf";
+}
+  //var modaltarget = 'modetail'+xex+eventcount;
+  var toappend = 'app'+xex+eventcount;
+  var modaltarget = 'details';
+  var modaldiv = 'detail'+xex+eventcount;
+  //var modal2 = 'mo'+xex+eventcount;
+  var modal2 = 'pierwszy';
+  var butan = 'bu'+xex+eventcount;
+  var mutan = 'mu'+xex+eventcount;
+  var kutan = 'kobe'+mutan;
+  if (fieda.length > 18) {
+  var lenghty = 18;
+  var holidfiedax = fieda.substring(0, lenghty)+'...';
+  } else if (fieda.length <18) {
+  holidfiedax = fieda;
+  } 
+  
+	if (eventcount<4) {
+	$('#d'+counter).append('<div id="'+toappend+'" style="margin-top:1px; margin-bottom:2px">'+
+	'<span type="link" class="pointers" style="background-color:'+spancolor+'; color:#ffffff; width:100%; padding: 0px 5px; font-size:12px; float:right; margin-top:1px"'+
+	'onclick="showeventdetails(\''+modaltarget+'\', \''+modaldiv+'\', \''+breda+'\', \''+kreda+'\', \''+fieda+'\', \''+xex+'\', \''+eventcount+'\')">'+
+	''+holidfiedax+'</span></div>'+
+	'<div class="modalx" id="'+modaltarget+'"></div>');
+	if (fieda==" ") {
+	$('#'+toappend).html(" ");
+	//console.log("puik");
+	};
+	eventcount++;
+
+    } else if (eventcount == 4) {
+	$('#d'+counter).append('<div style="margin-top:-3px;"><button id="pop'+xex+eventcount+'" type="button" class="btn btn-link" title="more events"'+
+	'style="padding: 0px 0px; font-size:12px"'+
+	'onclick="showcommonlist'+
+	'(\''+xex+'\')">...</button></div>');
+	eventcount++;
+	} else if (eventcount > 4) {
+	console.log('moreevents');
+	}
+	});
+	counter++;
+	});
+	var zona = counter;
+	console.log("verify total number: " +zona);
+	if (zona == 28 ) {
+	    $('.divcontainery1').height(153);
+	} 
+	if (zona > 29 < 37) {
+        $('.divcontainery1').height(115);
+    } 
+	if (zona > 37) {
+        $('.divcontainery1').height(92);
+    }
+	var flex_day_names = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
+	var counterx = 1;
+	for (i in flex_day_names) {
+	$('#a'+counterx).append(flex_day_names[i].substring(0, 3));
+	counterx++;
+
+}
+});
+}
+function delevent(xex,breda,fieda) {
+var date11 = xex;
+var time11 = breda;
+var name11 = fieda;
+//var csrftoken = getCookie('csrftoken');
+//$.post("{% url 'mydiabprod:delevent' %}", {"eventdate":xex, "eventtime":breda, "eventname":fieda});
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+$.ajax({
+    url: "{% url 'mydiabprod:delevent' %}",
+    method: "POST",
+   headers: {"X-CSRFToken":csrftoken},
+    data: {"eventdate":xex, "eventtime":breda}
+  })
+.done(function() {
+alert("event deleted");
+var deldated = new Date(xex);
+onemorekotecek_duble(deldated);
+})
+.fail(function() {
+console.log("NOT A WAY");
+});
+
+//console.log("loadpage");
+}
+function showdiv(imix){
+var trykotx = $('#'+imix).attr('id');
+var imadlox = document.getElementById(trykotx);
+
+//console.log("imadlo: " +imadlox);
+//document.getElementById(trykotx).style.transitionDuration = "2s";
+imadlox.style.display = 'block';
+}
+
+function hidediv(imix){
+var trykotx = $('#'+imix).attr('id');
+var imadlox = document.getElementById(trykotx);
+
+//console.log("imadlo: " +imadlox);
+imadlox.style.display = 'none';
+//document.getElementById(trykotx).style.transitionDuration = "1s";
+}
+
+function pressfortoggle() {
+//$('#pressfortogle').click(function(){
+    $("#showfortoggle").toggle();
+}
+/*
+problems 
+1 modal onclick close sequence - bulk click 
+2 verify height of the div for appending 4th element (...)
+3 modal position relative - program an independent class in css for each modal?
+*/
+</script>
+</html>

@@ -1,0 +1,256 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Hello, world!</title>
+	
+ 
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>   
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#summernote').summernote();
+var peks = '{{ bloghtml|safe }}';
+document.getElementById("returnajax").innerHTML = peks;
+});
+</script>
+<style>
+body {
+    width:100%;
+	}
+/*.row {
+   	padding-righ: 0px;*/
+.col-3 {
+    /*background-color: #99b3ff;*/
+	background-color: #ffffff;
+	width:100%;
+	padding-top: 5px;
+/*	padding-left: 5px;
+	padding-right: 5px;*/
+	font-family: Verdana;
+	font-size: 12px;
+	/*float: left;*/
+}
+.card {
+    padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+.top-span {
+    width: 100%;
+    padding-top: 15px;
+	}
+
+.card-img-top {
+    padding-top: 15px;
+	}
+{% load static %}
+</style>
+ </head>
+ <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class="top-span"></div>
+<div style="margin-left:20px; margin-right:20px">
+  <div class="row">
+    <div class="col-3" id="col1" style="float:left">
+	<b>col-2</b>
+	<br>
+	<br>
+	<p><a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a></p>
+<div class="card" style="width:14rem">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+	  <li class="list-group-item">Vestibulum at eros</li>
+	    <li class="list-group-item">Vestibulum at eros</li>
+		  <li class="list-group-item">Vestibulum at eros</li>
+		    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+	</div>
+
+    <div class="col-6" id="col2">
+
+
+	<div class="card" id="43">
+  <div class="card-header">
+    Featured
+  </div>
+   {% if variable1 == "admin_view" %}
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">This is for the admin only.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  {% elif variable1 == "doctor_view" %}
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">This is for the doctor portal.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  {% elif variable1 == "user_view" %}
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">This is for the user portal.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  {% else %}
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">you don't have permission to access this part.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+    {% endif %}
+</div>
+<div class="top-span"></div>
+<div class="card" id="43">
+<div>
+{% csrf_token %}
+<!-- csrf -->
+<form id="myrichupload" method="POST" >
+{% csrf_token %} 
+<textarea id="summernote" name="editordata"></textarea>
+</br>
+{% csrf_token %}
+  <button type="submit" class="btn btn-primary">Save</button>
+<!--<button  type="submit">Preview</button>-->
+</form>
+</div>
+<script type="text/javascript">
+function richtext(event) {
+bootstrap_alert = function() {}
+bootstrap_alert.warning = function(message) {
+            $('#alert_placeholder2').html('<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Info!</strong> event added </div>');
+        }
+event.preventDefault();
+var myevent2 = new FormData($('#myrichupload').get(0));
+var richtextblogx = $("#summernote").val();
+myevent2.append('richtextblogx', richtextblogx);
+$.ajax({
+    url: "{% url 'mydiabprod:richtextblog' %}",
+    type: $(this).attr('method'),
+    cache: false,
+    data: myevent2,
+    processData: false,
+    contentType: false,
+    success: function(data) {
+       alert("New blog page has been added");
+          $('#myrichupload').val('');
+          $("#summernote").summernote('code', '<p>write your stuff here...</p>');
+          alert('okk');
+    }
+});
+
+console.log("kotecek2");
+
+return false;
+}
+$(function() {
+    $('#myrichupload').submit(richtext);
+
+});
+</script>
+<!--	<div class="container">
+	  <div class="row">
+	  <div class="col-6">
+	<div class="card-img-top" style="width: 14rem;">
+  <img src="{% static 'mydiabprod/1920-DSC_1008.jpg' %}" width="180px" height="180px" class="card-img-top" alt="apps">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div>
+ <div class="col-6">
+<div class="card-img-top" style="width: 14rem;">
+  <img src="{% static 'mydiabprod/1920-DSC_1008.jpg' %}" width="180px" height="180px" class="card-img-top" alt="apps">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div>
+</div>-->
+</div>
+</div>
+    <div class="col-3" id="col3">
+	<b>col-2</b>
+	<br>
+	<br>
+	<p><a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a></p>
+<!--<div class="card-img-top" style="width: 14rem;">
+  <img src="{% static 'mydiabprod/1920-DSC_1008.jpg' %}" width="180px" height="180px" class="card-img-top" alt="apps">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>-->
+</br>
+</br>
+   <div id="returnajax">
+<!--<button id="but1" class="btn btn-primary" onclick="returnbloghtml()">Save</button>
+    </div>
+<script type="text/javascript">
+</script>-->
+</br>
+</br>
+
+
+	</div>
+  </div>
+</div>
+
+
+  </body>
+</html>
