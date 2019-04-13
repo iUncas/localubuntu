@@ -28,12 +28,67 @@ integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07j
 <style>
 body {
     width:100%;
-	background-color: F6FAFB;
+	background-color: #eff3f9;
 	font-family: Verdana;
 	font-size: 12px;
 	}
+.navbar {
+    padding-left:16%;
+	padding-right:16%;
+    width:100%; 
+	height:9%; 
+	background-color: #23466d; /* 23466d blue - 34967c;green*/
+}
+#divinnav1 {
+    margin-top:5px;
+	margin-bottom:3px; 
+	display:inline;
+	}
+.button-wjs-red {
+  background-color: white; /* Green */
+  border: 1px solid #C288A3;
+  color: #C288A3;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+  border-radius: 4px;
+  width: 70px;
+}
+.button-wjs-red:hover {
+      background-color: #f7e8eb;
+	  border: 1px solid #f7e8eb;
+	  }
+.button-wjs-green {
+  background-color: white; /* Green */
+  border: 1px solid #5CB199;
+  width: 90px;
+  color: #5CB199;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+  border-radius: 4px;
+  width: 70px;
+}
+.button-wjs-green:hover {
+      background-color: #5CB199;
+	  border: 1px solid #5CB199;
+	  }
 #topcontainer {
-    width: 100%
+    width: 100%;
 	}
 #modalimagex {
   display: none; /* Hidden by default */
@@ -55,6 +110,26 @@ body {
   width:auto;
   height: 90%;
   /*max-width: 700px;*/
+}
+.modalsettings {
+   position: relative;
+   display: block;
+   right:5px;
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+
+.modalsettingscontent {
+  display: none;
+  position: absolute;
+     right:2px;
+  background-color: #DDDCE3;
+  width: 120px;
+  height:200px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  opacity: 0.9;
 }
 /* Caption of Modal Image */
 #captionx {
@@ -111,23 +186,23 @@ img {
 	}
 img:hover {opacity: 0.7;}
 #innertextcontainer {
-  border-top:0.3px solid #30CF98;
-  border-bottom:0.3px solid #30CF98;
+  border-top:0.3px solid #c3cfdd;
+  /*border-bottom:0.3px solid #d5dee8;*/
 }
 /*#innertextcontainer1 {
-border-bottom:0.3px solid #30CF98;
+border-bottom:0.1px solid #d5dee8;
 }*/
 .prem {
     display: block; /* Hidden by default */
     position: absolute; /* Stay in place */
-	top: 45%;
-	left: 20%;
-    z-index: 200000; /* Sit on top */
+	top: 47%;
+	padding-left: 1%;
+    z-index: 1; /* Sit on top */
     /*border-style: solid;*/
     /*padding-top:50px; Location of the box */
     max-width: 100%; /* Full width */
     max-height: 100% /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: scroll; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
 }
@@ -138,25 +213,63 @@ border-bottom:0.3px solid #30CF98;
     padding:8px;
 	line-height: 12px;
     /*border: 0.5px solid #cdd2d8;*/
-    width: 205px;
-    height: 95px;
-    radius: 14px;
+    width: 120%;
+    max-height: 100%;
+    radius: 20px;
     opacity: 0.6;
     font: tahoma, sans-serif;
     font-size: 20px;
     color: #f7fcfa;
 }
+.topmodals {
+    width:24%;
+	heigth:24%;
+	}
 #maincover {
     /*height: 300px;*/
     width: 100%;
     content: url('{% static "mydiabprod/main.jpg" %}');
     }
+	
+#pagingatortotal {
+    padding-top:2px; 
+    padding-left:2px;
+	font-size:14px;
+	}
+
+
+.trashy {
+    width: 20px;
+	height: 20px;
+	}
+.publicpadlock {
+    width: 24px;
+	height: 24px;
+	}
+.privpadlock {
+    width: 24px;
+	height: 24px;
+	}
+.locky {
+    width:24px;
+	height: 24px;
+	}
+.unlocky {
+    width:24px;
+	height: 24px;
+}
+
 @media (orientation: portrait) {
     @media (max-width: 500px) { /*sony xperia xz*/
         #maincover {
             text-align: center;
             content: url('{% static "mydiabprod/mobile_lansc.jpg" %}');
         }
+    .navbar {
+	    height:15%; 
+        padding-left:1%;
+	    padding-right:1%;
+    }
         img {
             text-align: center;
             width: auto;
@@ -169,12 +282,16 @@ border-bottom:0.3px solid #30CF98;
 	        min-height: 100%;
 	        margin-top: 1rem;
         }
+		#settings_navbar {
+		    width: 70%;
+			height:70%;
+			}
 		
         .prem {
             display: block; /* Hidden by default */
             position: absolute; /* Stay in place */
-            top: 80%;
-            left: 8%;
+            top: 90%;
+            left: 9%;
             z-index: 200000; /* Sit on top */
             /*border-style: solid;*/
             padding-top:50px; Location of the box */
@@ -185,100 +302,75 @@ border-bottom:0.3px solid #30CF98;
             background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
         }
         .modalzz_content {
-           width: 100%;
+		      font-size:14px;
+		   line-height:10px;
+		   padding-bottom: 0.5%;
+		   padding-left:15%;
+           width: 130px;
         }
-        
+        .topmodals {
+    width:28px;
+	heigth:28px;
+	}
         .note-video-clip {
             width: auto;
             height: auto;
         }
-    @media  (min-width: 501px) and (max-width: 1000px) {
-        #maincover {
-            text-align: center;
-            content: url('{% static "mydiabprod/mobile.jpg" %}');
+		.button-wjs-green  {
+		    padding-left: 2px;
+			padding-right: 2px;
+			padding-top: 5px;
+            /*display: inline-block;*/
+            font-size: 14px;
+            cursor: pointer;
+			  text-align: center;
+			  width: 40px;
+	height: 40px;
+		}
+    .modalsettingscontent {
+        right:5px;
+        width: 120px;
+        height:200px;
+   }
+	.button-wjs-red  {
+		    padding-left: 2px;
+			padding-right: 2px;
+			padding-top: 5px;
+            /*display: inline-block;*/
+            font-size: 14px;
+            cursor: pointer;
+			  text-align: center;
+			  width: 40px;
+			  height: 40px;
         }
-        .perst {
-            margin: auto;60
-            display: block;
-            width:100%;
-           /*max-width: 700px;*/
-        }
-        img {
-            text-align: center;
-            width: auto;
-            height: auto;
-			object-fit: contain;
-        }
-        #firstcontainer {
-            background-color: white;
-            width: 98%;
-            min-height: 100%;
-            margin-top: 1rem;
-	        float: center;
-	    }
-        .prem {
-            display: block; /* Hidden by default */
-            position: absolute; /* Stay in place */
-            top: 62%;
-            left: 8%;
-            z-index: 200000; /* Sit on top */
-            /*border-style: solid;*/
-            /*padding-top:50px; Location of the box */
-            max-width: 100%; /* Full width */
-            max-height: 100% /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
-        }
-        .modalzz_content {
-            width: 100%;
-        }
-        .note-video-clip {
-            width: auto;
-            height: auto;
-        }
-    }
-    @media (min-width: 1001px) {
-        #maincover {
-            text-align: center;
-            content: url('{% static "mydiabprod/mobile.jpg" %}');
-        }
-        #firstcontainer {
-            background-color: white;
-            width: 98%;
-            min-height: 100%;
-            margin-top: 1rem;
-            float: left;
-        }
-        .modalpx {
-            display: block; /* Hidden by default */
-            position: absolute; /* Stay in place */
-            top: 450px;
-            left: 30px;
-            z-index: 200000; /* Sit on top */
-            /*border-style: solid;*/
-            /*padding-top:50px; Location of the box */
-            max-width: 100%; /* Full width */
-            max-height: 100% /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
-        }
-        .modalzz_content {
-            width: 100%;
-        }
-        img {
-            text-align: center;
-            max-width: 340px;
-            height: auto;
-        }
-        .note-video-clip {
-            width: auto;
-            height: auto;
-        }
+   #pagingatortotal {
+   font-size:12px;
+   }
+   .trashy {
+    width: 18px;
+	height: 18px;
+	}
+	.publicpadlock {
+    width: 19px;
+	height: 19px;
+	}
+.privpadlock {
+    width: 19px;
+	height: 19px;
+	}
     }
 }
 @media (orientation: landscape) and (max-width: 1000px) {
+    .navbar {
+        width:100%; 
+        height:18%; 
+        padding-left:1%;
+	    padding-right:1%;
+    }
+	#divinnav1 {
+        margin-top:1px;
+	    display:inline;
+	}
         #maincover {
             content: url('{% static "mydiabprod/main_horizontal.jpg" %}');
         }
@@ -288,93 +380,61 @@ border-bottom:0.3px solid #30CF98;
 	         min-height: 100%;
 	         margin-top: 1rem;
 	    }
-        .modalzz_content {
-            width: 100%;
-        }
+		#settings_navbar {
+		    width: 50%;
+			height: 50%;
+			}
         .prem {
             display: block; /* Hidden by default */
             position: absolute; /* Stay in place */
-	        top: 40%;
-	        left: 16%;
+            top: 48%;
+            left: 12%;
             z-index: 200000; /* Sit on top */
             /*border-style: solid;*/
-            /*padding-top:50px; Location of the box */
+            padding-top:50px; Location of the box */
             max-width: 100%; /* Full width */
-            max-height: 100% /* Full height */
+            max-height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
             background-color: rgb(0,0,0); /* Fallback color */
             background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
         }
-        .note-video-clip {
-	        width: auto;
-		    height: auto;
-	    }
-    }
-@media (orientation: landscape) and (min-width: 1001px) {
-        #maincover {
-            content: url('{% static "mydiabprod/main_horizontal.jpg" %}');
-        }
-        #firstcontainer {
-             background-color: white;
-             width: 98%;
-	         min-height: 100%;
-	         margin-top: 1rem;
-	    }
         .modalzz_content {
-            width: 100%;
+		   font-size:14px;
+		   line-height:10px;
+		   padding-left:10%;
+           width: 130px;
+		   height: 70px;
         }
-        .modalpx {
-            display: block; /* Hidden by default */
-            position: absolute; /* Stay in place */
-	        top: 330px;
-	        left: 110px;
-            z-index: 200000; /* Sit on top */
-            /*border-style: solid;*/
-            /*padding-top:50px; Location of the box */
-            max-width: 100%; /* Full width */
-            max-height: 100% /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
-        }
+        .topmodals {
+    width:28px;
+	heigth:28px;
+	}
         .note-video-clip {
 	        width: auto;
 		    height: auto;
 	    }
+		.modalsettingscontent {
+        right:5px;
+        width: 120px;
+        height:200px;
+   }
+   #pagingatortotal {
+   font-size:12px;
+   }
+	.trashy {
+    width: 18px;
+	height: 18px;
+	}
+	.publicpadlock {
+    width: 19px;
+	height: 19px;
+	}
+.privpadlock {
+    width: 19px;
+	height: 19px;
+	}
     }
 
-@media (orientation: landscape) and (min-width: 1921px) {
-        #maincover {
-            content: url('{% static "mydiabprod/main.jpg" %}');
-        }
-        #firstcontainer {
-             background-color: white;
-             width: 98%;
-	         min-height: 100%;
-	         margin-top: 1rem;
-	    }
-        .modalzz_content {
-            width: 100%;
-        }
-        .modalpx {
-            display: block; /* Hidden by default */
-            position: absolute; /* Stay in place */
-	        top: 140px;
-	        left: 110px;
-            z-index: 200000; /* Sit on top */
-            /*border-style: solid;*/
-            /*padding-top:50px; Location of the box */
-            max-width: 100%; /* Full width */
-            max-height: 100% /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
-        }
-        .note-video-clip {
-	        width: auto;
-		    height: auto;
-	    }
-    }
 
 /*@media only screen and (max-width: 700px){
   .perst {
@@ -401,32 +461,7 @@ border-bottom:0.3px solid #30CF98;
 <script type="text/javascript">
 $(document).ready(function() {
     var csrf = $("meta[name='csrf']").attr("content");  
-    var img = $('img');
-    var modalimage = document.getElementById("modalimagex");
-    var modalthisimage = document.getElementById('imagethis');
-
-    $('img').click(function() {
-        var trashpart = document.getElementById("trashpost");
-        var padlockpriv = document.getElementById("privatemake");
-        var padlockpub = document.getElementById("publicmake");
-        var publicview = document.getElementById("publicpad");
-		var privview = document.getElementById("privpad");
-		        
-        if ((this.src == trashpart.src)) {
-            console.log("define post for trash");
-            console.log("confirmed url for reference to delete: "+this.src);
-            var deleted_element =  $(this).attr("data");
-            console.log("div id to be deleted "+deleted_element);
-            var target = deleted_element.substring(4);
-            console.log("post id as target for django to remove from db: "+target);
-            var post_del = document.getElementById(deleted_element);
-            //delete div from blog www
-            post_del.parentNode.removeChild(post_del);
-            console.log("div has been deleted");
-            //implement here bootstrap place holder with dismissable popup
-            alert("post removed");
-            
-            function getCookie(name) {
+    function getCookie(name) {
                 var cookieValue = null;
              
                 if (document.cookie && document.cookie !== '') {
@@ -443,220 +478,388 @@ $(document).ready(function() {
                 }
                 return cookieValue;
         }
-            var csrftoken = getCookie('csrftoken');
-            console.log("csrf token: "+csrftoken);
-            console.log("firing ajax");
-            $.ajax({
-                url: "{% url 'mydiabprod:postremove' %}",
-                headers: {"X-CSRFToken":csrftoken},
-                type: "POST",
-                data: {'targetdel': target},
-                success: function(text) {
-                //$(el).summernote('editor.insertImage', url);
-                //optional tasks here
-                //$("#counter").append("</br><p>image</p></br><p><img  alt='Smiley face' height='200' width='300' src="+url+"></img></p>");
-                console.log("ajax loaded, django db updated, response sent back: "+text);
-                }
-            });
-        } else if ((this.src == padlockpriv.src)) {
-            alert("implement tomorrow setting public permission to post");
-        } else if ((this.src == padlockpub.src))  {
-            alert("implement tomorrow setting private permission to post");
-        } else if ((this.src == publicview.src)) {
-		    alert("post publicly available");
-        } else if ((this.src == privview.src)) {
-		    alert("post publicly available");
-		} else {
-            alert("thisis it");
+	
+    var img = $('img');
+    var modalimage = document.getElementById('modalimagex');
+    var modalthisimage = document.getElementById('imagethis');
+	var topmodals = document.getElementsByClassName('topmodals');
+	var trashy = document.getElementsByClassName('trashy');
+	var unlocky = document.getElementsByClassName('unlocky');
+	var locky = document.getElementsByClassName('locky');
+	var navbarphoto = document.getElementsByClassName('navbarphoto');
+	var innerimage = document.getElementsByClassName('innerimage');
+
+	
+	
+	$('img.topmodals').click(function() {
+	    alert("you've pressed topmodals");
+        return;
+	    });
+	$('img.trashy').click(function() {
+	    console.log("define post for trash");
+        console.log("confirmed url for reference to delete: "+this.src);
+        var deleted_element =  $(this).attr("data");
+        console.log("div id to be deleted "+deleted_element);
+        var target = deleted_element.substring(4);
+        console.log("post id as target for django to remove from db: "+target);
+        var post_del = document.getElementById(deleted_element);
+            //delete div from blog www
+        post_del.parentNode.removeChild(post_del);
+        console.log("div has been deleted");
+            //implement here bootstrap place holder with dismissable popup
+        alert("post removed");
+         var urlx =  "{% url 'mydiabprod:postremove' %}";
+		djangoajax(target, urlx);    
+        var csrftoken = getCookie('csrftoken');
+        console.log("csrf token: "+csrftoken);
+        console.log("firing ajax");
+    });
+    
+    
+    $('img.unlocky').click(function(){
+         alert("post publicly available");
+	});
+	
+    $('img.locky').click(function(){
+         alert("post publicly available");
+    });
+
+    $('img.navbarphoto').click(function(){
+	    console.log("tooggle dropdown");
+			//var xx = plex.getArrtibute('display');
+        var plex = document.getElementById("showfortogglex");
+        var xx = $("#showfortogglex").css("display");
+        if (xx == 'none') {
+            console.log("check ddplex: "+xx);
+            plex.style.display = "block";
+        }   else {
+            console.log("check ddplex: "+xx);
+            plex.style.display = "none";
+        }
+        return;
+    });
+
+    $('img.innerimage').click(function(){
+        alert("thisis it");
             //img = $(this);
             //var captionText = getElementById('captionx');
-            console.log("defined image: "+this.url);
+        console.log("defined image: "+this.url);
             //console.log("defined this:" +$(this))
-            console.log("file name "+this.src);
-            modalimage.style.display = "block";
-            modalthisimage.src =  this.src;
-            // captionText.innerHTML = "<a>test</a>";
-        }
+        console.log("file name "+this.src);
+        modalimage.style.display = "block";
+        modalthisimage.src =  this.src;
     });
+	wwx = document.getElementsByClassName("privpadlock");
+    $('img.privpadlock').click(function() {
+	if (this.classList == 'privpadlock') {
+	  //  if (this.src == makeprivatepost.src) {
+	    alert("implementing  settings private permission to post");
+        console.log("define post for closed privacy");
+        console.log("confirmed url for reference to pivacy update: "+this.src);
+        var private_element =  $(this).attr("data");
+        console.log("div id for public post "+private_element);
+        var target = private_element.substring(5);
+        console.log("post id as target for django to set is_private in db: "+target);
+        console.log("html for that post: "+$(this).attr("src"));
+        var newaddress = "{% static 'mydiabprod/padlock_redd.ico' %}";
+		$(this).attr("src", newaddress);
+		var newclass = "publicpadlock";
+		//$(this).removeClass("privpadlock").addClass("publicpadlock");
+		this.classList.remove("privpadlock");
+		this.classList.add("publicpadlock");
+		$(this).attr("id", "publicmake");
+		$(this).attr("data", "@"+target);
+		
+        var urlx =  "{% url 'mydiabprod:postsetprivate' %}";
+		djangoajax(target, urlx);	
+		} else {
+		alert("implementing  settings public permission to post");
+        console.log("define post for public privacy");
+        console.log("confirmed url for reference to pivacy update: "+this.src);
+        var public_element =  $(this).attr("data");
+        console.log("div id for public post "+public_element);
+        var target = public_element.substring(1);
+        console.log("post id as target for django to set is_public in db: "+target);
+            //$(this).empty();
+        console.log("html for that post: "+$(this).attr("src"));
+	    var newaddressx = "{% static 'mydiabprod/padlock_green.ico' %}";
+        $(this).attr("src", newaddressx);
+		var newclassx = "privpadlock";
+		//$(this).removeClass("publicpadlock").addClass("privpadlock");
+		this.classList.remove("publicpadlock");
+		this.classList.add("privpadlock");
+		$(this).attr("id", "privatemake");
+		$(this).attr("data", "priv@"+target);
+        var urlx =  "{% url 'mydiabprod:postsetpublic' %}";
+		djangoajax(target, urlx);   
+        		}
+       //};	
+	//   return $(".publicpadlock");
+    });
+	var ppx = document.getElementsByClassName("publicpadlock");
+	$('img.publicpadlock').click(function(){
+	if (this.classList == 'publicpadlock') {
+	//    if (this.src == makepublicpost.src) {
+        alert("implementing  settings public permission to post");
+        console.log("define post for public privacy");
+        console.log("confirmed url for reference to pivacy update: "+this.src);
+        var public_element =  $(this).attr("data");
+        console.log("div id for public post "+public_element);
+        var target = public_element.substring(1);
+        console.log("post id as target for django to set is_public in db: "+target);
+            //$(this).empty();
+        console.log("html for that post: "+$(this).attr("src"));
+	    var newaddressx = "{% static 'mydiabprod/padlock_green.ico' %}";
+        $(this).attr("src", newaddressx);
+		var newclassx = "privpadlock";
+		//$(this).removeClass("publicpadlock").addClass("privpadlock");
+		this.classList.remove("publicpadlock");
+		this.classList.add("privpadlock");
+		$(this).attr("id", "privatemake");
+		$(this).attr("data", "priv@"+target);
+           
+        var urlx =  "{% url 'mydiabprod:postsetpublic' %}";
+		djangoajax(target, urlx); 
+	//	};
+	} else {
+	   alert("implementing  settings private permission to post");
+        console.log("define post for closed privacy");
+        console.log("confirmed url for reference to pivacy update: "+this.src);
+        var private_element =  $(this).attr("data");
+        console.log("div id for public post "+private_element);
+        var target = private_element.substring(5);
+        console.log("post id as target for django to set is_private in db: "+target);
+        console.log("html for that post: "+$(this).attr("src"));
+        var newaddress = "{% static 'mydiabprod/padlock_redd.ico' %}";
+		$(this).attr("src", newaddress);
+		var newclass = "publicpadlock";
+		//$(this).removeClass("privpadlock").addClass("publicpadlock");
+		this.classList.remove("privpadlock");
+		this.classList.add("publicpadlock");
+		$(this).attr("id", "publicmake");
+		$(this).attr("data", "@"+target);
+		var urlx =  "{% url 'mydiabprod:postsetprivate' %}";
+		djangoajax(target, urlx);
+		}
+//	 return $(".privpadlock");
+	});
+
+	
+    //var trashpart = document.getElementById("trashpost");
+    //var padlockpriv = document.getElementById("privatemake");
+    //var padlockpub = document.getElementById("publicmake");
+    //var publicview = document.getElementById("publicpad");
+    //var privview = document.getElementById("privpad");
+    //var settings_navbar = document.getElementById("settings_navbarx");
+    //var plex = document.getElementById("showfortogglex");
     var span = document.getElementsByClassName("close")[0];
     span.onclick = function() { 
         modalimage.style.display = "none";
         $("#imagethis").empty();
     }
+	function djangoajax(target, urlx) {
+	    var csrftoken = getCookie("csrftoken");
+        console.log("csrf token: "+csrftoken);
+        console.log("firing ajax");
+        $.ajax({
+            url: urlx,
+            headers: {"X-CSRFToken":csrftoken},
+            type: "POST",
+            data: {"target": target},
+            success: function(text) {
+				//console.log("html for that post: "+this.innerHTML);
+                //$(el).summernote('editor.insertImage', url);
+                //optional tasks here
+                //$("#counter").append("</br><p>image</p></br><p><img  alt='Smiley face' height='200' width='300' src="+url+"/></p>");
+				//this.innerHTML = "<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'/>";
+            console.log("ajax loaded, django db updated, response sent back: "+text);				
+            }
+        });
+		}
 });
 </script>
- <nav class="navbar navbar-light" style="width:100%; height:60px; background-color: #8A8AB6;">
+ <!--<nav class="navbar navbar-light" style="width:100%; height:60px; background-color: #8A8AB6;">-->
+ <nav class="navbar">
         <!--<div style="float:right; heigth:10%">-->
-    <div class="container" style="margin-top:3px; display:inline">
-    <div class="col-sm" style="float:left">
-        <!--<p style="font-family:verdana;font-size:12px;color:#ffffff;" align="left">reader</p>-->
-    </div>
-    <div class="col-sm" style="float:right">
-        <form action="javascript:mext()" method="POST" align="right">
-            <select class="custom-select custom-select" style="width:120px;height:25px;font-family:verdana;font-size:10px" name="setting" id="setting" onchange="this.form.submit()">
+    <div class="container" id="divinnav1">
+	<div class="row">
+	<div class="col" style="float:left;">
+        <form action="javascript:mext()" method="POST" align="left">
+            <select class="custom-select custom-select" style="width:120px;height:30px;font-family:verdana;font-size:12px;" name="setting" id="setting" onchange="this.form.submit()">
                 <option value=""> myDiabBlog </option>
                 <option value="1"> Patient Check IN </option>
                 <option value="2"> Settings a </option>
                 <option value="3"> Logout </option>
             </select>
         </form>
-		</div></div>
+		</div>
+        <div class="col" style="float:right">
+            <div class='modalsettings' style='float:right'>
+                <img id='settings_navbarx' class='navbarphoto' src='{% static "mydiabprod/settings-20-xx.png" %}' style='height:28px;width:28px;'></br>
+                <div id='showfortogglex' class='modalsettingscontent'>
+                </div>
+            </div>
+        </div>
+		</div>
+		</div>
     </nav>
 
  <div id="firstcontainer" class="container">
 <div id="modalimagex" class="modalv">
   <span class="close">&times;</span>
-  <img class="perst" id="imagethis"></img>
+  <img class="perst" id="imagethis"/>
  <div id="captionx"></div>-
 </div>
- 
-<div id="fotocontainer">
-<br><a id="maincover"></a>
+ <br>
+<div id="maincover"></div>
 <div class="prem" id="modalpxz">
    <!-- <div class="modal-dialog">-->
     
       <!-- Modal content-->
       <div id="contentm" class="modalzz_content">
       <p> WJS Blog</p>
-	  <p><img src='{% static "mydiabprod/flickr.ico" %}'></img>  <img src='{% static "mydiabprod/rss.ico" %}'></img>  <img src='{% static "mydiabprod/skull.ico" %}'></img>  </p>
+	  <p><img class='topmodals' src='{% static "mydiabprod/flickr.ico" %}'/>  <img class='topmodals' src='{% static "mydiabprod/rss.ico" %}'/>  <img class='topmodals' src='{% static "mydiabprod/skull.ico" %}'/>  </p>
 	    </div>
-<!-- </div> -->
-	  </div>
 	  </div>
  <br>      
  {% csrf_token %}
- <div id="innertextcontainer">
+ <div id="innertextcontainer" class="parole">
  {% if html_loop %}
-     <br><br>
+
+
 	  {% for result in html_loop %}
+
 	</br>
-	  <div id='div@{{result.id}}' style="border-bottom:0.3px solid #30CF98;">
+	  <div id='div@{{result.id}}' style="border-bottom:0.3px solid #c3cfdd;">
 	<div class="row">
 	<div class="col-6">
-	<b style="font-family:Tahoma;font-size:20px; float:left">Title: {{result.BlogName}}</b>
-	</div>
+	<div style="float:left">
+	<b style="font-family:Calibri;font-size:18px;">{{result.BlogName}}</b>
+	<p style="font-family:Calibri;font-size:15px;">posted by {{result.BlogOwner}}</p>
+	</div></div>
 	<div class="col-6">
 	{% if user_role == 'admin' %}
 	{% if result.is_private == True %}
-	<p style="float:right">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24;></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24;></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; style='display:none' ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+	<p style="float:right" id="p{{result.id}}">
+	    <img class='trashy' id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}'/>
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
     </p>
 	{% elif result.is_private == False %}
-	<p style="float:right;">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24;></img>
-	    <img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; ></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; style='display:none' ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
-        <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'></img>
+	<p style="float:right;" id="p{{result.id}}">
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
+		<img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+	    <img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' />
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
+        
     </p>
     {% endif %}
 	{% elif user_role == 'superuser' %}
 	{% if result.is_private == True %}
 	{% if result.AdminRight == 'A' %}
-		<p style="float:right; padding-top:5px;">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24; style='display:none'></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; style='display:none' ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24;></img>
+		<p style="float:right; padding-top:5px;" id="p{{result.id}}">
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}'  style='display:none'/>
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' />
      </p>
 	{% elif result.AdminRight == 'S' or result.AdminRight == 'R' %}
-    <p style="float:right; padding-top:5px;">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24;></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24;></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; style='display:none' ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+    <p style="float:right; padding-top:5px;" id="p{{result.id}}">
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}'/>
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  style='display:none' />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
     </p>
 	{% endif %}
 	{% elif result.is_private == False %}
 	{% if result.AdminRight == 'A' %}
-		<p style="float:right; padding-top:5px;">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24; style='display:none'></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+		<p style="float:right; padding-top:5px;" id="p{{result.id}}">
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
      </p>
 	{% elif result.AdminRight == 'S' or role_check == 'R' %}
-    <p style="float:right; padding-top:5px;">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24;></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24;></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; style='display:none' ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+    <p style="float:right; padding-top:5px;" id="p{{result.id}}">
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' />
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  style='display:none' />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
     </p>
 	{% endif %}
     {% endif %}
 	{% elif user_role == 'visitor' and postowner == result.BlogOwner %}
 	{% if result.is_private == True %}
-	<p style="float:right; padding-top:5px;">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24;></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24;></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; style='display:none' ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+	<p style="float:right; padding-top:5px;" id="p{{result.id}}">
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' />
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' />
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  style='display:none' />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
     </p>
 	{% elif result.is_private == False %}
 	{% if result.AdminRight == 'A' or result.AdminRight == 'S' %}
-		<p style="float:right">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24; style='display:none'></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24;  ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+		<p style="float:right" id="p{{result.id}}">
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}'  style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'   />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
      </p>
 	{% elif result.AdminRight == 'R' %}
-    <p style="float:right; padding-top:5px;">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24;></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24;></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; style='display:none' ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+    <p style="float:right; padding-top:5px;" id="p{{result.id}}">
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' />
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad'class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
     </p>
 	{% endif %}
 	{% endif %}
 	{% elif user_role == 'visitor' and not postowner == result.BlogOwner %}
 	
 	{% if result.AdminRight == 'A' or result.AdminRight == 'S' %}
-		<p style="float:right">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24; style='display:none'></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24;  ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+		<p style="float:right" id="p{{result.id}}">
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
      </p>
 	{% elif result.AdminRight == 'R' %}
 	<script>
 	alert("result owner : " +'{{result.BlogOwner}}');
 	</script>
-    <p style="float:right; padding-top:5px;">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24; style='display:none'></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+	<p style="float:right" id="p{{result.id}}">
+        <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
     </p>
 	{% endif %}
 	{% elif user_role == 'public' %}
-	<p style="float:right; padding-top:5px;">
-	    <img id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' height=24; width=24; style='display:none'></img>
-	    <img id='publicmake' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'></img>
-		<img id='publicpad' src='{% static "mydiabprod/unlock-32.ico" %}' height=24; width=24; ></img>
-		<img id='privpad' src='{% static "mydiabprod/lock.ico" %}' height=24; width=24; style='display:none'></img>
+	<p style="float:right; padding-top:5px; id="p{{result.id}}"><!--don't display option-->
+	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' />
+		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
      </p>
 	 {% endif %}
 	
 	
 	</div>
 		</div>
-		    <div>
-	            <p style="padding-left:1px;font-size:14px;"> {{result.BlogEntry}}</p>
+		    <div class="html_from_django">
+	            <p style="padding-left:1px;font-size:12px;"> {{forloop.counter}}:{{result.BlogEntry}}</p>
 	            <br>
 	            <p class="fontis" id="fontisx" style="padding-left:10px;"> {{result.BlogHtml|safe}} </p>
                 <br>
@@ -674,16 +877,121 @@ $(document).ready(function() {
 	</br>
 	</div>-->
 	</div>
-	
+	<script>
+	if ($('img')) {
+	$('.html_from_django img').attr('class', 'innerimage');
+	}
+	</script>
 	{% endfor %}
+	<br></br>
+		<div class="row">
+
+	{% if html_loop.has_previous %}
+	<div class="col-1" style="float:left">
+	</div>
+	<div class="col-4" style="float:left">
+	<div style="display:inline">
+		<a class="button-wjs-green" id="nowdate1"  href="?page=1">first</a>
+      <a class="button-wjs-green" id="nowdate2" href="?page={{ html_loop.previous_page_number }}">prev</a>
+    </div></div>
+	{% endif %}
+	{% if not html_loop.has_previous %}
+	<div class="col-1" style="float:left">
+	</div>
+	<div class="col-4" style="float:left">
+	<div style="display:inline">
+  <a class="button-wjs-red" id="plusdate1" href="#">first</a>
+      <a class="button-wjs-red" id="plusdate2" href="#">prev</a>
+     </div></div>
+	
+	{% endif %}
+	<div class="col-2" id="pagingatortotal">
+	Page {{ html_loop.number }} of {{ html_loop.paginator.num_pages }}.
+	</div>
+	{% if html_loop.has_next %}
+	 <div class="col-4" style="float:right">
+	 <div style="display:inline">
+     <a class="button-wjs-green" id="nowdate1" href="?page={{ html_loop.next_page_number }}">next</a>
+	 <a class="button-wjs-green" id="nowdate2" href="?page={{ html_loop.paginator.num_pages }}">last</a>
+	 	</div></div>
+		  <div class="col-1" style="float:right">
+	</div>
+	{% endif %}
+		{% if not html_loop.has_next %}
+		<div class="col-4" style="float:right">
+		<div style="display:inline">
+     <a class="button-wjs-red" id="plusdate1" href="#">next</a>
+	 <a class="button-wjs-red" id="plusdate2" href="#">last</a>
+	 </div>
+	 </div>
+	 	 <div class="col-1" style="float:right">
+	</div>
+		{% endif %}
+	 </div>
+	 </br>
+	 </br>
+	 	
 	{% else %}
             <p>No polls are available.</p>
 
             {% endif %}
-	</div>
+			</div>
+			
+	</div><br>
 	<br><br>
  </div>
- </div>
+ <script>
+
+    var csrf = $("meta[name='csrf']").attr("content");  
+    function getCookie(name) {
+                var cookieValue = null;
+             
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                        }
+                    }
+                }
+                return cookieValue;
+        }
+function fetchnextpage() {
+	var forwards = document.getElementById('plusdate');
+	var forwardref =  $("#plusdate").attr("data");
+    var csrftoken = getCookie('csrftoken');
+            console.log("csrf token: "+csrftoken);
+            console.log("firing ajax");
+			console.log("id for post: "+forwardref);
+            $.ajax({
+                url: "{% url 'mydiabprod:getforwards' %}",
+                headers: {"X-CSRFToken":csrftoken},
+                type: "POST",
+                data: {'forward': forwardref},
+                success: function(context) {
+			    context.map(function(x){
+
+				return console.log("your key: "+x);
+
+				});
+                //$(el).summernote('editor.insertImage', url);
+                //optional tasks here
+                //$("#counter").append("</br><p>image</p></br><p><img  alt='Smiley face' height='200' width='300' src="+url+"/></p>");
+                //this.innerHTML = "<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'/>";
+                console.log("ajax loaded, django db updated, response sent back: ");
+                $("#innertextcontainer").empty();
+                $("#innertextcontainer").load(" #innertextcontainer");			
+                }
+            });
+	
+	}
+
+	
+
+	</script>
 </body>
 </html>
-

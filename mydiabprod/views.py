@@ -25,6 +25,7 @@ import holidays
 import os
 from django.core.files import File
 from django.contrib.staticfiles.storage import staticfiles_storage
+from django.core.paginator import Paginator
 #def index(request):
     #return HttpResponse(template.render(contex, request))
 
@@ -904,11 +905,17 @@ def blog_counter(request):
         qt3=Mydiabwelcome.objects.get(id=qt2)
         qt4 = qx1.FirstName
         roles_check = 'V'
+        max_id = html_looping.aggregate(Max('id'))
+        max_display = max_id['id__max']
+        paginator = Paginator(html_looping, 5)
+        page = request.GET.get('page')
+        get_subpage = paginator.get_page(page)
         context = {
-            'html_loop': html_looping,
+            'html_loop': get_subpage,
 			'html_comments': comment_source,
 			'user_role': user_role,
-            'postowner': post_owner
+            'postowner': post_owner,
+            'max_display': max_display
         }
         return HttpResponse(template.render(context, request))
 
@@ -935,12 +942,108 @@ def mydiab_comments(request):
 def postremove(request):
     if request.method == 'POST':
         user_check = request.session.get('username')
-        post_for_del_string=request.POST['targetdel']
+        post_for_del_string=request.POST['target']
         post_for_del_int = int(post_for_del_string)
         post_delx =  Mydiabrichblog.objects.get(id=post_for_del_int)
         post_delx.delete()
         infoback = 'post has been deleted from server'
         return HttpResponse(infoback)
+
+def postsetpublic(request):
+    if request.method == 'POST':
+        user_check = request.session.get('username')
+        post_for_pub_string=request.POST['target']
+        post_for_pub_int = int(post_for_pub_string)
+        post_pubx = Mydiabrichblog.objects.get(id=post_for_pub_int)
+        post_pubx.is_private = 0
+        post_pubx.save()
+        infoback = 'post privacy set public'
+        return HttpResponse(infoback)
+
+def postsetprivate(request):
+    if request.method == 'POST':
+        user_check = request.session.get('username')
+        #implement here additional conditions for changing privacy eq. if (user_check == post_owner):xx
+        post_for_priv_string=request.POST['target']
+        post_for_priv_int = int(post_for_priv_string)
+        post_privx = Mydiabrichblog.objects.get(id=post_for_priv_int)
+        post_privx.is_private = 1
+        post_privx.save()
+        infoback = 'post privacy set private'
+        return HttpResponse(infoback)
+
+def getforwards(request):
+    if request.method == 'POST':
+        id_for_check = request.POST['forward']
+        take_int = int(id_for_check)
+        template = loader.get_template('mydiabprod/blog_counter.html')
+        post_owner = request.session.get('username')
+        qt0 = Mydiabusers.objects.get(UserName=post_owner)
+        qx1 = Mydiabautorization.objects.get(UserName=qt0)
+        if (qx1.is_admin == True):
+            role_check = 'A'
+ #################################################################################################
+ #WJS 01.04.2019
+ #      can do other actions - in this case only text is passed to variable1 - admin_view
+ #
+ #################################################################################################
+        elif (qx1.is_doctor == True):
+            role_check = 'SU'
+        elif (qx1.is_visitor == True):
+            role_check = 'R'
+        else: role_check = 'V'
+#########################################################################
+#WJS 01.04.2019
+#MAX ID | MIN ID aggregation                                            #
+#qt29 = Mydiabrichblog.objects.all().aggregate(Max('id'))               #
+#qt43 = (qt29['id__max'])                                               #
+#########################################################################
+#01.04.2019
+# adding section to deploy comments 
+# either by DJANGO TEMPLATE CONTEXT - if block for 3 types of authorization - is_admin, is_doctor (is_superuser), is_private (is_visitor - public)
+# or JSON where json_comment = [] for initiate and json_comment.append({DATA FROM MydiabComments.objects.filter})
+##########################################################################
+        if (post_owner) and (qx1.is_admin == True):
+            #html_looping = Mydiabrichblog.objects.filter(id__gt=take_int)
+			
+            comment_source = MydiabComments.objects.all()
+            user_role = 'admin'
+# visitors is_visitor will only publish public posts therefore all will be visible by is_doctor (SU) SU can restrict own posts (only A+SU will see it)
+        elif (post_owner) and (qx1.is_doctor == True):
+            html_looping = (Mydiabrichblog.objects.filter(BlogOwner=post_owner) | Mydiabrichblog.objects.filter(AdminRight='S') |  Mydiabrichblog.objects.filter(AdminRight='R') | Mydiabrichblog.objects.filter(is_private=False)).order_by('-id')
+            comment_source = MydiabComments.objects.all()
+            #comment_source = MydiabComments.objects.filter(Comment_Owner=post_owner) | MydiabComments.objects.filter(is_private=False)
+            user_role = 'superuser'
+        elif (post_owner) and (qx1.is_visitor == True):
+            html_looping = (Mydiabrichblog.objects.filter(BlogOwner=post_owner) | Mydiabrichblog.objects.filter(is_private=False)).order_by('-id')
+            comment_source = MydiabComments.objects.all()
+            #comment_source = MydiabComments.objects.filter(Comment_Owner=post_owner) | MydiabComments.objects.filter(is_private=False)
+            user_role = 'visitor'
+        else:
+            html_looping = Mydiabrichblog.objects.filter(is_private = False).order_by('-id')
+            comment_source = MydiabComments.objects.all()
+            #comment_source = MydiabComments.objects.filter(is_private = False)
+            user_role = 'public'
+        qt=Mydiabwelcome.objects.all().aggregate(Max('id'))
+        qt1=(qt['id__max'])
+        qt2=random.randint(1, qt1)
+        qt3=Mydiabwelcome.objects.get(id=qt2)
+        qt4 = qx1.FirstName
+        roles_check = 'V'
+        max_id = html_looping.aggregate(Max('id'))
+        max_display = max_id['id__max']
+        paginator = Paginator(html_looping, 2)
+        page = request.GET.get('page')
+        get_subpage = paginator.get_page(page)
+        context = {
+            'html_loop': get_subpage,
+			'html_comments': comment_source,
+			'user_role': user_role,
+            'postowner': post_owner,
+            'max_display': max_display
+        }
+        return HttpResponse(context)
+    
 
 
 
