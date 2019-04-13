@@ -39,6 +39,9 @@ urlpatterns = [
 	path('instantimageremove/', views.instantimageremove, name='instantimageremove'),
 	path('pers_blog/', views.pers_blog, name='pers_blog'),
 	path('blog_counter/', views.blog_counter, name='blog_counter'),
-	path('postremove/', views.postremove, name='postremove')
+	path('postremove/', views.postremove, name='postremove'),
+	path('postsetpublic/', views.postsetpublic, name='postsetpublic'),
+	path('postsetprivate/', views.postsetprivate, name='postsetprivate'),
+	path('getforwards/', views.getforwards, name='getforwards')
 ]
 #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
