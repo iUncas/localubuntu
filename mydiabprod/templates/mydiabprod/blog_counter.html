@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -200,8 +201,8 @@ border-bottom:0.1px solid #d5dee8;
     z-index: 1; /* Sit on top */
     /*border-style: solid;*/
     /*padding-top:50px; Location of the box */
-    max-width: 100%; /* Full width */
-    max-height: 100% /* Full height */
+    width: 13%; /* Full width */
+    max-height: 100%; /* Full height */
     overflow: scroll; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
@@ -215,15 +216,15 @@ border-bottom:0.1px solid #d5dee8;
     /*border: 0.5px solid #cdd2d8;*/
     width: 120%;
     max-height: 100%;
-    radius: 20px;
+    border-radius: 4px;
     opacity: 0.6;
     font: tahoma, sans-serif;
     font-size: 20px;
     color: #f7fcfa;
 }
 .topmodals {
-    width:24%;
-	heigth:24%;
+    width:48px;
+	height:48px;
 	}
 #maincover {
     /*height: 300px;*/
@@ -258,6 +259,15 @@ border-bottom:0.1px solid #d5dee8;
     width:24px;
 	height: 24px;
 }
+
+.textareacomment {
+     border-style: none; 
+	 font-size:14px; 
+	 width:100%; 
+	 height:7%; 
+	 margin-bottom:15px;
+	 padding-left:10px;
+	 }
 
 @media (orientation: portrait) {
     @media (max-width: 500px) { /*sony xperia xz*/
@@ -296,7 +306,7 @@ border-bottom:0.1px solid #d5dee8;
             /*border-style: solid;*/
             padding-top:50px; Location of the box */
             max-width: 100%; /* Full width */
-            max-height: 100% /* Full height */
+            max-height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
             background-color: rgb(0,0,0); /* Fallback color */
             background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
@@ -310,7 +320,7 @@ border-bottom:0.1px solid #d5dee8;
         }
         .topmodals {
     width:28px;
-	heigth:28px;
+	height:28px;
 	}
         .note-video-clip {
             width: auto;
@@ -407,7 +417,7 @@ border-bottom:0.1px solid #d5dee8;
         }
         .topmodals {
     width:28px;
-	heigth:28px;
+	height:28px;
 	}
         .note-video-clip {
 	        width: auto;
@@ -441,7 +451,7 @@ border-bottom:0.1px solid #d5dee8;
     width: 100%;
   }
 }*/
-#fontisx {
+.fontisx {
     font-size: 16px;
 	font-family: Verdana;
 	line-height: 14px;
@@ -453,6 +463,26 @@ border-bottom:0.1px solid #d5dee8;
 		    height: auto;
 	    }
 
+		.button-wjs-grey {
+  background-color: white; /* Green */
+  border: 1px solid #263a5b;
+  color: #263a5b;
+  float: right;
+  padding-top: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+  border-radius: 4px;
+  width: 70px;
+}
+.button-wjs-grey:hover {
+      background-color: #f7e8eb;
+	  border: 1px solid #f7e8eb;
+	  }
 </style>
 
  </head>
@@ -498,9 +528,9 @@ $(document).ready(function() {
 	$('img.trashy').click(function() {
 	    console.log("define post for trash");
         console.log("confirmed url for reference to delete: "+this.src);
-        var deleted_element =  $(this).attr("data");
+        var deleted_element =  $(this).attr("id");
         console.log("div id to be deleted "+deleted_element);
-        var target = deleted_element.substring(4);
+        var target = deleted_element.substring(9);
         console.log("post id as target for django to remove from db: "+target);
         var post_del = document.getElementById(deleted_element);
             //delete div from blog www
@@ -556,9 +586,9 @@ $(document).ready(function() {
 	    alert("implementing  settings private permission to post");
         console.log("define post for closed privacy");
         console.log("confirmed url for reference to pivacy update: "+this.src);
-        var private_element =  $(this).attr("data");
+        var private_element =  $(this).attr("id");
         console.log("div id for public post "+private_element);
-        var target = private_element.substring(5);
+        var target = private_element.substring(11);
         console.log("post id as target for django to set is_private in db: "+target);
         console.log("html for that post: "+$(this).attr("src"));
         var newaddress = "{% static 'mydiabprod/padlock_redd.ico' %}";
@@ -567,7 +597,7 @@ $(document).ready(function() {
 		//$(this).removeClass("privpadlock").addClass("publicpadlock");
 		this.classList.remove("privpadlock");
 		this.classList.add("publicpadlock");
-		$(this).attr("id", "publicmake");
+		$(this).attr("id", "publicmake"+target);
 		$(this).attr("data", "@"+target);
 		
         var urlx =  "{% url 'mydiabprod:postsetprivate' %}";
@@ -576,9 +606,9 @@ $(document).ready(function() {
 		alert("implementing  settings public permission to post");
         console.log("define post for public privacy");
         console.log("confirmed url for reference to pivacy update: "+this.src);
-        var public_element =  $(this).attr("data");
+        var public_element =  $(this).attr("id");
         console.log("div id for public post "+public_element);
-        var target = public_element.substring(1);
+        var target = public_element.substring(10);
         console.log("post id as target for django to set is_public in db: "+target);
             //$(this).empty();
         console.log("html for that post: "+$(this).attr("src"));
@@ -588,8 +618,7 @@ $(document).ready(function() {
 		//$(this).removeClass("publicpadlock").addClass("privpadlock");
 		this.classList.remove("publicpadlock");
 		this.classList.add("privpadlock");
-		$(this).attr("id", "privatemake");
-		$(this).attr("data", "priv@"+target);
+		$(this).attr("id", "privatemake"+target);
         var urlx =  "{% url 'mydiabprod:postsetpublic' %}";
 		djangoajax(target, urlx);   
         		}
@@ -603,9 +632,9 @@ $(document).ready(function() {
         alert("implementing  settings public permission to post");
         console.log("define post for public privacy");
         console.log("confirmed url for reference to pivacy update: "+this.src);
-        var public_element =  $(this).attr("data");
+        var public_element =  $(this).attr("id");
         console.log("div id for public post "+public_element);
-        var target = public_element.substring(1);
+        var target = public_element.substring(10);
         console.log("post id as target for django to set is_public in db: "+target);
             //$(this).empty();
         console.log("html for that post: "+$(this).attr("src"));
@@ -615,8 +644,7 @@ $(document).ready(function() {
 		//$(this).removeClass("publicpadlock").addClass("privpadlock");
 		this.classList.remove("publicpadlock");
 		this.classList.add("privpadlock");
-		$(this).attr("id", "privatemake");
-		$(this).attr("data", "priv@"+target);
+		$(this).attr("id", "privatemake"+target);
            
         var urlx =  "{% url 'mydiabprod:postsetpublic' %}";
 		djangoajax(target, urlx); 
@@ -625,9 +653,9 @@ $(document).ready(function() {
 	   alert("implementing  settings private permission to post");
         console.log("define post for closed privacy");
         console.log("confirmed url for reference to pivacy update: "+this.src);
-        var private_element =  $(this).attr("data");
+        var private_element =  $(this).attr("id");
         console.log("div id for public post "+private_element);
-        var target = private_element.substring(5);
+        var target = private_element.substring(11);
         console.log("post id as target for django to set is_private in db: "+target);
         console.log("html for that post: "+$(this).attr("src"));
         var newaddress = "{% static 'mydiabprod/padlock_redd.ico' %}";
@@ -636,8 +664,7 @@ $(document).ready(function() {
 		//$(this).removeClass("privpadlock").addClass("publicpadlock");
 		this.classList.remove("privpadlock");
 		this.classList.add("publicpadlock");
-		$(this).attr("id", "publicmake");
-		$(this).attr("data", "@"+target);
+		$(this).attr("id", "publicmake"+target);
 		var urlx =  "{% url 'mydiabprod:postsetprivate' %}";
 		djangoajax(target, urlx);
 		}
@@ -684,7 +711,7 @@ $(document).ready(function() {
     <div class="container" id="divinnav1">
 	<div class="row">
 	<div class="col" style="float:left;">
-        <form action="javascript:mext()" method="POST" align="left">
+        <form action="javascript:mext()" method="POST">
             <select class="custom-select custom-select" style="width:120px;height:30px;font-family:verdana;font-size:12px;" name="setting" id="setting" onchange="this.form.submit()">
                 <option value=""> myDiabBlog </option>
                 <option value="1"> Patient Check IN </option>
@@ -695,7 +722,7 @@ $(document).ready(function() {
 		</div>
         <div class="col" style="float:right">
             <div class='modalsettings' style='float:right'>
-                <img id='settings_navbarx' class='navbarphoto' src='{% static "mydiabprod/settings-20-xx.png" %}' style='height:28px;width:28px;'></br>
+                <img id='settings_navbarx' class='navbarphoto' src='{% static "mydiabprod/settings-20-xx.png" %}' style='height:28px;width:28px;'/></br>
                 <div id='showfortogglex' class='modalsettingscontent'>
                 </div>
             </div>
@@ -707,7 +734,7 @@ $(document).ready(function() {
  <div id="firstcontainer" class="container">
 <div id="modalimagex" class="modalv">
   <span class="close">&times;</span>
-  <img class="perst" id="imagethis"/>
+  <img class="perst" alt="secureHTML" id="imagethis"/>
  <div id="captionx"></div>-
 </div>
  <br>
@@ -741,19 +768,19 @@ $(document).ready(function() {
 	{% if user_role == 'admin' %}
 	{% if result.is_private == True %}
 	<p style="float:right" id="p{{result.id}}">
-	    <img class='trashy' id='trashpost' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}'/>
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
+	    <img class='trashy' id='trashpost{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock' src='{% static "mydiabprod/padlock_redd.ico" %}'/>
+		<img id='privatemake{{result.id}}' class='privpadlock' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
     </p>
 	{% elif result.is_private == False %}
 	<p style="float:right;" id="p{{result.id}}">
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
-		<img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
-	    <img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' />
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
+	    <img id='trashpost{{result.id}}' class='trashy'  src='{% static "mydiabprod/delete-32.ico" %}'/>
+		<img id='publicmake{{result.id}}' class='publicpadlock' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+	    <img id='privatemake{{result.id}}' class='privpadlock' src='{% static "mydiabprod/padlock_green.ico" %}' />
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
         
     </p>
     {% endif %}
@@ -761,65 +788,65 @@ $(document).ready(function() {
 	{% if result.is_private == True %}
 	{% if result.AdminRight == 'A' %}
 		<p style="float:right; padding-top:5px;" id="p{{result.id}}">
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}'  style='display:none'/>
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' />
+	    <img id='trashpost{{result.id}}' class='trashy'  src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock'  src='{% static "mydiabprod/padlock_redd.ico" %}'  style='display:none'/>
+		<img id='privatemake{{result.id}}' class='privpadlock'  src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}' />
      </p>
 	{% elif result.AdminRight == 'S' or result.AdminRight == 'R' %}
     <p style="float:right; padding-top:5px;" id="p{{result.id}}">
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}'/>
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  style='display:none' />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
+	    <img id='trashpost{{result.id}}' class='trashy'  src='{% static "mydiabprod/delete-32.ico" %}'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock' src='{% static "mydiabprod/padlock_redd.ico" %}'/>
+		<img id='privatemake{{result.id}}' class='privpadlock'  src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  style='display:none' />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
     </p>
 	{% endif %}
 	{% elif result.is_private == False %}
 	{% if result.AdminRight == 'A' %}
 		<p style="float:right; padding-top:5px;" id="p{{result.id}}">
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
+	    <img id='trashpost{{result.id}}' class='trashy'  src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock'  src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake{{result.id}}' class='privpadlock'  src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
      </p>
 	{% elif result.AdminRight == 'S' or role_check == 'R' %}
     <p style="float:right; padding-top:5px;" id="p{{result.id}}">
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' />
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  style='display:none' />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
+	    <img id='trashpost{{result.id}}' class='trashy'  src='{% static "mydiabprod/delete-32.ico" %}'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock' src='{% static "mydiabprod/padlock_redd.ico" %}' />
+		<img id='privatemake{{result.id}}' class='privpadlock'  src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  style='display:none' />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
     </p>
 	{% endif %}
     {% endif %}
 	{% elif user_role == 'visitor' and postowner == result.BlogOwner %}
 	{% if result.is_private == True %}
 	<p style="float:right; padding-top:5px;" id="p{{result.id}}">
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' />
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' />
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  style='display:none' />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
+	    <img id='trashpost{{result.id}}' class='trashy' src='{% static "mydiabprod/delete-32.ico" %}' />
+	    <img id='publicmake{{result.id}}' class='publicpadlock'  src='{% static "mydiabprod/padlock_redd.ico" %}' />
+		<img id='privatemake{{result.id}}' class='privpadlock'  src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  style='display:none' />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
     </p>
 	{% elif result.is_private == False %}
 	{% if result.AdminRight == 'A' or result.AdminRight == 'S' %}
 		<p style="float:right" id="p{{result.id}}">
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}'  style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'   />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
+	    <img id='trashpost{{result.id}}' class='trashy'  src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake{{result.id}}' class='privpadlock'  src='{% static "mydiabprod/padlock_green.ico" %}'  style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'   />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
      </p>
 	{% elif result.AdminRight == 'R' %}
     <p style="float:right; padding-top:5px;" id="p{{result.id}}">
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' />
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad'class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
+	    <img id='trashpost{{result.id}}' class='trashy'  src='{% static "mydiabprod/delete-32.ico" %}'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock'  src='{% static "mydiabprod/padlock_redd.ico" %}' />
+		<img id='privatemake{{result.id}}' class='privpadlock'  src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}'class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' style='display:none' />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
     </p>
 	{% endif %}
 	{% endif %}
@@ -827,31 +854,31 @@ $(document).ready(function() {
 	
 	{% if result.AdminRight == 'A' or result.AdminRight == 'S' %}
 		<p style="float:right" id="p{{result.id}}">
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
+	    <img id='trashpost{{result.id}}' class='trashy' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake{{result.id}}' class='privpadlock'  src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}'  style='display:none'/>
      </p>
 	{% elif result.AdminRight == 'R' %}
 	<script>
 	alert("result owner : " +'{{result.BlogOwner}}');
 	</script>
 	<p style="float:right" id="p{{result.id}}">
-        <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
+        <img id='trashpost{{result.id}}' class='trashy' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake{{result.id}}' class='privpadlock'  src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}'  />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
     </p>
 	{% endif %}
 	{% elif user_role == 'public' %}
 	<p style="float:right; padding-top:5px; id="p{{result.id}}"><!--don't display option-->
-	    <img id='trashpost' class='trashy' data='div@{{result.id}}' src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
-	    <img id='publicmake' class='publicpadlock' data='@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
-		<img id='privatemake' class='privpadlock' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
-		<img id='publicpad' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' />
-		<img id='privpad' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
+	    <img id='trashpost{{result.id}}' class='trashy'  src='{% static "mydiabprod/delete-32.ico" %}' style='display:none'/>
+	    <img id='publicmake{{result.id}}' class='publicpadlock' src='{% static "mydiabprod/padlock_redd.ico" %}' style='display:none'/>
+		<img id='privatemake{{result.id}}' class='privpadlock' src='{% static "mydiabprod/padlock_green.ico" %}' style='display:none'/>
+		<img id='publicpad{{result.id}}' class='unlocky' src='{% static "mydiabprod/unlock-32.ico" %}' />
+		<img id='privpad{{result.id}}' class='locky' src='{% static "mydiabprod/lock.ico" %}' style='display:none'/>
      </p>
 	 {% endif %}
 	
@@ -861,13 +888,19 @@ $(document).ready(function() {
 		    <div class="html_from_django">
 	            <p style="padding-left:1px;font-size:12px;"> {{forloop.counter}}:{{result.BlogEntry}}</p>
 	            <br>
-	            <p class="fontis" id="fontisx" style="padding-left:10px;"> {{result.BlogHtml|safe}} </p>
+	            <p class="fontisx" id="django_html_upload{{result.id}}" style="padding-left:10px;"> {{result.BlogHtml|safe}} </p>
                 <br>
 	            </br>
 				</div>
 				<div class="row" style="padding-top:12px; padding-bottom:12px;padding-left:10px">
-	<textarea id="title" style="border-style: none; font-size:18px; width:100%; height:55px; margin-bottom:15px" placeholder="add comment..."></textarea>
+	<textarea class="textareacomment" placeholder="add comment..."> </textarea>
 	</div>
+    <div>
+	<a class="button-wjs-grey" href="#" >add</a>
+	</div>
+    </br>
+	</br></br>
+	
 	<!--<div class="row" style="float:right">
 	</br>
 	</br>
@@ -880,6 +913,15 @@ $(document).ready(function() {
 	<script>
 	if ($('img')) {
 	$('.html_from_django img').attr('class', 'innerimage');
+	$('.html_from_django img').attr('alt', 'from_summernote');
+	$('.trashy').attr('alt', 'sequence');
+	$('.publicpadlock').attr('alt', 'sequence');
+	$('.privpadlock').attr('alt', 'sequence');
+	$('.unlocky').attr('alt', 'sequence');
+	$('.locky').attr('alt', 'sequence');
+	$('.topmodals').attr('alt', 'sequence');
+	$('.navbarphoto').attr('alt', 'sequence');
+	
 	}
 	</script>
 	{% endfor %}
@@ -891,8 +933,8 @@ $(document).ready(function() {
 	</div>
 	<div class="col-4" style="float:left">
 	<div style="display:inline">
-		<a class="button-wjs-green" id="nowdate1"  href="?page=1">first</a>
-      <a class="button-wjs-green" id="nowdate2" href="?page={{ html_loop.previous_page_number }}">prev</a>
+		<a class="button-wjs-green"  href="?page=1">first</a>
+      <a class="button-wjs-green" href="?page={{ html_loop.previous_page_number }}">prev</a>
     </div></div>
 	{% endif %}
 	{% if not html_loop.has_previous %}
@@ -900,8 +942,8 @@ $(document).ready(function() {
 	</div>
 	<div class="col-4" style="float:left">
 	<div style="display:inline">
-  <a class="button-wjs-red" id="plusdate1" href="#">first</a>
-      <a class="button-wjs-red" id="plusdate2" href="#">prev</a>
+  <a class="button-wjs-red"  href="#">first</a>
+      <a class="button-wjs-red" href="#">prev</a>
      </div></div>
 	
 	{% endif %}
@@ -911,8 +953,8 @@ $(document).ready(function() {
 	{% if html_loop.has_next %}
 	 <div class="col-4" style="float:right">
 	 <div style="display:inline">
-     <a class="button-wjs-green" id="nowdate1" href="?page={{ html_loop.next_page_number }}">next</a>
-	 <a class="button-wjs-green" id="nowdate2" href="?page={{ html_loop.paginator.num_pages }}">last</a>
+     <a class="button-wjs-green" href="?page={{ html_loop.next_page_number }}">next</a>
+	 <a class="button-wjs-green" href="?page={{ html_loop.paginator.num_pages }}">last</a>
 	 	</div></div>
 		  <div class="col-1" style="float:right">
 	</div>
@@ -920,8 +962,8 @@ $(document).ready(function() {
 		{% if not html_loop.has_next %}
 		<div class="col-4" style="float:right">
 		<div style="display:inline">
-     <a class="button-wjs-red" id="plusdate1" href="#">next</a>
-	 <a class="button-wjs-red" id="plusdate2" href="#">last</a>
+     <a class="button-wjs-red" href="#">next</a>
+	 <a class="button-wjs-red" href="#">last</a>
 	 </div>
 	 </div>
 	 	 <div class="col-1" style="float:right">
@@ -981,7 +1023,7 @@ function fetchnextpage() {
                 //$(el).summernote('editor.insertImage', url);
                 //optional tasks here
                 //$("#counter").append("</br><p>image</p></br><p><img  alt='Smiley face' height='200' width='300' src="+url+"/></p>");
-                //this.innerHTML = "<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'/>";
+                //this.innerHTML = "<img id='privatemake{{result.id}}' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_redd.ico" %}' height=24; width=24; style='display:none'/>";
                 console.log("ajax loaded, django db updated, response sent back: ");
                 $("#innertextcontainer").empty();
                 $("#innertextcontainer").load(" #innertextcontainer");			
