@@ -26,6 +26,12 @@ integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07j
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 {% load static %}
+<link rel="stylesheet" href="{% static 'mydiabprod/results.css' %}">
+
+<script src="{% static 'mydiabprod/loadjson.js' %} "type="text/javascript"></script>
+<script src="{% static 'mydiabprod/getjson.js' %} "type="text/javascript"></script>
+
+
 <style>
 body {
     width:100%;
@@ -124,13 +130,15 @@ body {
   display: none;
   position: absolute;
      right:2px;
-  background-color: #DDDCE3;
+	 padding-top:10px;
+	 font-size: 16px;
+  background-color: #f9f9f9;
   width: 120px;
   height:200px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 /* Caption of Modal Image */
 #captionx {
@@ -201,9 +209,9 @@ border-bottom:0.1px solid #d5dee8;
     z-index: 1; /* Sit on top */
     /*border-style: solid;*/
     /*padding-top:50px; Location of the box */
-    width: 13%; /* Full width */
+    max-width: 100%; /* Full width */
     max-height: 100%; /* Full height */
-    overflow: scroll; /* Enable scroll if needed */
+    /*overflow: auto; *//* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
 }
@@ -216,7 +224,7 @@ border-bottom:0.1px solid #d5dee8;
     /*border: 0.5px solid #cdd2d8;*/
     width: 120%;
     max-height: 100%;
-    border-radius: 4px;
+    /*border-radius: 4px;*/
     opacity: 0.6;
     font: tahoma, sans-serif;
     font-size: 20px;
@@ -268,7 +276,6 @@ border-bottom:0.1px solid #d5dee8;
 	 margin-bottom:15px;
 	 padding-left:10px;
 	 }
-
 @media (orientation: portrait) {
     @media (max-width: 500px) { /*sony xperia xz*/
         #maincover {
@@ -368,8 +375,9 @@ border-bottom:0.1px solid #d5dee8;
     width: 19px;
 	height: 19px;
 	}
+
     }
-}
+	}
 @media (orientation: landscape) and (max-width: 1000px) {
     .navbar {
         width:100%; 
@@ -483,6 +491,34 @@ border-bottom:0.1px solid #d5dee8;
       background-color: #f7e8eb;
 	  border: 1px solid #f7e8eb;
 	  }
+
+
+.portraisearch {
+    display: none;
+	}
+.landscapesearch {
+    display: none;
+	}
+@media (orientation: portrait) {
+.firx {
+    display: none;
+	}
+.portraisearch {
+    display: block;
+	}
+}
+@media (orientation: landscape) and (max-width: 750px)  {
+.firx {
+    display: none;
+	}
+.portraisearch {
+    display: none;
+	}
+.landscapesearch {
+    display: block;
+	}
+
+}
 </style>
 
  </head>
@@ -490,6 +526,9 @@ border-bottom:0.1px solid #d5dee8;
 <div id="topcontainer">
 <script type="text/javascript">
 $(document).ready(function() {
+var staged = 1;
+var staged2 = 2;
+var staged3 = 3;
     var csrf = $("meta[name='csrf']").attr("content");  
     function getCookie(name) {
                 var cookieValue = null;
@@ -555,9 +594,11 @@ $(document).ready(function() {
     });
 
     $('img.navbarphoto').click(function(){
+	//var plex = document.getElementById("showfortogglex");
 	    console.log("tooggle dropdown");
+		//$("#innertextcontainer").empty();
 			//var xx = plex.getArrtibute('display');
-        var plex = document.getElementById("showfortogglex");
+       var plex = document.getElementById("showfortogglex");
         var xx = $("#showfortogglex").css("display");
         if (xx == 'none') {
             console.log("check ddplex: "+xx);
@@ -566,6 +607,23 @@ $(document).ready(function() {
             console.log("check ddplex: "+xx);
             plex.style.display = "none";
         }
+		/*alert("cleaned");
+		var csrftoken = getCookie("csrftoken");
+        console.log("csrf token: "+csrftoken);
+        console.log("firing ajax");
+		var urlx =  "{% url 'mydiabprod:getpostx' %}";
+		var target = "get_post";
+        $.ajax({
+            url: urlx,
+            headers: {"X-CSRFToken":csrftoken},
+            type: "POST",
+            data: {"target": target},
+            success: function(poka) {
+			//console.log(poka);
+            $("#innertextcontainer").append(poka);
+            }
+        });*/
+		
         return;
     });
 
@@ -724,6 +782,12 @@ $(document).ready(function() {
             <div class='modalsettings' style='float:right'>
                 <img id='settings_navbarx' class='navbarphoto' src='{% static "mydiabprod/settings-20-xx.png" %}' style='height:28px;width:28px;'/></br>
                 <div id='showfortogglex' class='modalsettingscontent'>
+				<div class="col-12">
+				<p><a class="btn-wjs" onclick="searchaction()">one</a><p>
+				<p><a>two</a><p>
+				<p><a>three</a><p>
+				<p><a>four</a><p>
+				</div>
                 </div>
             </div>
         </div>
@@ -978,7 +1042,7 @@ $(document).ready(function() {
 
             {% endif %}
 			</div>
-			
+
 	</div><br>
 	<br><br>
  </div>

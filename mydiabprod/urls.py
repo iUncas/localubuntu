@@ -42,6 +42,9 @@ urlpatterns = [
 	path('postremove/', views.postremove, name='postremove'),
 	path('postsetpublic/', views.postsetpublic, name='postsetpublic'),
 	path('postsetprivate/', views.postsetprivate, name='postsetprivate'),
-	path('getforwards/', views.getforwards, name='getforwards')
+	path('getforwards/', views.getforwards, name='getforwards'),
+	path('getpostx/', views.getpostx, name='getpostx'),
+	path('searchblogx/', views.searchblogx, name='searchblogx'),
+	path('getsearch/', views.getsearch, name='getsearch')
 ]
 #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

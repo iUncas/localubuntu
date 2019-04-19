@@ -1,0 +1,44 @@
+
+.firx { 
+    width:95%; 
+    padding-top:10px; 
+    padding-left:10px; 
+    padding-bottom:10px; 
+    background-color:#eff3f9; 
+    font-size:16px; 
+    line-height:10px;
+}
+.portraisearch { 
+    background-color:#eff3f9; 
+    width:98%; 
+    padding-top:15px; 
+    padding-left:3px; 
+    padding-bottom:15px; 
+    font-size:14px;
+}
+.landscapesearch { 
+    width:95%; 
+    padding-top:10px; 
+    padding-left:5px; 
+    padding-bottom:15px; 
+    background-color:#eff3f9; 
+    font-size:13px;
+}
+
+.button-wjs-search {
+    background-color: white; /* Green */
+    border: 1px solid #263a5b;
+    color: #263a5b;
+    float:left;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 90px;
+    }
+.button-wjs-search:hover {
+      background-color: #f7e8eb;
+	  border: 1px solid #f7e8eb;
+	  }

@@ -1045,7 +1045,35 @@ def getforwards(request):
         return HttpResponse(context)
     
 
+def getpostx(request):
+    if request.method == 'POST':
+        user_check = request.session.get('username')
+        #implement here additional conditions for changing privacy eq. if (user_check == post_owner):xx
+        post_for=request.POST['target']
+        if post_for == "get_post":
+            csvfile=open("mydiabprod/templates/mydiabprod/form.html", "r+", encoding="UTF-8")
+            poka = csvfile.read()
+            context = {
+                'poka': poka
+            }
+            return HttpResponse(poka)
+def searchblogx(request):
+    if request.method == 'POST':
+        user_check = request.session.get('username')
+        #implement here additional conditions for changing privacy eq. if (user_check == post_owner):xx
+        post_forx=request.POST['searchinput']
+            #csvfile=open("mydiabprod/templates/mydiabprod/form.html", "r+", encoding="UTF-8")
+            #poka = csvfile.read()
+        stext = 'tttt'
+        return HttpResponse(post_forx)
 
+def getsearch(request):
+    if request.method == 'GET':
+        testy =[]
+        variabley = request.GET['parameter']
+        variablex = 'getJSON test'
+        testy.append({'testx': variablex})
+        return HttpResponse(testy)
 
 #####################################################################################################################################################
 ##############################################################################################################3
@@ -1138,3 +1166,4 @@ def getforwards(request):
             # 'text1': text1
         # }
         # return HttpResponse(template.render(contex, request))
+        # xx = re.match("<[\w*\d*]+>[\w*\s*]+</[\w*\d*]+>", lox).group()
