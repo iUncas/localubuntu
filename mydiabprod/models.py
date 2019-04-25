@@ -99,6 +99,7 @@ class Mydiabrichblog(models.Model):
     is_private = models.BooleanField(default=False)
     BlogOwner = models.CharField(max_length=200, default='public')
     AdminRight = models.CharField(max_length=20, default='A')
+    BlogHash = models.TextField(default='bastag')
     #A Admin, S SuperUser, R RegularUser, V Visitor
     def __str__(self):
         return self.BlogName

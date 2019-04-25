@@ -7,6 +7,3 @@ $(".searchtextoptimizer").append("Please enter "+optimizer);
 //$("#stextoptimizer3").append("Please enter "+optimizer);
 
 });
-function persefona() {
-	alert("chchhc");
-}

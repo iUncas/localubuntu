@@ -26,6 +26,7 @@ import os
 from django.core.files import File
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.paginator import Paginator
+import re
 #def index(request):
     #return HttpResponse(template.render(contex, request))
 
@@ -1058,23 +1059,38 @@ def getpostx(request):
             }
             return HttpResponse(poka)
 def searchblogx(request):
-    if request.method == 'POST':
-        user_check = request.session.get('username')
+    if request.method == 'GET':
+        jsondata = []
         #implement here additional conditions for changing privacy eq. if (user_check == post_owner):xx
-        post_forx=request.POST['searchinput']
-            #csvfile=open("mydiabprod/templates/mydiabprod/form.html", "r+", encoding="UTF-8")
-            #poka = csvfile.read()
-        stext = 'tttt'
-        return HttpResponse(post_forx)
+        post_option_selected = request.GET['searchselect']
+        post_text=request.GET['searchinput']
+        blogfilter={post_option_selected+'__icontains':post_text}
+        searchreturn = Mydiabrichblog.objects.filter(**blogfilter)
+        for i in searchreturn:
+            pattern =  '<p>[^<.*>].*?</p>'
+            px = re.findall(pattern, i.BlogHtml)
+            if len(px)>1:
+                joined = px[0]+' '+px[1]+'..'
+            elif len(px)==1:
+                joined = px[0]+'...'
+            else:
+                joined='<p>no text preview available</p>'
+            corrected = joined.replace('<p>','')
+            corrected2 = corrected.replace('</p>', '')
+            #jsondata.append({ "title":i.BlogName,  "date":i.BlogEntry.isoformat(),  "author":i.BlogOwner,  "options": i.BlogHash })
+            jsondata.append({ "title":i.BlogName,  "date":corrected2,  "author":i.BlogOwner,  "options": i.BlogHash })			
+        return HttpResponse(json.dumps(jsondata))
 
 def getsearch(request):
     if request.method == 'GET':
         testy =[]
         variabley = request.GET['parameter']
         variablex = 'getJSON test'
-        testy.append({'testx': variablex})
-        return HttpResponse(testy)
-
+        yxy = (0,1,2,3)
+        ypy = ('test1', 'then second', 'third', 'and fourth')
+        for i in yxy:
+            testy.append({'testx': ypy[i]})
+        return HttpResponse(json.dumps(testy))
 #####################################################################################################################################################
 ##############################################################################################################3
 #block for older pers view - will be disconnected

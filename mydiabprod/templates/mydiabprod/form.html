@@ -3,38 +3,35 @@
 <p>Specify advanced search option</p>
 <br>
 <div class="firx" id="standard_viewport">
-
 <form id="get_search1">
 <div class="row" style="padding-top:1%">
 <div class="col-3">
-<select class='searchselector' id='sselector1'>
-  <option label="select options" value=""></option>
-  <option label="search by tag" value="tag"></option>
-  <option label="search by date" value="date"></option>
-  <option label="search by author" value="author"></option>
-  <option label="search by title" value="title"></option>
+<select class="custom-select custom-select" id="sselector1">
+  <option label="select options" value="nix"></option>
+  <option label="search by tag" value="BlogHash"></option>
+  <option label="search by keyword" value="BlogEntry"></option>
+  <option label="search by author" value="BlogOwner"></option>
+  <option label="search by title" value="BlogName"></option>
 </select>
 
 </div>
 <div class="col-9">
-<div id="searchfunc" style="display:block">
-<div class="row">
-    <div class="col-4" style="padding-left:0.1%">
+<div id="searchfunc">
+<!--<div class="row">-->
+  <!--  <div class="col-4" style="padding-left:0.1%">
         <p class="searchtextoptimizer" id="stextoptimizer1">Please enter search argument</p>
-		<script>
-</script>
-    </div>
+    </div> -->
     <div class="col-8">
         <div class="row">
-                    <div class="col-6" style="float:left">
-                <input type="text" name="soptionselect" id="searchinput1"/>
+                    <div class="col-10" style="float:left">
+                <input type="text" class="searchtextforselect" style="height:35px;width:350px;" name="soptionselect" id="searchinput1"/>
                         </div>
-                <div class="col-6" style="float:left">
-                   <button class="button-wjs-search" value=1>add</button>
+                <div class="col-2" style="float:left">
+                   <button class="button-wjs-search" value=1>search</button>
                 </div>
             </div>
         </div>
-</div>
+<!--</div>-->
 </div>
 <br>
 </div>
@@ -45,58 +42,58 @@
 
 <form id="get_search2">
 <div>
-<select class="searchselector" id="sselector2">
-  <option label="select options" value=""></option>
-  <option label="search by tag" value="tag"></option>
-  <option label="search by date" value="date"></option>
-  <option label="search by author" value="author"></option>
-  <option label="search by title" value="title"></option>
+<select class="custom-select custom-select" id="sselector2">
+  <option label="select options" value="nix"></option>
+  <option label="search by tag" value="BlogHash"></option>
+  <option label="search by keyword" value="BlogEntry"></option>
+  <option label="search by author" value="BlogOwner"></option>
+  <option label="search by title" value="BlogName"></option>
 </select>
 
 <div style="padding-top:1%">
-<div>
+<!--<div>
 <p class="searchtextoptimizer" id="stextoptimizer2">Please enter search argument</p>
-</div>
-<div style="padding-top:20px;padding-bottom:5px;">
-<input type="text" name="soptionselect" id="searchinput2" style="width:250px">
+</div>-->
+<div style="padding-top:12px;padding-bottom:5px">
+<input type="text" name="soptionselect" class="searchtextforselect" id="searchinput2">
 </div>
 <div style="padding-bottom:25px;padding-top:7px">
-
+<button class="button-wjs-search" value=2>search</button>
 </div>
 </div>
 </div>
 </form>
-<button class="button-wjs-search" value=2 >add</button>
 </div>
 <div class="landscapesearch" id="landscape_viewport">
 <form id="get_search3">
 <div class="row">
-<div class="col-4">
+<div class="col-5">
 <div>
-<select class="searchselector" id="sselector3">
-  <option label="select options" value=""></option>
-  <option label="search by tag" value="tag"></option>
-  <option label="search by date" value="date"></option>
-  <option label="search by author" value="author"></option>
-  <option label="search by title" value="title"></option>
+<select id="sselector3" class="custom-select custom-select">
+  <option label="select options" value="nix"></option>
+  <option label="search by tag" value="BlogHash"></option>
+  <option label="search by keyword" value="BlogEntry"></option>
+  <option label="search by author" value="BlogOwner"></option>
+  <option label="search by title" value="BlogName"></option>
 </select>
 </div>
 
 </div>
-    <div class="col-8">
+    <div class="col-7">
         <!--<div id="searchfunc" style="display:inline">-->
          <div class="row">
-            <div class="col-6" style="padding-left:1px">
+            <!--<div class="col-6" style="padding-left:1px">
                 <p class="searchtextoptimizer" id="stextoptimizer3">Please enter argument</p>
 
-			</div>
-			<div class="col-6">
+			</div>-->
+			<div class="col-7">
 			<div style="float:left">
-			<input type="text" name="soptionselect" id="searchinput3" style="width:99%">
+			<input type="text" name="soptionselect" class="searchtextforselect" id="searchinput3" style="width:115%">
 			</div>
-            <div style="float:right; padding-right:3%; padding-top:4%">
-           <button class="button-wjs-search" value=3 >add</button></div>
+            <!--<div style="float:right; padding-right:3%; padding-top:4%">
+           </div>-->
            </div>
+		   <div class="col-5"><button class="button-wjs-search" value=3>search</button></div>
 			</div> 
 		</div>
 <!--</div>-->
@@ -106,66 +103,53 @@
 </div>
 </div>
 <script>
-$("select.searchselector").change(function(){
-var optimizer = $(this).children("option:selected").val();
-$(".searchtextoptimizer").empty();
-$(".searchtextoptimizer").append("Please enter "+optimizer);
+//$("select.searchselector").change(function(){
+//var optimizer = $(this).children("option:selected").val();
+//$(".searchtextoptimizer").empty();
+//$(".searchtextoptimizer").append("Please enter "+optimizer);
 //$("#stextoptimizer1").append("Please enter "+optimizer);
 //$("#stextoptimizer2").append("Please enter "+optimizer);
 //$("#stextoptimizer3").append("Please enter "+optimizer);
 
-});
-$('.button-wjs-search').click(function() {
-var csrftoken = getCookie("csrftoken");
-        console.log("csrf token: "+csrftoken);
-        console.log("firing getjson");
-lookforjson();
-
-uploadjson();
-});
-$('.button-xwjs-search').click(function() {
+//});
+$('.button-wjs-search').click(function(event) {
+event.preventDefault;
 var ints = $(this).attr('value');
-var searchform = new FormData;
+alert("first value:"+ints);
 var searchselect = $('#sselector'+ints).children('option:selected').val();
-console.log("first value:"+searchselect);
+alert("2nd value:"+searchselect);
+
 var searchinput = $('#searchinput'+ints).val();
-console.log("first value:"+searchinput);
-searchform.append('searchselect', searchselect);
-searchform.append('searchinput', searchinput);
-var urlz = '192.168.2.50:8000/mydiabprod/searchblogx/';
-var csrftoken = getCookie("csrftoken");
-for (var valx of searchform.values()) {
-    console.log("your values: "+valx);
-	}
-        console.log("csrf token: "+csrftoken);
-        console.log("firing ajax");
+alert("2nd value:"+searchinput);
 
+lookforjson(searchselect,searchinput,ints);
+$('#searchinput'+ints).val ='';
+return false;
 
-        $.ajax({
-            url: '/mydiabprod/searchblogx/',
-            headers: {"X-CSRFToken":csrftoken},
-            type: "POST",
-            data: {"searchinput": searchinput, "searchselect": searchselect},
-            success: function(text) {
-				//console.log("html for that post: "+this.innerHTML);
-                //$(el).summernote('editor.insertImage', url);
-                //optional tasks here
-                //$("#counter").append("<br><p>image</p><br><p><img  alt='Smiley face' height='200' width='300' src="+url+"/></p>");
-				//this.innerHTML = "<img id='privatemake' data='priv@{{result.id}}' src='{% static "mydiabprod/padlock_green.ico" %}' height=24; width=24; style='display:none'/>";
-            console.log("ajax loaded, django db updated, response sent back: "+text);				
-            }
-        });
-		});
-function lookforjson() {
-	$.getJSON("/mydiabprod/getsearch/", {"parameter": "kook"}, function(data) {
-	//var testalert = JSON.parse(data);
-	console.log(data);
-	var ppx = data.map(function(x) {
-	console.log("appender");
-    console.log(ppx);
-	});
+//uploadjson();
 });
-	return;
+function lookforjson(searchselect, searchinput,ints) {
+		alert("function lookforjson");
+		var csrftoken = getCookie('csrftoken');
+   
+	$.ajax({
+                url: "/mydiabprod/searchblogx/",
+                headers: {"X-CSRFToken":csrftoken},
+                type: "GET",
+                data: {'searchselect':searchselect, 'searchinput':searchinput},
+                success: function(jsondata) {
+				//var external = JSON.parse(data);
+                //external.map(function(x) {
+				//return console.log(x.testx);
+				console.log('response from django');
+				$('#searchinput'+ints).val('');
+				var es = 'nix';
+				$('#sselector'+ints).val(es);
+                alert('going to load data received');
+                uploadjson(jsondata);
+				}
+				});
+				
 }
 </script>
 <div class="appender_results" id="appendresults" style="padding-top:12px">

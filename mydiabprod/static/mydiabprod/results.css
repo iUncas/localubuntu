@@ -1,6 +1,7 @@
 
 .firx { 
     width:95%; 
+	display:block;
     padding-top:10px; 
     padding-left:10px; 
     padding-bottom:10px; 
@@ -9,14 +10,16 @@
     line-height:10px;
 }
 .portraisearch { 
+    display: none;
     background-color:#eff3f9; 
     width:98%; 
-    padding-top:15px; 
-    padding-left:3px; 
+    padding-top:25px; 
+    padding-left:10px; 
     padding-bottom:15px; 
     font-size:14px;
 }
 .landscapesearch { 
+    display: none;
     width:95%; 
     padding-top:10px; 
     padding-left:5px; 
@@ -29,16 +32,78 @@
     background-color: white; /* Green */
     border: 1px solid #263a5b;
     color: #263a5b;
-    float:left;
-    padding: 3px;
+    /*float:left;*/
+    padding-top: 9px;
+	padding-bottom: 10px;
+	padding-left:10px;
+	padding-right: 10px;
     text-align: center;
     text-decoration: none;
-    font-size: 14px;
-    cursor: pointer;
+    font-size: 16px;
+    /*cursor: pointer;*/
     border-radius: 4px;
-    width: 90px;
     }
 .button-wjs-search:hover {
-      background-color: #f7e8eb;
-	  border: 1px solid #f7e8eb;
+      background-color: #e8eef7;
+	  border: 0.1px solid #ced3db;
 	  }
+.shadow-sm {
+	background-color: white;
+}
+.shadow-sm:hover {
+	background-color: green;
+}
+@media (orientation: portrait) {
+.firx {
+    display: none;
+	}
+.portraisearch {
+    display: block;
+	}
+#sselector2 {
+	width:60%;
+}
+#searchinput2 {
+	width:75%;
+	height:30px;
+}
+	.shadow-sm {
+	background-color: #f7f7f7;
+}
+
+.button-wjs-search {
+	padding-top:2px;
+	padding-bottom:2px;
+	font-size: 14px;
+}
+}
+@media (orientation: landscape) and (max-width: 750px)  {
+.firx {
+    display: none;
+	}
+.portraisearch {
+    display: none;
+	}
+.landscapesearch {
+    display: block;
+	}
+	#sselector3 {
+	width:95%;
+	font-size:14px;
+}
+#searchinput3 {
+	width:115px;
+	height:32px;
+}
+	.shadow-sm {
+	background-color: white;
+}
+
+.button-wjs-search {
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-left:12px;
+	padding-right:12px;
+	font-size: 14px;
+}
+}
