@@ -12,9 +12,10 @@
 .portraisearch { 
     display: none;
     background-color:#eff3f9; 
-    width:98%; 
+    /*width:98%; */
     padding-top:25px; 
-    padding-left:10px; 
+    padding-left:5px; 
+	padding-right:5px;
     padding-bottom:15px; 
     font-size:14px;
 }
@@ -30,11 +31,11 @@
 
 .button-wjs-search {
     background-color: white; /* Green */
-    border: 1px solid #263a5b;
+    border: 1px solid #afc2ce;
     color: #263a5b;
     /*float:left;*/
-    padding-top: 9px;
-	padding-bottom: 10px;
+    padding-top: 10px;
+	padding-bottom: 13px;
 	padding-left:10px;
 	padding-right: 10px;
     text-align: center;
@@ -51,7 +52,11 @@
 	background-color: white;
 }
 .shadow-sm:hover {
-	background-color: green;
+	background-color: #afc2ce;
+}
+#searchinput1 {
+	height:35px;
+	width:350px;
 }
 @media (orientation: portrait) {
 .firx {
@@ -66,9 +71,6 @@
 #searchinput2 {
 	width:75%;
 	height:30px;
-}
-	.shadow-sm {
-	background-color: #f7f7f7;
 }
 
 .button-wjs-search {
@@ -95,10 +97,6 @@
 	width:115px;
 	height:32px;
 }
-	.shadow-sm {
-	background-color: white;
-}
-
 .button-wjs-search {
 	padding-top:4px;
 	padding-bottom:4px;

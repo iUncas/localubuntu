@@ -39,7 +39,7 @@ var fetty = JSON.parse(jsondata);
 //var fetty = jsondata;
 var pates = fetty.map(function(x) {
 
-return [x.title, x.date, x.author, x.options];
+return [x.title, x.date, x.author, x.options, x.date1];
 //console.log("check leng: "+x.options.length);
 });
 $("#standard_viewport").empty();
@@ -49,18 +49,26 @@ var i = 0;
 $.each((pates), function(key, value) { 
 i++;
 console.log('hold the key: '+value[2]);
-$('#standard_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:19px;width:99%">'+
+var str1 = value[4].replace('T', ' ');
+var str2 = str1.substring(0,16);
+
+$('#standard_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:19px;width:99%;font-size:15px">'+
 '<div class="row">'+
-'<div class="col-3">'+
-'<p>'+value[0]+'</p>'+
+'<div class="col-3" style="padding-left:25px">'+
+'<div class="row">'+
+'<p style="font-size:16px;font-weight:bold">'+value[0]+'</p>'+
+'</div>'+
+'<div class="row">'+
+'<p style="font-size:13px; font-style:oblique">'+str2+'</p>'+
+'</div>'+
 '</div>'+
 '<div class="col-2">'+
 '<p>'+value[2]+'</p>'+
 '</div>'+
-'<div class="col-6">'+
+'<div class="col-5">'+
 '<p>'+value[1]+'</p>'+
 '</div>'+
-'<div class="col-1">'+
+'<div class="col-2">'+
 '<p>'+value[3]+'</p>'+
 '</div>'+
 '</div>'+
@@ -68,13 +76,13 @@ $('#standard_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="l
 $('#portrait_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:15px;width:99%">'+
 '<div class="col-12">'+
 '<div class="row">'+
-'<p>'+value[0]+'</p>'+
+'<p style="font-weight:bold">'+value[0]+'</p>'+
 '</div>'+
 '<div class="row">'+
-'<p>'+value[2]+'</p>'+
+'<p style="font-size:13px; font-style:oblique">by '+value[2]+'</p>'+
 '</div>'+
 '<div class="row">'+
-'<p>'+value[1]+'</p>'+
+'<p style="font-size:13px">'+value[1]+'</p>'+
 '</div>'+
 '<div class="row">'+
 '<p>'+value[3]+'</p>'+
@@ -83,14 +91,19 @@ $('#portrait_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="l
 '</div>');
 $('#landscape_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:25px;width:99%">'+
 '<div class="row">'+
-'<div class="col-4">'+
-'<p>'+value[0]+'</p>'+
+'<div class="col-3" style="padding-left:25px">'+
+'<div class="row">'+
+'<p style="font-weight: bold">'+value[0]+'</p>'+
+'</div>'+
+'<div class="row">'+
+'<p style="font-size:12px; font-style:oblique">'+str2+'</p>'+
+'</div>'+
 '</div>'+
 '<div class="col-2">'+
-'<p>'+value[2]+'</p>'+
+'<p style="font-size:12px">by '+value[2]+'</p>'+
 '</div>'+
-'<div class="col-4">'+
-'<p>'+value[1]+'</p>'+
+'<div class="col-5">'+
+'<p style="font-size:12px">'+value[1]+'</p>'+
 '</div>'+
 '<div class="col-2">'+
 '<p>'+value[3]+'</p>'+

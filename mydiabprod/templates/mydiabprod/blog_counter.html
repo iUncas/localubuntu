@@ -86,9 +86,15 @@ background-color: red;
     
       <!-- Modal content-->
       <div id="contentm" class="modalzz_content">
-      <p> WJS Blog</p>
-	  <p><img class='topmodals' src='{% static "mydiabprod/flickr.ico" %}'/>  <img class='topmodals' src='{% static "mydiabprod/rss.ico" %}'/>  <img class='topmodals' src='{% static "mydiabprod/skull.ico" %}'/>  </p>
+	  <div class="col-12">
+      <div class="row"> WJS Blog</div>
+	  <div class="row">
+	  <a href="https://www.facebook.com/tutejsze/" target="_blank"><img class='topmodals' src='{% static "mydiabprod/flickr.ico" %}' /></a>
+	  <a href="https://www.facebook.com/tutejsze/" target="_blank"><img class='topmodals' src='{% static "mydiabprod/rss.ico" %}' /></a>
+	  <a href="https://www.facebook.com/tutejsze/" target="_blank"><img class='topmodals' src='{% static "mydiabprod/skull.ico" %}' /></a>
+      </div>
 	    </div>
+	  </div>
 	  </div>
  <br>      
  {% csrf_token %}

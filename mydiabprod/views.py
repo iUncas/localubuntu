@@ -1077,8 +1077,17 @@ def searchblogx(request):
                 joined='<p>no text preview available</p>'
             corrected = joined.replace('<p>','')
             corrected2 = corrected.replace('</p>', '')
+            pattern2 = '<img.*?>'
+            datetopass = i.BlogEntry.isoformat()
+            img2 = re.search(r'<img.*?>', i.BlogHtml).group()
+            if img2:
+                img3 = img2
+                #img1 = img2.replace('<img ', '')
+                #imgsrc = re.match('src=".*jpg"', img1).group()
+            else:
+                img3 = '<img src="/media/cute-baby-beavers-0111.jpg" style="width: 605px;">'
             #jsondata.append({ "title":i.BlogName,  "date":i.BlogEntry.isoformat(),  "author":i.BlogOwner,  "options": i.BlogHash })
-            jsondata.append({ "title":i.BlogName,  "date":corrected2,  "author":i.BlogOwner,  "options": i.BlogHash })			
+            jsondata.append({ "title":i.BlogName,  "date":corrected2,  "author":i.BlogOwner,  "options": img3, "date1": datetopass  })			
         return HttpResponse(json.dumps(jsondata))
 
 def getsearch(request):
