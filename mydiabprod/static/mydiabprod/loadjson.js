@@ -42,6 +42,8 @@ var pates = fetty.map(function(x) {
 return [x.title, x.date, x.author, x.options, x.date1];
 //console.log("check leng: "+x.options.length);
 });
+$('#topsearchlabel').empty();
+$('#topsearchlabel').append('following results have been found in blog database');
 $("#standard_viewport").empty();
 $("#portrait_viewport").empty();
 $("#landscape_viewport").empty();
@@ -52,7 +54,7 @@ console.log('hold the key: '+value[2]);
 var str1 = value[4].replace('T', ' ');
 var str2 = str1.substring(0,16);
 
-$('#standard_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:19px;width:99%;font-size:15px">'+
+$('#standard_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:19px;width:99%;font-size:15px" onclick="fullreader()">'+
 '<div class="row">'+
 '<div class="col-3" style="padding-left:25px">'+
 '<div class="row">'+
@@ -73,7 +75,7 @@ $('#standard_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="l
 '</div>'+
 '</div>'+
 '</div>');
-$('#portrait_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:15px;width:99%">'+
+$('#portrait_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:15px;width:99%" onclick="fullreader()">'+
 '<div class="col-12">'+
 '<div class="row">'+
 '<p style="font-weight:bold">'+value[0]+'</p>'+
@@ -89,7 +91,7 @@ $('#portrait_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="l
 '</div>'+
 '</div>'+
 '</div>');
-$('#landscape_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:25px;width:99%">'+
+$('#landscape_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:25px;width:99%" onclick="fullreader()">'+
 '<div class="row">'+
 '<div class="col-3" style="padding-left:25px">'+
 '<div class="row">'+
@@ -112,3 +114,11 @@ $('#landscape_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="
 '</div>');
 });
 }
+
+function fullreader() {
+	alert("clicked");
+}
+
+//	$('.shadow-sm').click(function() {
+//alert("clicked");fullreader
+//});

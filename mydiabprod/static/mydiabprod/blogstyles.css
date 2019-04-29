@@ -22,6 +22,11 @@ body {
 #prosearch {
 	cursor: pointer;
 }
+.innerimage {
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .button-wjs-red {
   background-color: white; /* Green */
   border: 1px solid #C288A3;
@@ -462,8 +467,4 @@ border-bottom:0.1px solid #d5dee8;
       background-color: #f7e8eb;
 	  border: 1px solid #f7e8eb;
 	  }
-
-
-
-
 }

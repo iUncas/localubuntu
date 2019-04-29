@@ -1,17 +1,17 @@
 
 <div class="container" style="padding-bottom:10px;padding-top:10px">
-<p>Specify advanced search option</p>
+<p id="topsearchlabel" style="font-size:14px">Specify advanced search option</p>
 <br>
 <div class="firx" id="standard_viewport">
 <form id="get_search1">
 <div class="row" style="padding-top:1%">
 <div class="col-3">
 <select class="custom-select custom-select" id="sselector1">
-  <option label="select options" value="nix"></option>
-  <option label="search by tag" value="BlogHash"></option>
-  <option label="search by keyword" value="BlogEntry"></option>
-  <option label="search by author" value="BlogOwner"></option>
-  <option label="search by title" value="BlogName"></option>
+  <option label="select options" value="nix">select options</option>
+  <option label="search by tag" value="BlogHash">search by tag</option>
+  <option label="search by keyword" value="BlogHtml">search by keyword</option>
+  <option label="search by author" value="BlogOwner">search by author</option>
+  <option label="search by title" value="BlogName">search by title</option>
 </select>
 
 </div>
@@ -42,11 +42,11 @@
 <form id="get_search2">
 <div>
 <select class="custom-select custom-select" id="sselector2">
-  <option label="select options" value="nix"></option>
-  <option label="search by tag" value="BlogHash"></option>
-  <option label="search by keyword" value="BlogEntry"></option>
-  <option label="search by author" value="BlogOwner"></option>
-  <option label="search by title" value="BlogName"></option>
+  <option label="select options" value="nix" >select options</option>
+  <option label="search by tag" value="BlogHash">search by tag</option>
+  <option label="search by keyword" value="BlogEntry">search by keyword</option>
+  <option label="search by author" value="BlogOwner">search by author</option>
+  <option label="search by title" value="BlogName">search by title</option>
 </select>
 
 <div style="padding-top:1%">
@@ -69,11 +69,11 @@
 <div class="col-5">
 <div>
 <select id="sselector3" class="custom-select custom-select">
-  <option label="select options" value="nix"></option>
-  <option label="search by tag" value="BlogHash"></option>
-  <option label="search by keyword" value="BlogEntry"></option>
-  <option label="search by author" value="BlogOwner"></option>
-  <option label="search by title" value="BlogName"></option>
+  <option label="select options" value="nix">select options</option>
+  <option label="search by tag" value="BlogHash">search by tag</option>
+  <option label="search by keyword" value="BlogEntry">search by keyword</option>
+  <option label="search by author" value="BlogOwner">search by author</option>
+  <option label="search by title" value="BlogName">search by title</option>
 </select>
 </div>
 
@@ -116,18 +116,26 @@ event.preventDefault;
 var ints = $(this).attr('value');
 alert("first value:"+ints);
 var searchselect = $('#sselector'+ints).children('option:selected').val();
+if (searchselect=='nix') {
+alert('no option selected, please select from dropdown');
+return false;
+} else {
 alert("2nd value:"+searchselect);
+var searchlabel1 = $('#sselector'+ints).children('option:selected').attr('label');
+var patt = /[(.\s.\s)]\w+$/;
+var searchlabel = searchlabel1.match(patt);
+alert("3rd value:"+searchlabel);
 
 var searchinput = $('#searchinput'+ints).val();
 alert("2nd value:"+searchinput);
 
-lookforjson(searchselect,searchinput,ints);
+lookforjson(searchselect,searchinput,ints,searchlabel);
 $('#searchinput'+ints).val ='';
 return false;
-
+}
 //uploadjson();
 });
-function lookforjson(searchselect, searchinput,ints) {
+function lookforjson(searchselect,searchinput,ints,searchlabel) {
 		alert("function lookforjson");
 		var csrftoken = getCookie('csrftoken');
    
@@ -145,12 +153,24 @@ function lookforjson(searchselect, searchinput,ints) {
 				var es = 'nix';
 				$('#sselector'+ints).val(es);
                 alert('going to load data received');
+				if (jsondata=='no results, try with other') {
+				    uploadfailed(searchlabel,jsondata);
+					} else {
                 uploadjson(jsondata);
 				}
+				}
+			
 				});
 				
 }
+ function uploadfailed(searchlabel,text) {
+                    $('#topsearchlabel').empty();
+					$('#topsearchlabel').append(text+' '+searchlabel);
+					}
+					
+	$('.shadow-sm').click(function() {
+alert("clicked");
+});
+
 </script>
-<div class="appender_results" id="appendresults" style="padding-top:12px">
-</div>
 

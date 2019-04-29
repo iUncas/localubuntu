@@ -55,7 +55,7 @@ def results(request):
         eventmax1 = eventmax[0]
         eventmax2 = eventmax[1]
         eventmax3 = eventmax[2]
-        if qq:
+        if qq.exists():
             uname1=Mydiabusers.objects.get(UserName=request.POST.get('username'))
             uname2=uname1.FirstName
             request.session['password'] = request.POST.get('password')
@@ -123,6 +123,13 @@ def results(request):
                 'eventmax3_name': eventmax3.EventName,
                 'eventmax3_date': str(eventmax3.EventDate)[:16],
                 'eventmax3_desc': eventmax3.EventDescription,
+            }
+            return HttpResponse(template.render(contex, request))
+        else:
+            text1 = "wrong username or password"
+            template = loader.get_template('mydiabprod/login.html')
+            contex = {
+                'text1': text1
             }
             return HttpResponse(template.render(contex, request))
     elif request.session.get('member_id'):
@@ -575,7 +582,7 @@ def currentweek(request):
                             countingcodes = countingcodes + 1
                 qx.append({"date": str(i), "eventx": eventx, "pubholidayx": holidayx})
     #filex.write("datejson="+json.dumps(qx))
-        filex = open('/srv/samba/share/pytho/django/web/mydiabprod/static/mydiabprod/datejson1231.json', 'w+', encoding='UTF-8')
+        filex = open('mydiabprod/static/mydiabprod/datejson1231.json', 'w+', encoding='UTF-8')
         filex.write("datejson=" + json.dumps(qx))
         return HttpResponse(json.dumps(qx), content_type="application/json")
 #daily calendar	
@@ -1066,30 +1073,33 @@ def searchblogx(request):
         post_text=request.GET['searchinput']
         blogfilter={post_option_selected+'__icontains':post_text}
         searchreturn = Mydiabrichblog.objects.filter(**blogfilter)
-        for i in searchreturn:
-            pattern =  '<p>[^<.*>].*?</p>'
-            px = re.findall(pattern, i.BlogHtml)
-            if len(px)>1:
-                joined = px[0]+' '+px[1]+'..'
-            elif len(px)==1:
-                joined = px[0]+'...'
-            else:
-                joined='<p>no text preview available</p>'
-            corrected = joined.replace('<p>','')
-            corrected2 = corrected.replace('</p>', '')
-            pattern2 = '<img.*?>'
-            datetopass = i.BlogEntry.isoformat()
-            img2 = re.search(r'<img.*?>', i.BlogHtml).group()
-            if img2:
-                img3 = img2
+        if searchreturn.exists():
+            for i in searchreturn:
+                pattern =  '<p>[^<.*>].*?</p>'
+                px = re.findall(pattern, i.BlogHtml)
+                if len(px)>1:
+                    joined = px[0]+' '+px[1]+'..'
+                elif len(px)==1:
+                    joined = px[0]+'...'
+                else:
+                    joined='<p>no text preview available</p>'
+                corrected = joined.replace('<p>','')
+                corrected2 = corrected.replace('</p>', '')
+                pattern2 = '<img.*?>'
+                datetopass = i.BlogEntry.isoformat()
+                img2 = re.search(r'<img.*?>', i.BlogHtml).group()
+                if img2:
+                    img3 = img2
                 #img1 = img2.replace('<img ', '')
                 #imgsrc = re.match('src=".*jpg"', img1).group()
-            else:
-                img3 = '<img src="/media/cute-baby-beavers-0111.jpg" style="width: 605px;">'
+                else:
+                    img3 = '<img src="/media/cute-baby-beavers-0111.jpg" style="width: 605px;">'
             #jsondata.append({ "title":i.BlogName,  "date":i.BlogEntry.isoformat(),  "author":i.BlogOwner,  "options": i.BlogHash })
-            jsondata.append({ "title":i.BlogName,  "date":corrected2,  "author":i.BlogOwner,  "options": img3, "date1": datetopass  })			
-        return HttpResponse(json.dumps(jsondata))
-
+                jsondata.append({ "title":i.BlogName,  "date":corrected2,  "author":i.BlogOwner,  "options": img3, "date1": datetopass  })			
+            return HttpResponse(json.dumps(jsondata))
+        else:
+            context = "no results, try with other"
+            return HttpResponse(context)
 def getsearch(request):
     if request.method == 'GET':
         testy =[]
@@ -1102,93 +1112,4 @@ def getsearch(request):
         return HttpResponse(json.dumps(testy))
 #####################################################################################################################################################
 ##############################################################################################################3
-#block for older pers view - will be disconnected
-# WJS 01.04.2019
-# def pers(request):
-    # if request.method == 'POST':
-        # qqx=Mydiabusers.objects.filter(UserName=request.POST.get('username')).filter(Password=request.POST.get('password'))
-        # if qqx:
-            # template = loader.get_template('mydiabprod/pers.html')
-            # qt0 = Mydiabusers.objects.get(id=1)
-            # qx1 = Mydiabautorization.objects.get(UserName=qt0)
-            # if ((qx1.is_admin == True) and (qx1.is_doctor == True) and (qx1.is_visitor == True))\
-            # or ((qx1.is_admin == True) and (qx1.is_doctor == True) and (qx1.is_visitor == False))\
-            # or ((qx1.is_admin == True) and (qx1.is_doctor == False) and (qx1.is_visitor == True))\
-            # or ((qx1.is_admin == True) and (qx1.is_doctor == False) and (qx1.is_visitor == False)):
-                # variable1 = 'admin_view'
-            # elif ((qx1.is_doctor == True) and (qx1.is_admin == False) and (qx1.is_visitor == False))\
-            # or ((qx1.is_doctor == True) and (qx1.is_admin == False) and (qx1.is_visitor == True)):
-                # variable1 = 'doctor_view'
-            # elif ((qx1.is_visitor == True) and (qx1.is_admin == False) and (qx1.is_doctor == False)):
-                # variable1 = 'user_view'
-            # else: variable1 = 'no_access'
-            # qt29 = Mydiabrichblog.objects.all().aggregate(Max('id'))
-            # qt43 = (qt29['id__max'])
-            # fileqxbase = Mydiabrichblog.objects.get(id=qt43)
-            # fileqx = fileqxbase.BlogRich
-            # fileqq = open(fileqx, "r")
-            # filehtml = fileqq.read()
-            # fileqq.close()
-            # qt=Mydiabwelcome.objects.all().aggregate(Max('id'))
-            # qt1=(qt['id__max'])
-            # qt2=random.randint(1, qt1)
-            # qt3=Mydiabwelcome.objects.get(id=qt2)
-            # qt4 = qx1.FirstName
-            # contextauth = {
-                # 'firstname': qt4,
-                # 'text2': qt3,
-                # 'bloghtml': filehtml,
-                # 'variable1': variable1
-            # }
-            # return HttpResponse(template.render(contextauth, request))
-        # else:
-        # #raise Http404("Wrong username or password")
-            # text1 = "wrong username or password"
-            # template = loader.get_template('mydiabprod/loginx.html')
-            # contex = {
-                # 'text1': text1
-            # }
-            # return HttpResponse(template.render(contex, request))
-    # elif request.session.get('member_id'):
-        # template = loader.get_template('mydiabprod/pers.html')
-        # qt0 = Mydiabusers.objects.get(id=1)
-        # qx1 = Mydiabautorization.objects.get(UserName=qt0)
-        # if ((qx1.is_admin == True) and (qx1.is_doctor == True) and (qx1.is_visitor == True))\
-        # or ((qx1.is_admin == True) and (qx1.is_doctor == True) and (qx1.is_visitor == False))\
-        # or ((qx1.is_admin == True) and (qx1.is_doctor == False) and (qx1.is_visitor == True))\
-        # or ((qx1.is_admin == True) and (qx1.is_doctor == False) and (qx1.is_visitor == False)):
-            # variable1 = 'admin_view'
-        # elif ((qx1.is_doctor == True) and (qx1.is_admin == False) and (qx1.is_visitor == False))\
-        # or ((qx1.is_doctor == True) and (qx1.is_admin == False) and (qx1.is_visitor == True)):
-            # variable1 = 'doctor_view'
-        # elif ((qx1.is_visitor == True) and (qx1.is_admin == False) and (qx1.is_doctor == False)):
-            # variable1 = 'user_view'
-        # else: variable1 = 'no_access'
-        # qt29 = Mydiabrichblog.objects.all().aggregate(Max('id'))
-        # qt43 = (qt29['id__max'])
-        # fileqxbase = Mydiabrichblog.objects.get(id=qt43)
-        # fileqx = fileqxbase.BlogRich
-        # fileqq = open(fileqx, "r")
-        # filehtml = fileqq.read()
-        # fileqq.close()
-        # qt=Mydiabwelcome.objects.all().aggregate(Max('id'))
-        # qt1=(qt['id__max'])
-        # qt2=random.randint(1, qt1)
-        # qt3=Mydiabwelcome.objects.get(id=qt2)
-        # qt4 = qx1.FirstName
-        # contextauth = {
-            # 'firstname': qt4,
-            # 'text2': qt3,
-            # 'bloghtml': filehtml,
-            # 'variable1': variable1
-        # }
-        # return HttpResponse(template.render(contextauth, request))
-    # else:
-        # #raise Http404("Wrong username or password")
-        # text1 = "no active session please login"
-        # template = loader.get_template('mydiabprod/loginx.html')
-        # contex = {
-            # 'text1': text1
-        # }
-        # return HttpResponse(template.render(contex, request))
-        # xx = re.match("<[\w*\d*]+>[\w*\s*]+</[\w*\d*]+>", lox).group()
+
