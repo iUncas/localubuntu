@@ -229,14 +229,17 @@ border-bottom:0.1px solid #d5dee8;
 .trashy {
     width: 20px;
 	height: 20px;
+	cursor: pointer;
 	}
 .publicpadlock {
     width: 24px;
 	height: 24px;
+	cursor: pointer;
 	}
 .privpadlock {
     width: 24px;
 	height: 24px;
+	cursor: pointer;
 	}
 .locky {
     width:24px;

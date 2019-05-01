@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Pers!</title>
+
+	<!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->
+ 
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>   -->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+{% load static %}
+<link rel="stylesheet" href="{% static 'mydiabprod/blogstyles.css' %}">
+<link rel="stylesheet" href="{% static 'mydiabprod/results.css' %}">
+
+<script src="{% static 'mydiabprod/blogfunc.js' %} "type="text/javascript"></script>
+<script src="{% static 'mydiabprod/blogfuncfooter.js' %} "type="text/javascript"></script>
+<script src="{% static 'mydiabprod/loadjson.js' %} "type="text/javascript"></script>
+<script src="{% static 'mydiabprod/getjson.js' %} "type="text/javascript"></script>
+</head>
+<body>
+<div id="topcontainer">
+<!--<nav class="navbar navbar-light" style="width:100%; height:60px; background-color: #8A8AB6;">--> 
+ <nav class="navbar">
+        <!--<div style="float:right; heigth:10%">-->
+    <div class="container" id="divinnav1">
+	<div class="row">
+	<div class="col" style="float:left;">
+        <form action="javascript:mext()" method="POST">
+            <select class="custom-select custom-select" style="width:120px;height:30px;font-family:verdana;font-size:12px;" name="setting" id="setting" onchange="this.form.submit()">
+                <option value=""> myDiabBlog </option>
+                <option value="1"> Patient Check IN </option>
+                <option value="2"> Settings a </option>
+                <option value="3"> Logout </option>
+            </select>
+        </form>
+		</div>
+        <div class="col" style="float:right">
+            <div class='modalsettings' style='float:right'>
+                <img id='settings_navbarx' class='navbarphoto' src='{% static "mydiabprod/settings-20-xx.png" %}' style='height:28px;width:28px;'/><br>
+                <div id='showfortogglex' class='modalsettingscontent'>
+				<div id="prosearch" class="col-12">
+				<p><a class="btn-wjs" onclick="searchaction()">search</a><p>
+				<p><a>search by date</a><p>
+				<p><a>three</a><p>
+				<p><a>four</a><p>
+				</div>
+                </div>
+            </div>
+        </div>
+		</div>
+		</div>
+    </nav>
+
+ <div id="firstcontainer" class="container">
+<svg height="200" width="500">
+  <polyline points="20,20 40,25 60,40 80,120 120,140 200,180" style="fill:none;stroke:black;stroke-width:3" />
+</svg>
+	</div>
+ </div>
+</body>
+</html>

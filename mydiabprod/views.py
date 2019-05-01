@@ -1095,7 +1095,7 @@ def searchblogx(request):
                 else:
                     img3 = '<img src="/media/cute-baby-beavers-0111.jpg" style="width: 605px;">'
             #jsondata.append({ "title":i.BlogName,  "date":i.BlogEntry.isoformat(),  "author":i.BlogOwner,  "options": i.BlogHash })
-                jsondata.append({ "title":i.BlogName,  "date":corrected2,  "author":i.BlogOwner,  "options": img3, "date1": datetopass  })			
+                jsondata.append({ "title":i.BlogName,  "date":corrected2,  "author":i.BlogOwner,  "options": img3, "date1": datetopass, "constructionid":i.id  })			
             return HttpResponse(json.dumps(jsondata))
         else:
             context = "no results, try with other"
@@ -1110,6 +1110,40 @@ def getsearch(request):
         for i in yxy:
             testy.append({'testx': ypy[i]})
         return HttpResponse(json.dumps(testy))
+def getpostdisplay(request):
+    #template = loader.get_template('mydiabprod/getpostdisplay.html')
+    variabley = request.POST['constructionid']
+    postreader = Mydiabrichblog.objects.get(id=variabley);
+    context = {'id':postreader.id, 'title':postreader.BlogName, 'author':postreader.BlogOwner, 'date':postreader.BlogEntry.isoformat(), 'html':postreader.BlogHtml}
+    return HttpResponse(json.dumps(context))
+def updatepost(request):
+    postforupdateid = request.POST['postupdateid']
+    postupdatehtml = request.POST['postupdatehtml']
+    postupdate = Mydiabrichblog.objects.get(id=postforupdateid);
+    postupdate.BlogHtml = postupdatehtml
+    postupdate.save()
+    text = "updated by django"
+    return HttpResponse(text)
+def getpostdisplaynext(request):
+    postforupdateid = request.POST['constructionid']
+    control = request.POST['control']
+    if control == 'firsty':
+        listid = []
+        prepare = Mydiabrichblog.objects.filter(id__lt=postforupdateid).order_by('-id')
+        for i in prepare:
+            listid.append(i.id)
+        getpostarrow = listid[0]
+        postreaderx = Mydiabrichblog.objects.get(id=getpostarrow)
+    elif control == 'secondy':
+        listid = []
+        prepare = Mydiabrichblog.objects.filter(id__gt=postforupdateid)
+        for i in prepare:
+            listid.append(i.id)
+        getpostarrow = listid[0]
+        postreaderx = Mydiabrichblog.objects.get(id=getpostarrow)
+    context = {'id':postreaderx.id, 'title':postreaderx.BlogName, 'author':postreaderx.BlogOwner, 'date':postreaderx.BlogEntry.isoformat(), 'html':postreaderx.BlogHtml}
+    return HttpResponse(json.dumps(context))
+    
 #####################################################################################################################################################
 ##############################################################################################################3
 

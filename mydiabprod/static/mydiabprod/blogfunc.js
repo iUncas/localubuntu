@@ -132,7 +132,7 @@ var staged3 = 3;
 		$(this).attr("id", "publicmake"+target);
 		$(this).attr("data", "@"+target);
 		
-        var urlx =  '/mydiabprod/postsetprivate';
+        var urlx =  '/mydiabprod/postsetprivate/';
 		djangoajax(target, urlx);	
 		} else {
 		alert("implementing  settings public permission to post");
@@ -151,7 +151,7 @@ var staged3 = 3;
 		this.classList.remove("publicpadlock");
 		this.classList.add("privpadlock");
 		$(this).attr("id", "privatemake"+target);
-        var urlx =  '/mydiabprod/postsetpublic';
+        var urlx =  '/mydiabprod/postsetpublic/';
 		djangoajax(target, urlx);   
         		}
        //};	
