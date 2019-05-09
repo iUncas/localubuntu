@@ -48,6 +48,9 @@ urlpatterns = [
 	path('getsearch/', views.getsearch, name='getsearch'),
     path('getpostdisplay/', views.getpostdisplay, name='getpostdisplay'),
 	path('updatepost/', views.updatepost, name='updatepost'),
-	path('getpostdisplaynext/', views.getpostdisplaynext, name='getpostdisplaynext')
+	path('getpostdisplaynext/', views.getpostdisplaynext, name='getpostdisplaynext'),
+    path('registerx/', views.registerx, name='registerx'),
+    path('checkun/', views.checkun, name='checkun'),
+    path('registerun/', views.registerun, name='registerun')
 ]
 #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

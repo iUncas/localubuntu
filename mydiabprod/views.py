@@ -1130,20 +1130,65 @@ def getpostdisplaynext(request):
     if control == 'firsty':
         listid = []
         prepare = Mydiabrichblog.objects.filter(id__lt=postforupdateid).order_by('-id')
+        if not prepare:
+            text = 'no results to show'
+            return HttpResponse(text)
         for i in prepare:
             listid.append(i.id)
         getpostarrow = listid[0]
         postreaderx = Mydiabrichblog.objects.get(id=getpostarrow)
+            
     elif control == 'secondy':
         listid = []
         prepare = Mydiabrichblog.objects.filter(id__gt=postforupdateid)
+        if not prepare:
+            text = 'no resultsx to show'
+            return HttpResponse(text)
         for i in prepare:
             listid.append(i.id)
         getpostarrow = listid[0]
         postreaderx = Mydiabrichblog.objects.get(id=getpostarrow)
     context = {'id':postreaderx.id, 'title':postreaderx.BlogName, 'author':postreaderx.BlogOwner, 'date':postreaderx.BlogEntry.isoformat(), 'html':postreaderx.BlogHtml}
     return HttpResponse(json.dumps(context))
-    
+
+def registerx(request):
+    if request.method == 'POST':
+        user_check = request.session.get('username')
+        #implement here additional conditions for changing privacy eq. if (user_check == post_owner):xx
+        post_for=request.POST['target']
+        if post_for == "get_post":
+            csvfile=open("mydiabprod/templates/mydiabprod/register.html", "r+", encoding="UTF-8")
+            poka = csvfile.read()
+            context = {
+                'poka': poka
+            }
+            return HttpResponse(poka)
+def checkun(request):
+    if request.method == 'POST':
+        unregister = request.POST['checkun']
+        unx = Mydiabusers.objects.filter(UserName=unregister)
+        if unx.exists():
+            unvalue = 1
+            unrandint = random.randint(1, 1000)
+            unrandstr = str(unrandint)
+            unresponse = unregister+unrandstr
+            return HttpResponse(unresponse)
+        else:
+            unresponse = 'passed'
+            unvalue = 2
+            return HttpResponse(unresponse)
+
+def registerun(request):
+    if request.method == 'POST':
+        fname = request.POST['fn']
+        lname = request.POST['ln']
+        uname = request.POST['un']
+        passn = request.POST['passn']
+        emailn = request.POST['emn']
+        usercall = Mydiabusers(FirstName=fname, LastName=lname, Email=emailn, Password=passn, UserName=uname, EntryDate=timezone.now())
+        usercall.save()
+        text = 'User created'
+        return HttpResponse(text)
 #####################################################################################################################################################
 ##############################################################################################################3
 

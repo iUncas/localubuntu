@@ -25,6 +25,30 @@ function searchaction() {
     }
 
 
+function registeraction() {
+		$("#innertextcontainer").empty();
+
+	    console.log("cleaned");
+		var csrftoken = getCookie("csrftoken");
+        console.log("csrf token: "+csrftoken);
+        console.log("firing ajax");
+		var urlx =  "/mydiabprod/registerx/";
+		var target = "get_post";
+        $.ajax({
+            url: urlx,
+            headers: {"X-CSRFToken":csrftoken},
+            type: "POST",
+            data: {"target": target},
+            success: function(poka) {
+			//console.log(poka);
+				var plex = document.getElementById("showfortogglex");
+             plex.style.display = "none";
+            $("#innertextcontainer").append(poka);
+            }
+        })
+		return;
+    }	
+
 
 
 
@@ -76,7 +100,8 @@ $('#standard_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="l
 '</div>'+
 '</div>'+
 '</div>');
-$('#portrait_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:15px;width:99%" onclick="fullreader()">'+
+$('#portrait_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:15px;width:99%"'+
+' id="'+value[5]+'" onclick="fullreader('+value[5]+')">'+
 '<div class="col-12">'+
 '<div class="row">'+
 '<p style="font-weight:bold">'+value[0]+'</p>'+
@@ -92,7 +117,8 @@ $('#portrait_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="l
 '</div>'+
 '</div>'+
 '</div>');
-$('#landscape_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:25px;width:99%" onclick="fullreader()">'+
+$('#landscape_viewport').append('<div class="shadow-sm p-3 mb-1 rounded" style="line-height:25px;width:99%"'+
+' id="'+value[5]+'" onclick="fullreader('+value[5]+')">'+
 '<div class="row">'+
 '<div class="col-3" style="padding-left:25px">'+
 '<div class="row">'+
@@ -135,13 +161,19 @@ function fullreader(constructionid) {
             $("#innertextcontainer").append("<div class='container'>"+
 			"<div class='row' style='padding-top:20px;font-weight:bold;font-size:16px'>"+
 			"<div class='col-6'><p style='float:left'>"+toreader.title+"</p></div><div class='col-6'><p style='float:right'>"+
-			"<img src='/static/mydiabprod/arrow-97-32.ico' style='padding-left:3px' onclick='fullreadernext(1,"+toreader.id+")'/>"+
-			" <img src='/static/mydiabprod/arrow-32-32.ico' style='padding-left:3px' onclick='fullreadernext(2,"+toreader.id+")' /></p></div></div>"+
-			"<br><div class='container' id="+toreader.id+" style='padding-top:10px;font-size:14px'"+
+			"<img src='/static/mydiabprod/arrow-96-33.ico' style='padding-left:3px' onclick='fullreadernext(1,"+toreader.id+")' id='backarrow'"+
+			" alt='previous post'/>"+
+			" <img src='/static/mydiabprod/arrow-33-32.ico' style='padding-left:3px' onclick='fullreadernext(2,"+toreader.id+")' id='forwardarrow'"+ 
+			" alt='next post'/></p></div></div>"+
+			"<br><div class='posthtml' id="+toreader.id+" style='padding-top:10px;font-size:14px'"+
 			"onClick='this.contentEditable=\"true\";'>"+toreader.html+"</div>"+
 			"<div class='row' style='padding-top:15px;padding-bottom:15px;padding-right:15px;border-top:0.5px solid #e3edf2'>"+
 			"<button class='button-wjs-blue' id='pex'"+toreader.id+" value='"+toreader.id+"' onclick='blue()'>save</button></div></div>");
-            }
+			if ($('img')) {
+			$('.posthtml img').attr('class', 'innerimage');
+		    $('.posthtml img').attr('alt', 'innerimagex');
+			}
+		}
         })
 		return;
 	}
@@ -190,20 +222,39 @@ function fullreadernext(texty,constructionid) {
             type: "POST",
             data: {"constructionid": constructionid, "control": control},
             success: function(poka) {
+            if (poka=='no results to show') {
+				alert('no more results, please go back');
+				$('#backarrow').attr('src', '/static/mydiabprod/arrow-96-32.ico');
+				//$('#backarrow').css('width', '24px');
+				//$('#backarrow').css('height', '24px');
+			} else if (poka == 'no resultsx to show') {
+				alert('no more results, please go back');
+				$('#forwardarrow').attr('src', '/static/mydiabprod/arrow-31-32.ico');
+				//$('#forwardarrow').css('width', '24px');
+				//$('#forwardarrow').css('height', '24px');
+			} else {
             $("#innertextcontainer").empty();
 			var toreader = JSON.parse(poka);
 //var fetty = jsondata;
             $("#innertextcontainer").append("<div class='container'>"+
 			"<div class='row' style='padding-top:20px;font-weight:bold;font-size:16px'>"+
 			"<div class='col-6'><p style='float:left'>"+toreader.title+"</p></div><div class='col-6'><p style='float:right'>"+
-			"<img src='/static/mydiabprod/arrow-97-32.ico' style='padding-left:3px' onclick='fullreadernext(1,"+toreader.id+")' />"+
-			" <img src='/static/mydiabprod/arrow-32-32.ico' style='padding-left:3px' onclick='fullreadernext(2,"+toreader.id+")' /></p></div></div>"+
-			"<br><div class='container' id="+toreader.id+" style='padding-top:10px;font-size:14px'"+
+			"<img src='/static/mydiabprod/arrow-96-33.ico' style='padding-left:3px' onclick='fullreadernext(1,"+toreader.id+")' id='backarrow'"+
+            " alt='previous post' />"+
+			" <img src='/static/mydiabprod/arrow-33-32.ico' style='padding-left:3px' onclick='fullreadernext(2,"+toreader.id+")' id='forwardarrow'"+
+			" alt='next post' /></p></div></div>"+
+			"<br><div class='posthtml' id="+toreader.id+" style='padding-top:10px;font-size:14px'"+
 			"onClick='this.contentEditable=\"true\";'>"+toreader.html+"</div>"+
 			"<div class='row' style='padding-top:15px;padding-bottom:15px;padding-right:15px;border-top:0.5px solid #e3edf2'>"+
 			"<button class='button-wjs-blue' id='pex'"+toreader.id+" value='"+toreader.id+"' onclick='blue()'>save</button></div></div>");
-            }
-        })
+			if ($('img')) {
+			$('.posthtml img').attr('class', 'innerimage');
+		    $('.posthtml img').attr('alt', 'innerimagex');
+			}
+            }}
+        });
+		
+		
 		return;
 	}
 
