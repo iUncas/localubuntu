@@ -27,7 +27,7 @@ SECRET_KEY = 'e5)7-&qo9$r@(dksphm%ytfkii2!auebhp5)ihn%lkso3s-!3+'
 DEBUG = True
 #ALLOWED_HOSTS = ['ec2-3-121-133-130.eu-central-1.compute.amazonaws.com']
 ALLOWED_HOSTS = ['192.168.2.50']
-
+#ALLOWED_HOSTS = ['192.168.0.15']
 # Application definition
 
 INSTALLED_APPS = [

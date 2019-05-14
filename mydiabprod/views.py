@@ -1157,7 +1157,7 @@ def registerx(request):
         #implement here additional conditions for changing privacy eq. if (user_check == post_owner):xx
         post_for=request.POST['target']
         if post_for == "get_post":
-            csvfile=open("mydiabprod/templates/mydiabprod/register.html", "r+", encoding="UTF-8")
+            csvfile=open("mydiabprod/templates/mydiabprod/regcopy.html", "r+", encoding="UTF-8")
             poka = csvfile.read()
             context = {
                 'poka': poka

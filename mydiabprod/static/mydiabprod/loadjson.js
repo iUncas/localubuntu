@@ -261,3 +261,49 @@ function fullreadernext(texty,constructionid) {
 //	$('.shadow-sm').click(function() {
 //alert("clicked");fullreader 'href="{% url \'mydiabprod:getpostdisplay\' %}" target="_blank">
 //});
+
+
+
+
+$(".button-wjs-account").click(function(event) {
+var firsty = $("div.firstnames").find("input");
+var fn = $(firsty).val();
+console.log("pay to" +fn);
+secondss = $("div.lastnames").find("input");
+var ln =  $(secondss).val();
+console.log("pay to" +ln);
+var thirds = $("div.usernames").find("input");
+var un = $(thirds).val();
+console.log("pay to" +un);
+var fourths = $("div.passwords").find("input");
+var passn = $(fourths).val();
+console.log("pay to" +passn);
+var sixtus = $("div.emails").find("input");
+var emn = $(sixtus).val();
+console.log("pay to" +emn);
+var septus = $("div.repasswords").find("input");
+var repassn = $(septus).val();
+	var csrftoken = getCookie("csrftoken");
+   
+	$.ajax({
+                url: "/mydiabprod/registerun/",
+                headers: {"X-CSRFToken":csrftoken},
+                type: "POST",
+                data: {"fn":fn, "ln":ln, "un":un, "passn":passn, "emn":emn},
+                success: function(regresponse) {
+				//var external = JSON.parse(data);
+                //external.map(function(x) {
+				//return console.log(x.testx);
+				console.log(regresponse);
+				alert(regresponse);
+				$(firsty).val("");
+				$(secondss).val("");
+				$(thirds).val("");
+				$(fourths).val("");
+				$(sixtus).val("");
+				$(septus).val("");
+				}
+		
+				});
+					return false;
+})
