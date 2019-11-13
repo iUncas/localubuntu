@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 var staged = 1;
 var staged2 = 2;
 var staged3 = 3;

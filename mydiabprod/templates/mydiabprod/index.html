@@ -526,8 +526,10 @@ event.preventDefault();
 var myfiles = new FormData($('#myfile').get(0));
 var textarea = $('#filedescription').val();
 var datepix = $('#datepicker2').val();
+var type = $('#typepicker').val();
 myfiles.append('textarea', textarea);
 myfiles.append('datepix', datepix);
+myfiles.append('typepick', type);
 $.ajax({
     //url: $(this).attr('action'),
     url: "{% url 'mydiabprod:upload_file' %}",

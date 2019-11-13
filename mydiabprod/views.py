@@ -27,6 +27,7 @@ from django.core.files import File
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.paginator import Paginator
 import re
+import csv
 #def index(request):
     #return HttpResponse(template.render(contex, request))
 
@@ -286,14 +287,46 @@ def upload_file(request):
         upx = request.session.get('username')
         textarea = request.POST['textarea']
         datepix = request.POST['datepix']
+        typepick = request.POST['typepick']
+        pattern1 = r'^results.*\.csv$'
         for myfile in myfiles:
             filename = fs.save(myfile.name, myfile)
-            suploaded_file_url =fs.url(filename)
-            q = Mydiabdocuments(Filename=filename, Fileurl=suploaded_file_url, Description=textarea, DocumentDate=datepix, Dokuowner=upx, EntryDate=timezone.now())
-            q.save()
-        text1="olokolo"
+            #filecheck = re.search(pattern1, filename).group()
+            if (typepick == 'CSV'):
+                filecheck = re.search(pattern1, filename).group()
+                if filecheck:
+                    text1 = "uploaded csv results"
+                    suploaded_file_url = fs.url(filename)
+                    q = Mydiabdocuments(Filename=filename, Fileurl=suploaded_file_url, Description=textarea, DocumentDate=datepix, Dokuowner=upx, EntryDate=timezone.now())
+                    handlers(filename,upx)
+                    q.save()
+            else:
+                filename = fs.save(myfile.name, myfile)
+                suploaded_file_url = fs.url(filename)
+                q = Mydiabdocuments(Filename=filename, Fileurl=suploaded_file_url, Description=textarea, DocumentDate=datepix, Dokuowner=upx, EntryDate=timezone.now())
+                q.save()
+                text1="olokolo"
         return HttpResponse(text1)
-
+def handlers(filename,upx):
+    entryurl = '/var/www/python-cgi/web'
+    userida = Mydiabusers.objects.get(UserName=upx)
+    userid = userida.id
+    #completeurl = str(entryurl+file)
+    fs = FileSystemStorage()
+    csvfile=open(entryurl+fs.url(filename), "r+", encoding="UTF-8")
+    lines=csv.reader(csvfile, delimiter=';', quoting=csv.QUOTE_NONE)
+    #username = request.session.get('username')
+    icounter = 0
+    #confirmation = "uploaded "+icounter+" results"
+    for row in lines:
+        deploy1 = row[0]
+        deploy2 = row[1]
+        deploy3 = row[2]
+        qq = Mydiabresults(DateTime=str(deploy1), HGB=str(deploy2), TypeOf=str(deploy3), DeployDate=timezone.now(), UserName_id=userid)
+    #print("A: " + row[0] + " B: " + row[1] + " C: " + row[2] + " D: " + row[3])
+        qq.save()
+        icounter += 1
+    #return confirmation
 
 def charts(request):
     if request.method == 'GET':
@@ -1189,6 +1222,10 @@ def registerun(request):
         usercall.save()
         text = 'User created'
         return HttpResponse(text)
+
+
+    
+    
 #####################################################################################################################################################
 ##############################################################################################################3
 

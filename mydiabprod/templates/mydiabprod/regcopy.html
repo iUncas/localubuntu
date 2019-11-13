@@ -10,30 +10,41 @@
 </p>
 </div>
 <div class="col-5" style="padding-top:4px">
+<form autocomplete="off">
 <div class="row">
 <div class="col-6">
-<div class="mainfirstnames"><input class="form-control" onfocusout="firstnames()" type="text" placeholder="firstname"/></div>
-
+<div class="mainfirstnames" data-toggle="tooltip" title="Firstname" >
+<input class="form-control" onfocusout="firstnames()" type="text" placeholder="firstname" /></div>
+<script>
+//$(document).ready(function(){
+ // $('[data-toggle="tooltip"]').tooltip();   
+  // $("#mainfirstnames").hover(function () {
+ //   
+//});  
+//});
+</script>
 </div>
 <div class="col-6">
-<div class="mainlastnames"><input class="form-control" onfocusout="lastnames()"  type="text"  placeholder="lastname"/></div>
+<div class="mainlastnames" data-toggle="tooltip" title="lastname">
+<input class="form-control" onfocusout="lastnames()"  type="text"  placeholder="lastname" />
 </div>
 </div>
-<br>
-<div class="usernames">
-<input class="form-control" type="text" onfocusout="usernames()"  placeholder="username"/>
 </div>
 <br>
-<div class="emails">
-<input class="form-control" type="text" onfocusout="emails()" placeholder="email"/>
+<div class="usernames" data-toggle="tooltip1" data-placement="left" title="plese select sugested username otherwise try include other">
+<input class="form-control" type="text" onfocusout="usernames()"  placeholder="username" />
 </div>
 <br>
-<div class="passwords">
-<input class="form-control" type="password" onfocusout="passwords()" placeholder="password"/>
+<div class="emails" data-toggle="tooltip2" data-placement="left" title="incorrect email" >
+<input class="form-control"  type="text" autocomplete="off" onfocusout="emails()" placeholder="email" />
+</div>
+<br>
+<div class="passwords" data-toggle="tooltip3" data-placement="left" title="Your password must be at least 8 characters long and include at least one special character like * or !">
+<input class="form-control" type="password" autocomplete="off" onfocusout="passwords()" placeholder="password" />
 </div>
 <br>
 <div class="repasswords">
-<input class="form-control" type="password" onfocusout="repaswords()" placeholder="retype password"/>
+<input class="form-control" type="password" onfocusout="repaswords()" placeholder="retype password"  />
 </div>
 <br>
 <br>
@@ -44,6 +55,7 @@
 <div class="col-4"></div>
 <div class="col-4"></div>
 </div>
+</form>
 </div>
 <div class="col-1"></div>
 
@@ -134,469 +146,5 @@
 
 <script>
 
-
-function firstnames() {
-console.log("firstnames");
- var un = $("input[placeholder='firstname']").val();
-	//var inputs = $(this).find("input");
-    console.log("hhhh "+un);
-return;
-}
-function lastnames() {
-console.log("lastnames");
-var un = $("input[placeholder='lastname']").val();
-	//var inputs = $(this).find("input");
-    console.log("hhhh "+un);
-return false;
-}
-function usernames() {
-console.log("usernames");
-var un = $("input[placeholder='username']").val();
-var inputs = $("input[placeholder='username']");
-//inputs.focus();
-var emailinput = $("input[placeholder='email']");
-	//var inputs = $(this).find("input");
-    console.log("hhhh "+un);
-	var csrftoken = getCookie('csrftoken');
-	$.ajax({
-                url: "/mydiabprod/checkun/",
-                headers: {"X-CSRFToken":csrftoken},
-                type: "POST",
-                data: {'checkun':un},
-                success: function(unresponse) {
-				console.log('response from django '+ unresponse);
-				if (unresponse =='passed') {
-				//emailinput.focus();
-				return;
-					} else {
-                    //$(inputs).focus();
-                    var newusername = String(unresponse);				    
-				    console.log('username already in use, please choose other or use suggested '+unresponse);
-					//$(inputs).val('');
-					$(inputs).val(newusername);
-					//inputs.focus();
-                return;
-				}}
-				
-				});
-return false;
-}
-function emails() {
-console.log("emails");
-
-var emailinput = $("input[placeholder='email']");
-var emailinputval = $("input[placeholder='email']").val();
-var inputsp = $("input[placeholder='password']");
-var emailvalidator =  /^([\w-(?=\.)])*\@{1}[a-zA-Z0-9\-\_]*\.[a-z]{2,3}/i;
-console.log(emailinputval);
-if (emailinputval.match(emailvalidator)) {
-//$(inputsp).focus();
-return;
-} else  {
-$(emailinput).focus();
-console.log("poka "+emailinput.val());
-console.log("email should be corrected");
-$(emailinput).val("");
-return;
-}
-return false;
-}
-function passwords() {
-console.log("passwords");
-	    var inputsp = $("input[placeholder='password']");
-		var repass = $("input[placeholder='retype password']");
-				$(inputsp).css("color", "black");
-var passvalidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/i;
-var passw = $(inputsp).val();
-console.log("password "+passw);
-if (passw.match(passvalidation)) {
-//$(repass).focus();
-return
-} else  {
-$(inputsp).focus();
-console.log("poka "+inputsp.val());
-console.log("password should be corrected");
-$(inputsp).val("");
-$(inputsp).css("color", "red");
-return;
-}
-	
-return false;
-}
-function repaswords() {
-console.log("repasswords");
-var un = $("input[placeholder='retype password']").val();
-var reinputp = $("input[placeholder='retype password']");
-var passn = $("input[placeholder='password']").val();
-console.log("fist is repass "+un);
-console.log("second is pass "+passn);
-if (un == passn) {
-$(".button-wjs-account").attr("disabled", false);
-$(reinputp).css("color", "black");
-return;
-} else {
-$(reinputp).focus();
-console.log("enetered repass "+un);
-console.log("passwords don\'t match, please type again");
-$(".button-wjs-account").attr("disabled", true);
-$(reinputp).val("");
-$(reinputp).css("color", "red");
-}
-return false;
-}
-
-$(".button-wjs-account").click(function(event) {
-var firsty = $("div.firstnames").find("input");
-var fn = $(firsty).val();
-console.log("pay to" +fn);
-secondss = $("div.lastnames").find("input");
-var ln =  $(secondss).val();
-console.log("pay to" +ln);
-var thirds = $("div.usernames").find("input");
-var un = $(thirds).val();
-console.log("pay to" +un);
-var fourths = $("div.passwords").find("input");
-var passn = $(fourths).val();
-console.log("pay to" +passn);
-var sixtus = $("div.emails").find("input");
-var emn = $(sixtus).val();
-console.log("pay to" +emn);
-var septus = $("div.repasswords").find("input");
-var repassn = $(septus).val();
-	var csrftoken = getCookie("csrftoken");
-   
-	$.ajax({
-                url: "/mydiabprod/registerun/",
-                headers: {"X-CSRFToken":csrftoken},
-                type: "POST",
-                data: {"fn":fn, "ln":ln, "un":un, "passn":passn, "emn":emn},
-                success: function(regresponse) {
-				//var external = JSON.parse(data);
-                //external.map(function(x) {
-				//return console.log(x.testx);
-				console.log(regresponse);
-				alert(regresponse);
-				$(firsty).val("");
-				$(secondss).val("");
-				$(thirds).val("");
-				$(fourths).val("");
-				$(sixtus).val("");
-				$(septus).val("");
-				}
-		
-				});
-					return false;
-})
-
-function portraitfirstnames() {
-console.log("firstnames");
- var un = $("div.pufirstnames").find("input");
- console.log(un.val());
-	//var inputs = $(this).find("input");
-   // console.log("hhhh "+un);
-return;
-}
-
-function portraitlastnames() {
-console.log("lastnames");
-var portraitlastname = $("div.pulastnames").find("input");
-var un = portraitlastname.val();
-	//var inputs = $(this).find("input");
-    console.log("hhhh "+un);
-return false;
-}
-function portraitusernames() {
-console.log("usernames");
-var puname = $("div.punames").find("input");
-var forupload = puname.val();
-console.log("welcome "+ forupload);
-var csrftoken = getCookie('csrftoken');
-	$.ajax({
-                url: "/mydiabprod/checkun/",
-                headers: {"X-CSRFToken":csrftoken},
-                type: "POST",
-                data: {'checkun':forupload},
-                success: function(unresponse) {
-				console.log('response from django '+ unresponse);
-				if (unresponse =='passed') {
-				return;
-					} else {
-                    //$(inputs).focus();
-                    var newusername = String(unresponse);				    
-				    console.log('username already in use, please choose other or use suggested '+unresponse);
-					//$(inputs).val('');
-					puname.val(newusername);
-					
-                return;
-				}}
-				
-				});
-				
-
-}
-function portraitemails() {
-console.log("emails");
-
-var emailinput = $("div.puemails").find("input");
-var emailinputval = emailinput.val();
-var inputsp = $("input[placeholder='password']");
-var emailvalidator =  /^([\w-(?=\.)])*\@{1}[a-zA-Z0-9\-\_]*\.[a-z]{2,3}/i;
-console.log(emailinputval);
-if (emailinputval.match(emailvalidator)) {
-//$(inputsp).focus();
-return;
-} else  {
-$(emailinput).focus();
-console.log("poka "+emailinput.val());
-console.log("email should be corrected");
-$(emailinput).val("");
-return;
-}
-return false;
-}
-function portraitpasswords() {
-console.log("passwords");
-    var inputsp = $("div.pupass").find("input");
-	var passw = inputsp.val();
-		var repass = $("div.purepass").find("input");
-				$(inputsp).css("color", "black");
-var passvalidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/i;
-
-console.log("password "+passw);
-if (passw.match(passvalidation)) {
-//$(repass).focus();
-return
-} else  {
-$(inputsp).focus();
-console.log("poka "+inputsp.val());
-console.log("password should be corrected");
-$(inputsp).val("");
-$(inputsp).css("color", "red");
-return;
-}
-	
-return false;
-}
-function portraitrepaswords() {
-console.log("repasswords");
-var reinputp = $("div.purepass").find("input");
-var un = reinputp.val();
-var passn1 = $("div.pupass").find("input");
-var passn = passn1.val();
-console.log("fist is repass "+un);
-console.log("second is pass "+passn);
-if (un == passn) {
-$(".button-wjs-account").attr("disabled", false);
-reinputp.css("color", "black");
-return;
-} else {
-$(reinputp).focus();
-console.log("enetered repass "+un);
-console.log("passwords don\'t match, please type again");
-$(".button-wjs-account").attr("disabled", true);
-(reinputp).val("");
-(reinputp).css("color", "red");
-}
-return false;
-console.log(un);
-}
-$(".button-wjs-portrait").click(function(event) {
-var firsty = $("div.pufirstnames").find("input");
-var fn = firsty.val();
-console.log("pay to" +fn);
-secondss = $("div.pulastnames").find("input");
-var ln =  secondss.val();
-console.log("pay to" +ln);
-var thirds = $("div.punames").find("input");
-var un = thirds.val();
-console.log("pay to" +un);
-var fourths = $("div.pupass").find("input");
-var passn = fourths.val();
-console.log("pay to" +passn);
-var sixtus = $("div.puemails").find("input");
-var emn = sixtus.val();
-console.log("pay to" +emn);
-var septus = $("div.purepass").find("input");
-var repassn = septus.val();
-	var csrftoken = getCookie("csrftoken");
-   
-	$.ajax({
-                url: "/mydiabprod/registerun/",
-                headers: {"X-CSRFToken":csrftoken},
-                type: "POST",
-                data: {"fn":fn, "ln":ln, "un":un, "passn":passn, "emn":emn},
-                success: function(regresponse) {
-				//var external = JSON.parse(data);
-                //external.map(function(x) {
-				//return console.log(x.testx);
-				console.log(regresponse);
-				alert(regresponse);
-				firsty.val("");
-				secondss.val("");
-				thirds.val("");
-				fourths.val("");
-				sixtus.val("");
-				septus.val("");
-				}
-		
-				});
-					return false;
-})
-
-function landscapefirstnames() {
-console.log("firstnames");
- var un = $("div.lafirstn").find("input");
- console.log(un.val());
-	//var inputs = $(this).find("input");
-   // console.log("hhhh "+un);
-return;
-}
-
-function landscapelastnames() {
-console.log("lastnames");
-var portraitlastname = $("div.lalastn").find("input");
-var un = portraitlastname.val();
-	//var inputs = $(this).find("input");
-    console.log("hhhh "+un);
-return false;
-}
-function landscapeusernames() {
-console.log("usernames");
-var puname = $("div.launm").find("input");
-var forupload = puname.val();
-console.log("welcome "+ forupload);
-var csrftoken = getCookie('csrftoken');
-	$.ajax({
-                url: "/mydiabprod/checkun/",
-                headers: {"X-CSRFToken":csrftoken},
-                type: "POST",
-                data: {'checkun':forupload},
-                success: function(unresponse) {
-				console.log('response from django '+ unresponse);
-				if (unresponse =='passed') {
-				return;
-					} else {
-                    //$(inputs).focus();
-                    var newusername = String(unresponse);				    
-				    console.log('username already in use, please choose other or use suggested '+unresponse);
-					//$(inputs).val('');
-					puname.val(newusername);
-					
-                return;
-				}}
-				
-				});
-				
-
-}
-function landscapemails() {
-console.log("emails");
-
-var emailinput = $("div.laemails").find("input");
-var emailinputval = emailinput.val();
-var inputsp = $("input[placeholder='password']");
-var emailvalidator =  /^([\w-(?=\.)])*\@{1}[a-zA-Z0-9\-\_]*\.[a-z]{2,3}/i;
-console.log(emailinputval);
-if (emailinputval.match(emailvalidator)) {
-//$(inputsp).focus();
-return;
-} else  {
-$(emailinput).focus();
-console.log("poka "+emailinput.val());
-console.log("email should be corrected");
-$(emailinput).val("");
-return;
-}
-return false;
-}
-function landscapepasswords() {
-console.log("passwords");
-    var inputsp = $("div.lapass").find("input");
-	var passw = inputsp.val();
-		var repass = $("div.larepass").find("input");
-				$(inputsp).css("color", "black");
-var passvalidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/i;
-
-console.log("password "+passw);
-if (passw.match(passvalidation)) {
-//$(repass).focus();
-return
-} else  {
-$(inputsp).focus();
-console.log("poka "+inputsp.val());
-console.log("password should be corrected");
-$(inputsp).val("");
-$(inputsp).css("color", "red");
-return;
-}
-	
-return false;
-}
-function landscaperepaswords() {
-console.log("repasswords");
-var reinputp = $("div.larepass").find("input");
-var un = reinputp.val();
-var passn1 = $("div.lapass").find("input");
-var passn = passn1.val();
-console.log("fist is repass "+un);
-console.log("second is pass "+passn);
-if (un == passn) {
-$(".button-wjs-account").attr("disabled", false);
-reinputp.css("color", "black");
-return;
-} else {
-$(reinputp).focus();
-console.log("enetered repass "+un);
-console.log("passwords don\'t match, please type again");
-$(".button-wjs-account").attr("disabled", true);
-(reinputp).val("");
-(reinputp).css("color", "red");
-}
-return false;
-console.log(un);
-}
-
-$(".button-wjs-landscape").click(function(event) {
-var firsty = $("div.lafirstn").find("input");
-var fn = firsty.val();
-console.log("pay to" +fn);
-secondss = $("div.lalastn").find("input");
-var ln =  secondss.val();
-console.log("pay to" +ln);
-var thirds = $("div.launm").find("input");
-var un = thirds.val();
-console.log("pay to" +un);
-var fourths = $("div.lapass").find("input");
-var passn = fourths.val();
-console.log("pay to" +passn);
-var sixtus = $("div.laemails").find("input");
-var emn = sixtus.val();
-console.log("pay to" +emn);
-var septus = $("div.larepass").find("input");
-var repassn = septus.val();
-	var csrftoken = getCookie("csrftoken");
-   
-	$.ajax({
-                url: "/mydiabprod/registerun/",
-                headers: {"X-CSRFToken":csrftoken},
-                type: "POST",
-                data: {"fn":fn, "ln":ln, "un":un, "passn":passn, "emn":emn},
-                success: function(regresponse) {
-				//var external = JSON.parse(data);
-                //external.map(function(x) {
-				//return console.log(x.testx);
-				console.log(regresponse);
-				alert(regresponse);
-				firsty.val("");
-				secondss.val("");
-				thirds.val("");
-				fourths.val("");
-				sixtus.val("");
-				septus.val("");
-				}
-		
-				});
-					return false;
-})
 
 </script>

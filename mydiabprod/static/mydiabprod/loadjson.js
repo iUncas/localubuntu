@@ -265,8 +265,138 @@ function fullreadernext(texty,constructionid) {
 
 
 
+
+function firstnames() {
+console.log("firstnames");
+ var un = $("input[placeholder='firstname']").val();
+	//var inputs = $(this).find("input");
+    console.log("hhhh "+un);
+return;
+}
+function lastnames() {
+console.log("lastnames");
+var un = $("input[placeholder='lastname']").val();
+	//var inputs = $(this).find("input");
+    console.log("hhhh "+un);
+return false;
+}
+function usernames() {
+console.log("usernames");
+var usernamenr = $("input[placeholder='username']").val();
+//var takeinput = $("input[placeholder='username']");
+var takeinput = $("div.usernames").find("input");
+var emailinput = $("input[placeholder='email']");
+    console.log("your username "+usernamenr);
+	var csrftoken = getCookie('csrftoken');
+	if ( usernamenr == "") {
+		return;
+	} else {
+	$.ajax({
+                url: "/mydiabprod/checkun/",
+                headers: {"X-CSRFToken":csrftoken},
+                type: "POST",
+                data: {'checkun':usernamenr},
+                success: function(unresponse) {
+				console.log('response from django '+ unresponse);
+				if (unresponse =='passed') {
+					//$('[data-toggle="tooltip1"]').tooltip("destroy");
+				return;
+					} else {
+				    $('[data-toggle="tooltip1"]').tooltip();
+                    var newusername = String(unresponse);				    
+				    console.log('username already in use, please choose other or use suggested '+unresponse);
+					$(takeinput).val('');
+					$(takeinput).val(newusername);
+					$(takeinput).focus();
+					console.log("taken");
+					return false;
+					
+				}}
+				
+				});
+	}
+return false;
+}
+function emails() {
+console.log("emails");
+
+var emailinput = $("input[placeholder='email']");
+var emailinputval = $("input[placeholder='email']").val();
+var inputsp = $("input[placeholder='password']");
+var emailvalidator =  /^([\w-(?=\.)])*\@{1}[a-zA-Z0-9\-\_]*\.[a-z]{2,3}/i;
+console.log(emailinputval);
+if (emailinputval.match(emailvalidator)) {
+	//$('[data-toggle="tooltip2"]').tooltip("destroy");
+//$(inputsp).focus();
+return;
+} else if ( emailinputval == "") {
+return false;
+} else 	{
+	$('[data-toggle="tooltip2"]').tooltip();
+$(emailinput).focus();
+console.log("poka "+emailinput.val());
+console.log("email should be corrected");
+$(emailinput).val("");
+return false;
+}
+return false;
+}
+function passwords() {
+	
+console.log("passwords");
+	    var inputsp = $("input[placeholder='password']");
+		var repass = $("input[placeholder='retype password']");
+				$(inputsp).css("color", "black");
+var passvalidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/i;
+var passw = $(inputsp).val();
+console.log("password "+passw);
+if (passw == "") {
+	//$('[data-toggle="tooltip3"]').tooltip();
+	return;
+ } else if (passw.match(passvalidation)) {
+//$(repass).focus();
+//$('[data-toggle="tooltip3"]').tooltip("destroy");
+return;
+} else  {
+	  $('[data-toggle="tooltip3"]').tooltip();
+	 // $("#passwords").tooltip("toggle");
+$(inputsp).focus();
+console.log("poka "+inputsp.val());
+console.log("password should be corrected");
+$(inputsp).val("");
+$(inputsp).css("color", "red");
+return;
+}
+	
+return false;
+}
+function repaswords() {
+console.log("repasswords");
+var un = $("input[placeholder='retype password']").val();
+var reinputp = $("input[placeholder='retype password']");
+var passn = $("input[placeholder='password']").val();
+console.log("fist is repass "+un);
+console.log("second is pass "+passn);
+   if (un == "") {
+	   return false;
+  } else if (un == passn) {
+$(".button-wjs-account").attr("disabled", false);
+$(reinputp).css("color", "black");
+return;
+} else {
+$(reinputp).focus();
+console.log("enetered repass "+un);
+console.log("passwords don\'t match, please type again");
+$(".button-wjs-account").attr("disabled", true);
+$(reinputp).val("");
+$(reinputp).css("color", "red");
+}
+return false;
+}
+
 $(".button-wjs-account").click(function(event) {
-var firsty = $("div.firstnames").find("input");
+	printJS('topcontainer', 'html');
+/*var firsty = $("div.firstnames").find("input");
 var fn = $(firsty).val();
 console.log("pay to" +fn);
 secondss = $("div.lastnames").find("input");
@@ -304,6 +434,341 @@ var repassn = $(septus).val();
 				$(septus).val("");
 				}
 		
+				});*/
+					return false;
+})
+
+function portraitfirstnames() {
+console.log("firstnames");
+ var un = $("div.pufirstnames").find("input");
+ console.log(un.val());
+	//var inputs = $(this).find("input");
+   // console.log("hhhh "+un);
+return;
+}
+
+function portraitlastnames() {
+console.log("lastnames");
+var portraitlastname = $("div.pulastnames").find("input");
+var un = portraitlastname.val();
+	//var inputs = $(this).find("input");
+    console.log("hhhh "+un);
+return false;
+}
+function portraitusernames() {
+console.log("usernames");
+var puname = $("div.punames").find("input");
+var forupload = puname.val();
+console.log("welcome "+ forupload);
+var csrftoken = getCookie('csrftoken');
+if ( forupload == "") {
+	return false;
+} else {
+	           $.ajax({
+                url: "/mydiabprod/checkun/",
+                headers: {"X-CSRFToken":csrftoken},
+                type: "POST",
+                data: {'checkun':forupload},
+                success: function(unresponse) {
+				console.log('response from django '+ unresponse);
+				if (unresponse =='passed') {
+				return false;
+					} else {
+				var newusername = String(unresponse);				    
+				    console.log('username already in use, please choose other or use suggested '+unresponse);
+					puname.val('');
+					puname.val(newusername);
+					puname.focus();
+					console.log("taken");
+					return false;
+				}}
+				
+				});
+                   }
+				
+
+}
+function portraitemails() {
+console.log("emails");
+
+var emailinput = $("div.puemails").find("input");
+var emailinputval = emailinput.val();
+var inputsp = $("input[placeholder='password']");
+var emailvalidator =  /^([\w-(?=\.)])*\@{1}[a-zA-Z0-9\-\_]*\.[a-z]{2,3}/i;
+console.log(emailinputval);
+if ( emailinputval == "") {
+	return false;
+} else if (emailinputval.match(emailvalidator)) {
+//$(inputsp).focus();
+return;
+} else  {
+$(emailinput).focus();
+console.log("poka "+emailinput.val());
+console.log("email should be corrected");
+$(emailinput).val("");
+return;
+}
+return false;
+}
+function portraitpasswords() {
+console.log("passwords");
+    var inputsp = $("div.pupass").find("input");
+	var passw = inputsp.val();
+		var repass = $("div.purepass").find("input");
+				$(inputsp).css("color", "black");
+var passvalidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/i;
+
+console.log("password "+passw);
+if ( passw == "" ) {
+	return false;
+} else if (passw.match(passvalidation)) {
+//$(repass).focus();
+return
+} else  {
+$(inputsp).focus();
+console.log("poka "+inputsp.val());
+console.log("password should be corrected");
+$(inputsp).val("");
+$(inputsp).css("color", "red");
+return;
+}
+	
+return false;
+}
+function portraitrepaswords() {
+console.log("repasswords");
+var reinputp = $("div.purepass").find("input");
+var un = reinputp.val();
+var passn1 = $("div.pupass").find("input");
+var passn = passn1.val();
+console.log("fist is repass "+un);
+console.log("second is pass "+passn);
+if ( un == "" ) {
+	return false;
+    } else if (un == passn) {
+$(".button-wjs-account").attr("disabled", false);
+reinputp.css("color", "black");
+return;
+} else {
+$(reinputp).focus();
+console.log("enetered repass "+un);
+console.log("passwords don\'t match, please type again");
+$(".button-wjs-account").attr("disabled", true);
+(reinputp).val("");
+(reinputp).css("color", "red");
+}
+return false;
+console.log(un);
+}
+$(".button-wjs-portrait").click(function(event) {
+var firsty = $("div.pufirstnames").find("input");
+var fn = firsty.val();
+console.log("pay to" +fn);
+secondss = $("div.pulastnames").find("input");
+var ln =  secondss.val();
+console.log("pay to" +ln);
+var thirds = $("div.punames").find("input");
+var un = thirds.val();
+console.log("pay to" +un);
+var fourths = $("div.pupass").find("input");
+var passn = fourths.val();
+console.log("pay to" +passn);
+var sixtus = $("div.puemails").find("input");
+var emn = sixtus.val();
+console.log("pay to" +emn);
+var septus = $("div.purepass").find("input");
+var repassn = septus.val();
+	var csrftoken = getCookie("csrftoken");
+   
+	$.ajax({
+                url: "/mydiabprod/registerun/",
+                headers: {"X-CSRFToken":csrftoken},
+                type: "POST",
+                data: {"fn":fn, "ln":ln, "un":un, "passn":passn, "emn":emn},
+                success: function(regresponse) {
+				//var external = JSON.parse(data);
+                //external.map(function(x) {
+				//return console.log(x.testx);
+				console.log(regresponse);
+				alert(regresponse);
+				firsty.val("");
+				secondss.val("");
+				thirds.val("");
+				fourths.val("");
+				sixtus.val("");
+				septus.val("");
+				}
+		
 				});
 					return false;
 })
+
+function landscapefirstnames() {
+console.log("firstnames");
+ var un = $("div.lafirstn").find("input");
+ console.log(un.val());
+	//var inputs = $(this).find("input");
+   // console.log("hhhh "+un);
+return;
+}
+
+function landscapelastnames() {
+console.log("lastnames");
+var portraitlastname = $("div.lalastn").find("input");
+var un = portraitlastname.val();
+	//var inputs = $(this).find("input");
+    console.log("hhhh "+un);
+return false;
+}
+function landscapeusernames() {
+console.log("usernames");
+var puname = $("div.launm").find("input");
+var forupload = puname.val();
+console.log("welcome "+ forupload);
+var csrftoken = getCookie('csrftoken');
+if ( forupload == "" ) {
+	return false;
+} else {
+	$.ajax({
+                url: "/mydiabprod/checkun/",
+                headers: {"X-CSRFToken":csrftoken},
+                type: "POST",
+                data: {'checkun':forupload},
+                success: function(unresponse) {
+				console.log('response from django '+ unresponse);
+				if (unresponse =='passed') {
+				return;
+					} else {
+				var newusername = String(unresponse);				    
+				    console.log('username already in use, please choose other or use suggested '+unresponse);
+					puname.val('');
+					puname.val(newusername);
+					puname.focus();
+					console.log("taken");
+					return false;
+				}}
+				
+				});
+            }
+
+}
+function landscapemails() {
+console.log("emails");
+
+var emailinput = $("div.laemails").find("input");
+var emailinputval = emailinput.val();
+var inputsp = $("input[placeholder='password']");
+var emailvalidator =  /^([\w-(?=\.)])*\@{1}[a-zA-Z0-9\-\_]*\.[a-z]{2,3}/i;
+console.log(emailinputval);
+if ( emailinputval == "" ) {
+	return false;
+    } else if (emailinputval.match(emailvalidator)) {
+//$(inputsp).focus();
+return;
+} else  {
+$(emailinput).focus();
+console.log("poka "+emailinput.val());
+console.log("email should be corrected");
+$(emailinput).val("");
+return;
+}
+return false;
+}
+function landscapepasswords() {
+console.log("passwords");
+    var inputsp = $("div.lapass").find("input");
+	var passw = inputsp.val();
+		var repass = $("div.larepass").find("input");
+				$(inputsp).css("color", "black");
+var passvalidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/i;
+
+console.log("password "+passw);
+if ( passw == "" ) {
+	return false;
+    } else if (passw.match(passvalidation)) {
+//$(repass).focus();
+return
+} else  {
+$(inputsp).focus();
+console.log("poka "+inputsp.val());
+console.log("password should be corrected");
+$(inputsp).val("");
+$(inputsp).css("color", "red");
+return;
+}
+	
+return false;
+}
+function landscaperepaswords() {
+console.log("repasswords");
+var reinputp = $("div.larepass").find("input");
+var un = reinputp.val();
+var passn1 = $("div.lapass").find("input");
+var passn = passn1.val();
+console.log("fist is repass "+un);
+console.log("second is pass "+passn);
+if ( un == "") {
+	return false;
+    } else if (un == passn) {
+$(".button-wjs-account").attr("disabled", false);
+reinputp.css("color", "black");
+return;
+} else {
+$(reinputp).focus();
+console.log("enetered repass "+un);
+console.log("passwords don\'t match, please type again");
+$(".button-wjs-account").attr("disabled", true);
+(reinputp).val("");
+(reinputp).css("color", "red");
+}
+return false;
+console.log(un);
+}
+
+$(".button-wjs-landscape").click(function(event) {
+var firsty = $("div.lafirstn").find("input");
+var fn = firsty.val();
+console.log("pay to" +fn);
+secondss = $("div.lalastn").find("input");
+var ln =  secondss.val();
+console.log("pay to" +ln);
+var thirds = $("div.launm").find("input");
+var un = thirds.val();
+console.log("pay to" +un);
+var fourths = $("div.lapass").find("input");
+var passn = fourths.val();
+console.log("pay to" +passn);
+var sixtus = $("div.laemails").find("input");
+var emn = sixtus.val();
+console.log("pay to" +emn);
+var septus = $("div.larepass").find("input");
+var repassn = septus.val();
+	var csrftoken = getCookie("csrftoken");
+   
+	$.ajax({
+                url: "/mydiabprod/registerun/",
+                headers: {"X-CSRFToken":csrftoken},
+                type: "POST",
+                data: {"fn":fn, "ln":ln, "un":un, "passn":passn, "emn":emn},
+                success: function(regresponse) {
+				//var external = JSON.parse(data);
+                //external.map(function(x) {
+				//return console.log(x.testx);
+				console.log(regresponse);
+				alert(regresponse);
+				firsty.val("");
+				secondss.val("");
+				thirds.val("");
+				fourths.val("");
+				sixtus.val("");
+				septus.val("");
+				}
+		
+				});
+					return false;
+})
+
+function peska() {
+	console.log("alert for user");
+	$("div.usernames").find("input").focus();
+}
