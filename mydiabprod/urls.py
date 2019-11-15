@@ -8,7 +8,7 @@ from . import views
 
 app_name = 'mydiabprod'
 urlpatterns = [
-    #path('', views.index, name='index'),
+    path('', views.login, name='login'),
     #path('<str:question>/', views.detail, name='detail'),
     #path('', views.index, name='index'),
     path('results/', views.results, name='results'),

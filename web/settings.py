@@ -26,7 +26,9 @@ SECRET_KEY = 'e5)7-&qo9$r@(dksphm%ytfkii2!auebhp5)ihn%lkso3s-!3+'
 #DEBUG = False
 DEBUG = True
 #ALLOWED_HOSTS = ['ec2-3-121-133-130.eu-central-1.compute.amazonaws.com']
-ALLOWED_HOSTS = ['192.168.2.50']
+#ALLOWED_HOSTS = ['192.168.2.50']
+ALLOWED_HOSTS = ['it-divein.com']
+#ALLOWED_HOSTS = ['ec2-3-10-22-9.eu-west-2.compute.amazonaws.com']
 #ALLOWED_HOSTS = ['192.168.0.15']
 # Application definition
 
@@ -80,7 +82,7 @@ DATABASES = {
         'NAME': 'unkas22',
         'USER': 'unkas',
         'PASSWORD': 'wojtek29',
-        'HOST': 'localhost',
+        'HOST': 'unkas-1.chvlpymffcqz.eu-west-2.rds.amazonaws.com',
         'PORT': '3306',
     }
 }

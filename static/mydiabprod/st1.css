@@ -1,0 +1,12 @@
+body {
+    color: green;
+}
+table#table4 {
+    border-collapse: collapse;
+    /*border: 1px solid black;*/
+    width: 260px;
+    font-size: 6px;
+    font-family: "Arial";
+    padding-left: 150px;
+    }
+

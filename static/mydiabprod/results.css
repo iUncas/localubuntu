@@ -1,0 +1,215 @@
+
+.firx { 
+    width:95%; 
+	display:block;
+    padding-top:10px; 
+    padding-left:10px; 
+    padding-bottom:10px; 
+    background-color:#eff3f9; 
+    font-size:16px; 
+    line-height:10px;
+}
+.afirx{
+	display:block;
+}
+.portraisearch { 
+    display: none;
+    background-color:#eff3f9; 
+    /*width:98%; */
+    padding-top:25px; 
+    padding-left:5px; 
+	padding-right:5px;
+    padding-bottom:15px; 
+    font-size:14px;
+}
+.aportraisearch {
+	display: none;
+    }
+.landscapesearch { 
+    display: none;
+    width:95%; 
+    padding-top:10px; 
+    padding-left:5px; 
+    padding-bottom:15px; 
+    background-color:#eff3f9; 
+    font-size:13px;
+}
+.alandscapesearch {
+	display: none;
+    }
+.button-wjs-search {
+    background-color: white; /* Green */
+    border: 1px solid #afc2ce;
+    color: #263a5b;
+    /*float:left;*/
+    padding-top: 10px;
+	padding-bottom: 13px;
+	padding-left:10px;
+	padding-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+.button-wjs-search:hover {
+      background-color: #e8eef7;
+	  border: 0.1px solid #ced3db;
+	  }
+.button-wjs-blue {
+    background-color: white; /* Green */
+    border: 1px solid #afc2ce;
+    color: #263a5b;
+    /*float:left;*/
+    padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left:16px;
+	padding-right: 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+.button-wjs-blue:hover {
+      background-color: #e8eef7;
+	  border: 0.1px solid #ced3db;
+	  }
+.button-wjs-account {
+    background-color: #284660; /* Green */
+	color: white;
+    border: 1px solid #afc2ce;
+    /*color: #263a5b;*/
+    /*float:left;*/
+    padding-top: 10px;
+	padding-bottom: 13px;
+	padding-left:15px;
+	padding-right: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+.button-wjs-account:hover {
+      background-color: #e8eef7;
+	  border: 0.1px solid #ced3db;
+	  }
+
+.button-wjs-landscape {
+    background-color: #284660; /* Green */
+	color: white;
+    border: 1px solid #afc2ce;
+    /*color: #263a5b;*/
+    /*float:left;*/
+    padding-top: 10px;
+	padding-bottom: 13px;
+	padding-left:15px;
+	padding-right: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+.button-wjs-landscape:hover {
+      background-color: #e8eef7;
+	  border: 0.1px solid #ced3db;
+	  }
+.button-wjs-account:hover {
+      background-color: #e8eef7;
+	  border: 0.1px solid #ced3db;
+	  }
+
+.button-wjs-portrait {
+    background-color: #284660; /* Green */
+	color: white;
+    border: 1px solid #afc2ce;
+    /*color: #263a5b;*/
+    /*float:left;*/
+    padding-top: 10px;
+	padding-bottom: 13px;
+	padding-left:15px;
+	padding-right: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+.button-wjs-portrait:hover {
+      background-color: #e8eef7;
+	  border: 0.1px solid #ced3db;
+	  }
+.shadow-sm {
+	background-color: white;
+}
+.shadow-sm:hover {
+background-color: #c5ddcb;
+}
+#searchinput1 {
+	height:35px;
+	width:350px;
+}
+@media (orientation: portrait) {
+.firx {
+    display: none;
+	}
+.afirx{
+	display: none;
+}
+.portraisearch {
+    display: block;
+	}
+.aportraisearch {
+	display: block;
+}
+#sselector2 {
+	width:60%;
+}
+#searchinput2 {
+	width:75%;
+	height:30px;
+}
+
+.button-wjs-search {
+	padding-top:2px;
+	padding-bottom:2px;
+	font-size: 14px;
+}
+}
+@media (orientation: landscape) and (max-width: 750px)  {
+.firx {
+    display: none;
+	}
+.afirx{
+	display: none;
+}
+.portraisearch {
+    display: none;
+	}
+.aportraisearch {
+    display: none;
+    }
+.landscapesearch {
+    display: block;
+	}
+.alandscapesearch {
+	display: block;
+    }
+	#sselector3 {
+	width:95%;
+	font-size:14px;
+}
+#searchinput3 {
+	width:115px;
+	height:32px;
+}
+.button-wjs-search {
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-left:12px;
+	padding-right:12px;
+	font-size: 14px;
+}
+}

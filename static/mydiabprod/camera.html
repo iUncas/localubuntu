@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Pers!</title>
+	<!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->
+ 
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>   -->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+<script type="text/javascript">
+
+</script>
+<style>
+label.cameraButton {
+  display: inline-block;
+  margin: 1em 0;
+
+  /* Styles to make it look like a button */
+  padding: 0.5em;
+  border: 2px solid #666;
+  border-color: #EEE #CCC #CCC #EEE;
+  background-color: #DDD;
+}
+
+/* Look like a clicked/depressed button */
+label.cameraButton:active {
+  border-color: #CCC #EEE #EEE #CCC;
+}
+
+/* This is the part that actually hides the 'Choose file' text box for camera inputs */
+label.cameraButton input[accept*="camera"] {
+  display: none;
+}
+</style>
+  <title>Nice image capture button</title>
+</head>
+
+<body>
+<br><br>
+  <label class="cameraButton">Take a picture
+    <input type="file" accept="image/*;capture=camera">
+  </label>
+</body>
+
+</html>

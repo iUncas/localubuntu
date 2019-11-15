@@ -1,0 +1,473 @@
+body {
+    width:100%;
+	background-color: #eff3f9;
+	font-family: Verdana;
+	font-size: 12px;
+	}
+.navbar {
+    padding-left:16%;
+	padding-right:16%;
+    width:100%; 
+	height:9%; 
+	background-color: #23466d; /* 23466d blue - 34967c;green*/
+}
+.navbarphoto {
+	cursor: pointer;
+}
+#divinnav1 {
+    margin-top:5px;
+	margin-bottom:3px; 
+	display:inline;
+	}
+#prosearch {
+	cursor: pointer;
+}
+.innerimage {
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button-wjs-red {
+  background-color: white; /* Green */
+  border: 1px solid #C288A3;
+  color: #C288A3;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+  border-radius: 4px;
+  width: 70px;
+}
+.button-wjs-red:hover {
+      background-color: #f7e8eb;
+	  border: 1px solid #f7e8eb;
+	  }
+.button-wjs-green {
+  background-color: white; /* Green */
+  border: 1px solid #5CB199;
+  width: 90px;
+  color: #5CB199;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+  border-radius: 4px;
+  width: 70px;
+}
+.button-wjs-green:hover {
+      background-color: #5CB199;
+	  border: 1px solid #5CB199;
+	  }
+#topcontainer {
+    width: 100%;
+	}
+#modalimagex {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+/* Modal Content (image) */ 
+.perst {
+  margin: auto;
+  display: block;
+  width:auto;
+  height: 90%;
+  /*max-width: 700px;*/
+}
+.modalsettings {
+   position: relative;
+   display: block;
+   right:5px;
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+
+.modalsettingscontent {
+  display: none;
+  position: absolute;
+     right:2px;
+	 padding-top:10px;
+	 font-size: 16px;
+  background-color: #f9f9f9;
+  width: 120px;
+  height:200px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  opacity: 0.95;
+}
+/* Caption of Modal Image */
+#captionx {
+  margin: auto;
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+/* Add Animation */ 
+.modal-contentv  {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+/* The Close Button */ 
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.close:hover, .close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#firstcontainer {
+    background-color: white;
+    width: 67%;
+	min-height: 100%;
+	margin-top: 1rem;
+	}
+img {
+    max-width: 99%;
+	max-height: 99%;
+	}
+img:hover {opacity: 0.7;}
+#innertextcontainer {
+  border-top:0.3px solid #c3cfdd;
+  /*border-bottom:0.3px solid #d5dee8;*/
+}
+/*#innertextcontainer1 {
+border-bottom:0.1px solid #d5dee8;
+}*/
+.prem {
+    display: block; /* Hidden by default */
+    position: absolute; /* Stay in place */
+	top: 50%;
+	padding-left: 1%;
+    z-index: 1; /* Sit on top */
+    /*border-style: solid;*/
+    /*padding-top:50px; Location of the box */
+    max-width: 100%; /* Full width */
+    max-height: 100%; /* Full height */
+    /*overflow: auto; *//* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+.modalzz_content {
+    background-color: #666363;
+	padding-top: 6px;
+	padding-bottom:12px;
+	padding-left:6px;
+	
+    /*padding:8px;*/
+	/*line-height: 18px;*/
+    /*border: 0.5px solid #cdd2d8;*/
+    width: 140%;
+    max-height: 100%;
+    /*border-radius: 4px;*/
+    opacity: 0.6;
+    font: tahoma, sans-serif;
+    font-size: 18px;
+    color: #f7fcfa;
+}
+.topmodals {
+	 width:35px;
+	height:30px;
+	padding-left:4px;
+	}
+#maincover {
+    /*height: 300px;*/
+    width: 100%;
+    content: url('/static/mydiabprod/main.jpg');
+    }
+	
+#pagingatortotal {
+    padding-top:2px; 
+    padding-left:2px;
+	font-size:14px;
+	}
+
+
+.trashy {
+    width: 20px;
+	height: 20px;
+	cursor: pointer;
+	}
+.publicpadlock {
+    width: 24px;
+	height: 24px;
+	cursor: pointer;
+	}
+.privpadlock {
+    width: 24px;
+	height: 24px;
+	cursor: pointer;
+	}
+.locky {
+    width:24px;
+	height: 24px;
+	}
+.unlocky {
+    width:24px;
+	height: 24px;
+}
+
+.textareacomment {
+     border-style: none; 
+	 font-size:14px; 
+	 width:100%; 
+	 height:7%; 
+	 margin-bottom:15px;
+	 padding-left:10px;
+	 }
+@media (orientation: portrait) {
+    @media (max-width: 500px) { /*sony xperia xz*/
+        #maincover {
+            text-align: center;
+            content: url('/static/mydiabprod//main_portrait.jpg');
+        }
+    .navbar {
+	    height:15%; 
+        padding-left:1%;
+	    padding-right:1%;
+    }
+        img {
+            text-align: center;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        #firstcontainer {
+            background-color: white;
+            width: 99%;
+	        min-height: 100%;
+	        margin-top: 1rem;
+        }
+		#settings_navbar {
+		    width: 70%;
+			height:70%;
+			}
+		
+        .prem {
+            display: block; /* Hidden by default */
+            position: absolute; /* Stay in place */
+            top: 480px;
+            left: 30px;
+            z-index: 200000; /* Sit on top */
+            /*border-style: solid;*/
+            padding-top:50px; Location of the box */
+            max-width: 100%; /* Full width */
+            max-height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+        }
+        .modalzz_content {
+		   font-size:14px;
+		   padding-bottom: 10px;
+		   padding-left:10px;
+           width: 130px;
+        }
+        .topmodals {
+    width:28px;
+	height:28px;
+	}
+        .note-video-clip {
+            width: auto;
+            height: auto;
+        }
+		.button-wjs-green  {
+		    padding-left: 2px;
+			padding-right: 2px;
+			padding-top: 5px;
+            /*display: inline-block;*/
+            font-size: 14px;
+            cursor: pointer;
+			  text-align: center;
+			  width: 40px;
+	height: 40px;
+		}
+    .modalsettingscontent {
+        right:5px;
+        width: 120px;
+        height:200px;
+   }
+	.button-wjs-red  {
+		    padding-left: 2px;
+			padding-right: 2px;
+			padding-top: 5px;
+            /*display: inline-block;*/
+            font-size: 14px;
+            cursor: pointer;
+			  text-align: center;
+			  width: 40px;
+			  height: 40px;
+        }
+   #pagingatortotal {
+   font-size:12px;
+   }
+   .trashy {
+    width: 18px;
+	height: 18px;
+	}
+	.publicpadlock {
+    width: 19px;
+	height: 19px;
+	}
+.privpadlock {
+    width: 19px;
+	height: 19px;
+	}
+
+    }
+	}
+@media (orientation: landscape) and (max-width: 1000px) {
+    .navbar {
+        width:100%; 
+        height:18%; 
+        padding-left:1%;
+	    padding-right:1%;
+    }
+	#divinnav1 {
+        margin-top:1px;
+	    display:inline;
+	}
+        #maincover {
+            content: url('/static/mydiabprod/main_landscape.jpg');
+        }
+        #firstcontainer {
+             background-color: white;
+             width: 98%;
+	         min-height: 100%;
+	         margin-top: 1rem;
+	    }
+		#settings_navbar {
+		    width: 50%;
+			height: 50%;
+			}
+        .prem {
+            display: block; /* Hidden by default */
+            position: absolute; /* Stay in place */
+            top: 150px;
+            left: 60px;
+            z-index: 200000; /* Sit on top */
+            /*border-style: solid;*/
+            padding-top:50px; Location of the box */
+            max-width: 100%; /* Full width */
+            max-height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+        }
+        .modalzz_content {
+		   font-size:14px;
+		   padding-left:10px;
+           width: 130px;
+        }
+        .topmodals {
+    width:30px;
+	height:28px;
+	}
+        .note-video-clip {
+	        width: auto;
+		    height: auto;
+	    }
+		.modalsettingscontent {
+        right:5px;
+        width: 120px;
+        height:200px;
+   }
+   #pagingatortotal {
+   font-size:12px;
+   }
+	.trashy {
+    width: 18px;
+	height: 18px;
+	}
+	.publicpadlock {
+    width: 19px;
+	height: 19px;
+	}
+.privpadlock {
+    width: 19px;
+	height: 19px;
+	}
+    }
+
+
+/*@media only screen and (max-width: 700px){
+  .perst {
+    width: 100%;
+  }
+}*/
+.fontisx {
+    font-size: 16px;
+	font-family: Verdana;
+	line-height: 14px;
+	}
+
+/*new part for image onclick*/ /* The Modal (background) */ 
+ .note-video-clip {
+	        width: auto;
+		    height: auto;
+	    }
+
+		.button-wjs-grey {
+  background-color: white; /* Green */
+  border: 1px solid #263a5b;
+  color: #263a5b;
+  float: right;
+  padding-top: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+  border-radius: 4px;
+  width: 70px;
+}
+.button-wjs-grey:hover {
+      background-color: #f7e8eb;
+	  border: 1px solid #f7e8eb;
+	  }
+}

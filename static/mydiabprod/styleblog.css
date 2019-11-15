@@ -1,0 +1,88 @@
+body {
+    width:100%;
+	}
+/*.row {
+   	padding-righ: 0px;*/ .col-3 {
+    /*background-color: #99b3ff;*/
+	background-color: #ffffff;
+	width:100%;
+	padding-top: 5px; /*	padding-left: 5px;
+	padding-right: 5px;*/66
+	font-family: Verdana;
+	font-size: 12px;
+	/*float: left;*/
+}
+.card {
+    padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+.top-span {
+    width: 100%;
+    padding-top: 15px;
+	}
+.card-img-top {
+    padding-top: 15px;
+	}
+/*#iframe_preview {
+    display:none;
+    background-color: red;
+	width: 300px;
+    height:400px;
+	}*/
+.modalx {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 200000; /* Sit on top */
+    /*border-style: solid;*/
+    padding-top:50px; /* Location of the box */
+    padding-left:200px;
+    left:50px;
+   /* top: 120px;*/
+    max-width: 100%; /* Full width */
+    max-height: 100% /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+.modalx_content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 0.5px solid #cdd2d8;
+    width: 650px;
+    max-height: 100%;
+	radius: 14px;
+}	
+.modaly {
+    display: none; /* Hidden by default */
+    //float:right;
+    position: absolute; /* Stay in place */
+    z-index: 200000; /* Sit on top */
+    /*border-style: solid;*/
+    padding-top:50px; /* Location of the box */
+    right:50px;
+    /*left:50px;*/
+   /* top: 120px;*/
+    max-width: 100%; /* Full width */
+    max-height: 100% /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+.modaly_content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 0.5px solid #cdd2d8;
+    width: 250px;
+    max-height: 100%;
+	radius: 14px;
+}	
+.note-popover {
+    display:none;
+}
+.note-editable { font-size: 16;
+}
+img { padding: 2px;
+}
