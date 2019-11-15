@@ -31,10 +31,7 @@ import csv
 #def index(request):
     #return HttpResponse(template.render(contex, request))
 def index(request):
-    context = 'ojoj'
-    template = loader.get_template('mydiabprod/index2.html')
-    return HttpResponse(template.render(contex, request))
-
+	return render(request, 'mydiabprod/index2.html')
 def results(request):
     if request.method == 'POST':
         qq=Mydiabusers.objects.filter(UserName=request.POST.get('username')).filter(Password=request.POST.get('password'))
