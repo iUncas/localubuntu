@@ -30,6 +30,10 @@ import re
 import csv
 #def index(request):
     #return HttpResponse(template.render(contex, request))
+def index(request):
+    context = 'ojoj'
+    template = loader.get_template('mydiabprod/index2.html')
+    return HttpResponse(template.render(contex, request))
 
 def results(request):
     if request.method == 'POST':
