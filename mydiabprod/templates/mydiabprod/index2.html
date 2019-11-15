@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="scripts/js/1.js"></script>
+
 	<script type="text/javascript"> 
 	
 $(document).ready(function() {
@@ -21,7 +22,8 @@ $("#firsty").text("Polyurethane floor screed");
 
 });
  </script>
-	<link rel="stylesheet" href="scripts/css/divestyle_cjb.css">
+ {% load static %}
+	<link rel="stylesheet" href="{% static 'scripts/css/divestyle_cjb.css' %}">
 	<style>
 	@media (orientation: landscape) {
 	 @media (max-width: 1000px) {
