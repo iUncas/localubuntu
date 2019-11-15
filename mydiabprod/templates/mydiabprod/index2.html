@@ -12,7 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="scripts/js/1.js"></script>
-
 	<script type="text/javascript"> 
 	
 $(document).ready(function() {
@@ -22,8 +21,8 @@ $("#firsty").text("Polyurethane floor screed");
 
 });
  </script>
- {% load static %}
-	<link rel="stylesheet" href="{% static 'scripts/css/divestyle_cjb.css' %}">
+  {% load static %}
+	<link rel="stylesheet"  href="{% static 'mydiabprod/css/divestyle_cjb.css' %}">
 	<style>
 	@media (orientation: landscape) {
 	 @media (max-width: 1000px) {
@@ -83,7 +82,7 @@ $("#firsty").text("Polyurethane floor screed");
     <div class="col-5" >
 	
 	<br>
-	  <img id="logotype" src="image/logotype_new.jpg" alt="Italian Trulli" onclick="hometab()" />
+	  <img id="logotype" src='{% static "mydiabprod/logotype_new.jpg" %}'alt="Italian Trulli" onclick="hometab()" />
 	  <br><br><br>
 	  <script>
 	function hometab() {
@@ -98,7 +97,7 @@ $("#firsty").text("Polyurethane floor screed");
 	<p> Latest from CJB Resin Flooring </p>
 	</div>
 	  <div id="firstcard" onclick="poka()" class="card" style="width: 18rem">
-  <img class="card-img-top" src="image/optional8.jpg"  alt="Self-smoothing epoxy resin floor1" />
+  <img class="card-img-top" src='{% static "mydiabprod/optional8.jpg" %}' alt="Self-smoothing epoxy resin floor1" />
   <div class="card-body">
     <p class="card-text">Preparation of polyurethane resin system - <b style="color:red">STEP BY STEP</b></p>
   </div>
@@ -115,7 +114,7 @@ $("#firsty").text("Polyurethane floor screed");
        }
 	</script>
 <br> <div class="card" id="secondcard" onclick="poka1()" style="width: 18rem;">
-  <img class="card-img-top" src="image/startpage_largey.jpg"  alt="Polyurethane floor screed2" />
+  <img class="card-img-top" src='{% static "mydiabprod/startpage_largey.jpg" %}' alt="Polyurethane floor screed2" />
   <div class="card-body">
     <p class="card-text">Self-smoothing epoxy resin floor</p>
   </div>
@@ -133,7 +132,7 @@ $("#firsty").text("Polyurethane floor screed");
 	</script>
 <br>
 <div class="card" id="thirdcard" onclick="poka2()" style="width: 18rem;">
-  <img class="card-img-top" src="image/floor4.PNG"  alt="Polyurethane floor screed3" />
+  <img class="card-img-top" src='{% static "mydiabprod/floor4.png" %}' alt="Polyurethane floor screed3" />
   <div class="card-body">
     <!--<p class="card-text" id="firsty" >Polyurethane floor screed </p>-->
 	<p class="card-text" id="firsty" > </p>
@@ -202,62 +201,62 @@ CSCS Cards</b> </p>
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
   <div class="carousel-item active">
-      <img class="d-block w-100" src="image/slide/startpage_largey.jpg" style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor1" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/startpage_largey.jpg" %}'style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor1" />
 	  <br>
 	  <p> Self-smoothing epoxy resin floor </p>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery1.jpg" style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery1.jpg" %}'style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor" />
 	  <br>
 	  <p> Decorative epoxy floor finish </p>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery2.jpg" style="width:512px; height:384px" alt="Decorative epoxe floor finish" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery2.jpg" %}'style="width:512px; height:384px" alt="Decorative epoxe floor finish" />
 	   <br>
 	  <p> Decorative epoxy floor finish </p>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery3.jpg" style="width:512px; height:384px" alt="Epoxy resin floor coating" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery3.jpg" %}'style="width:512px; height:384px" alt="Epoxy resin floor coating" />
 	   <br>
 	  <p> Epoxy resin floor coating </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery4.jpg" style="width:512px; height:384px" alt="Resin bound polyurthane system" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery4.jpg" %}'style="width:512px; height:384px" alt="Resin bound polyurthane system" />
 	   <br>
 	  <p> Resin bound polyurthane system </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery5.jpg" style="width:512px; height:384px" alt="Polyurethane floor screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery5.jpg" %}'style="width:512px; height:384px" alt="Polyurethane floor screed" />
 	   <br>
 	  <p> Polyurethane floor screed </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery6.jpg" style="width:512px; height:384px" alt="Polyurethane floor screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery6.jpg" %}'style="width:512px; height:384px" alt="Polyurethane floor screed" />
 	   <br>
 	  <p> Polyurethane floor screed</p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery7.jpg" style="width:512px; height:384px" alt="Polyurethane floor screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery7.jpg" %}'style="width:512px; height:384px" alt="Polyurethane floor screed" />
 	   <br>
 	  <p> Polyurethane floor screed</p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery8.jpg" style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery8.jpg" %}'style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor" />
 	   <br>
 	  <p> Self-smoothing epoxy resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery9.jpg" style="width:512px; height:384px" alt="Methyl methacrylate fast curing resin floor" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery9.jpg" %}'style="width:512px; height:384px" alt="Methyl methacrylate fast curing resin floor" />
 	   <br>
 	  <p> Methyl methacrylate fast curing resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery10.jpg" style="width:512px; height:384px" alt="Cement leveling screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery10.jpg" %}'style="width:512px; height:384px" alt="Cement leveling screed" />
 	   <br>
 	  <p> Cement leveling screed </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery11.jpg" style="width:512px; height:384px" alt="Polyurethane floor screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery11.jpg" %}'style="width:512px; height:384px" alt="Polyurethane floor screed" />
 	   <br>
 	  <p> Polyurethane floor screed </p>
     </div>
@@ -275,7 +274,7 @@ CSCS Cards</b> </p>
    </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="text-align:right;margin-right:15px">
   <p>contact data</p>
-<p>  <img src="image/fb.png" alt="fb" style="margin:3px" /> <img src="image/tw.ico" alt="tw" /> </p>
+<p>  <img src='{% static "mydiabprod/fb.png" %}'alt="fb" style="margin:3px" /> <img src='{% static "mydiabprod/tw.ico" %}'alt="tw" /> </p>
   cjb.resinflooring@gmail.com
   <br>
   Phone: 07947640457
@@ -288,49 +287,49 @@ CSCS Cards</b> </p>
 	    <div id="carouselExampleFadeInner" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
   <div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional4.jpg" style="height:500px" alt="optional94" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional4.jpg" %}'style="height:500px" alt="optional94" />
 	   <br>
 	  <p> Old concrete floor has been mechanical cleaned using a dust free blastrac machine </p>
     </div>
 
     <div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional2.jpg"  style="height:500px" alt="optional2" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional2.jpg" %}' style="height:500px" alt="optional2" />
 	  <br>
 	  <p> Priming the floor with a polyurethane concrete primer  </p>
     </div>
 	 <div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional3.jpg" style="height:500px" alt="optional93" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional3.jpg" %}'style="height:500px" alt="optional93" />
 	   <br>
 	  <p> Primed floor with a quartz grant broadcasted into the wet primer </p>
     </div>
 	  <div class="carousel-item active">
-      <img class="d-block w-100 rounded" src="image/slide/optional1.jpg" style="height:500px" alt="optional1" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional1.jpg" %}'style="height:500px" alt="optional1" />
 	  <br>
 	  <p> All required repairs have been carried out using a polyurethane infill material  </p>
     </div>
    
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional5.jpg"  style="height:500px" alt="optional95" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional5.jpg" %}' style="height:500px" alt="optional95" />
 	   <br>
 	  <p> Polyurethane 6mm resin being applied to the primed floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional16.jpg" style="height:500px"  alt="optional96" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional16.jpg" %}'style="height:500px"  alt="optional96" />
 	   <br>
 	  <p> Finished 6mm polyurethane resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional7.jpg" style="height:500px"  alt="optional97" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional7.jpg" %}'style="height:500px"  alt="optional97" />
 	   <br>
 	  <p> Finished 6mm polyurethane resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional8.jpg" style="height:500px" alt="optional98" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional8.jpg" %}'style="height:500px" alt="optional98" />
 	   <br>
 	  <p> Finished 6mm polyurethane resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional9.jpg" style="height:500px" alt="optional9" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional9.jpg" %}'style="height:500px" alt="optional9" />
 	   <br>
 	  <p> Finished 6mm polyurethane resin floor </p>
     </div>
@@ -349,14 +348,14 @@ CSCS Cards</b> </p>
 	</div>
 	<div id="tabdetail2">
 	  <br>
-	  <img class="rounded" src="image/startpage_largey.jpg" style="width:600px"  alt="innertab_Polyurethane floor screed2" />
+	  <img class="rounded" src='{% static "mydiabprod/startpage_largey.jpg" %}'style="width:600px"  alt="innertab_Polyurethane floor screed2" />
 	  <br>
 	  <p> Self-smoothing epoxy resin floor </p>
 	<a href="javascript:hometab();"> Back </a>
 	</div>
 	<div id="tabdetail3">
 	  <br>
-	  <img class="rounded" src="image/floor4.PNG"  style="width:600px" alt="innertab_Polyurethane floor screed3" />
+	  <img class="rounded" src='{% static "mydiabprod/floor4.png" %}' style="width:600px" alt="innertab_Polyurethane floor screed3" />
 	  <br>
 	  <p> Polyurethane floor screed </p>
 	  <a href="javascript:hometab();"> Back </a>
@@ -368,14 +367,14 @@ CSCS Cards</b> </p>
 	<hr>
  <p> We install products from leading manufactures </p>
  <div class="row" style="display:inline">
-			<img src="image/bottom1.jpg" style="float:left;margin:6px" alt="b1" />
-  <img  src="image/bottom2.jpg" style="float:left;margin:6px" alt="b2" />
-  <img  src="image/bottom3.jpg" style="float:left;margin:6px" alt="b3" />
-    <img  src="image/bottom4.jpg" style="float:left;margin:6px" alt="b4" />
-	  <img  src="image/bottom5.jpg" style="float:left;margin:6px" alt="b5" />
-	    <img  src="image/bottom6.jpg" style="float:left;margin:6px" alt="b6" />
-		  <img  src="image/bottom7.jpg" style="float:left;margin:6px" alt="b7" />
-		    <img  src="image/bottom8.jpg" style="float:left;margin:6px" alt="b8" />
+			<img src='{% static "mydiabprod/bottom1.jpg" %}'style="float:left;margin:6px" alt="b1" />
+  <img  src='{% static "mydiabprod/bottom2.jpg" %}'style="float:left;margin:6px" alt="b2" />
+  <img  src='{% static "mydiabprod/bottom3.jpg" %}'style="float:left;margin:6px" alt="b3" />
+    <img  src='{% static "mydiabprod/bottom4.jpg" %}'style="float:left;margin:6px" alt="b4" />
+	  <img  src='{% static "mydiabprod/bottom5.jpg" %}'style="float:left;margin:6px" alt="b5" />
+	    <img  src='{% static "mydiabprod/bottom6.jpg" %}'style="float:left;margin:6px" alt="b6" />
+		  <img  src='{% static "mydiabprod/bottom7.jpg" %}'style="float:left;margin:6px" alt="b7" />
+		    <img  src='{% static "mydiabprod/bottom8.jpg" %}'style="float:left;margin:6px" alt="b8" />
 			</div>
  </div>
  	<div class="container">
@@ -399,7 +398,7 @@ CSCS Cards</b> </p>
 	</nav>
 	<div class="container">
 	<br>
-	  <img id="logotypeportrait" src="image/logotype_new.jpg" alt="Italian Trulli" onclick="hometabp()" style="width:176px;height:160px" />
+	  <img id="logotypeportrait" src='{% static "mydiabprod/logotype_new.jpg" %}'alt="Italian Trulli" onclick="hometabp()" style="width:176px;height:160px" />
 	  <br><br><br>
 	  <script>
 	function hometabp() {
@@ -463,62 +462,62 @@ Polymer screeds <br><br>
   <div class="carousel-inner">
  
     <div class="carousel-item active">
-      <img class="d-block w-100" src="image/slide/gallery1.jpg" style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery1.jpg" %}'style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor" />
 	  <br>
 	  <p> Self-smoothing epoxy resin floor </p>
     </div>
 	   <div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/startpage_largey.jpg" style="width:512px; height:384px" alt="Self-smoothing epoxy resin floormb" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/startpage_largey.jpg" %}'style="width:512px; height:384px" alt="Self-smoothing epoxy resin floormb" />
 	  <br>
 	  <p> Decorative epoxy floor finish </p>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery2.jpg" style="width:512px; height:384px" alt="Decorative epoxe floor finish" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery2.jpg" %}'style="width:512px; height:384px" alt="Decorative epoxe floor finish" />
 	   <br>
 	  <p> Decorative epoxe floor finish </p>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery3.jpg" style="width:512px; height:384px" alt="Epoxy resin floor coating" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery3.jpg" %}'style="width:512px; height:384px" alt="Epoxy resin floor coating" />
 	   <br>
 	  <p> Epoxy resin floor coating </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery4.jpg" style="width:512px; height:384px" alt="Resin bound polyurthane system" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery4.jpg" %}'style="width:512px; height:384px" alt="Resin bound polyurthane system" />
 	   <br>
 	  <p> Resin bound polyurthane system </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery5.jpg" style="width:512px; height:384px" alt="Polyurethane floor screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery5.jpg" %}'style="width:512px; height:384px" alt="Polyurethane floor screed" />
 	   <br>
 	  <p> Polyurethane floor screed </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery6.jpg" style="width:512px; height:384px" alt="Polyurethane floor screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery6.jpg" %}'style="width:512px; height:384px" alt="Polyurethane floor screed" />
 	   <br>
 	  <p> Polyurethane floor screed </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery7.jpg" style="width:512px; height:384px" alt="Polyurethane floor screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery7.jpg" %}'style="width:512px; height:384px" alt="Polyurethane floor screed" />
 	   <br>
 	  <p> Polyurethane floor screed </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery8.jpg" style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery8.jpg" %}'style="width:512px; height:384px" alt="Self-smoothing epoxy resin floor" />
 	   <br>
 	  <p> Self-smoothing epoxy resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery9.jpg" style="width:512px; height:384px" alt="Methyl methacrylate fast curing resin floor" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery9.jpg" %}'style="width:512px; height:384px" alt="Methyl methacrylate fast curing resin floor" />
 	   <br>
 	  <p> Methyl methacrylate fast curing resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery10.jpg" style="width:512px; height:384px" alt="Cement leveling screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery10.jpg" %}'style="width:512px; height:384px" alt="Cement leveling screed" />
 	   <br>
 	  <p> Cement leveling screed </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100" src="image/slide/gallery11.jpg" style="width:512px; height:384px" alt="Polyurethane floor screed" />
+      <img class="d-block w-100" src='{% static "mydiabprod/slide/gallery11.jpg" %}'style="width:512px; height:384px" alt="Polyurethane floor screed" />
 	   <br>
 	  <p> Polyurethane floor screed </p>
     </div>
@@ -536,7 +535,7 @@ Polymer screeds <br><br>
    </div>
   <div class="tab-pane fade" id="contactp" role="tabpanel" aria-labelledby="contact-tabp" style="text-align:right;margin-right:15px">
   <p>contact data</p>
-<p>  <img src="image/fb.PNG" style="margin:3px" alt="fbm" /> <img src="image/tw.ico" alt="twm" /> </p>
+<p>  <img src='{% static "mydiabprod/fb.png" %}'style="margin:3px" alt="fbm" /> <img src='{% static "mydiabprod/tw.ico" %}'alt="twm" /> </p>
   carl_barber@sky.com
   </div>
 </div>
@@ -547,48 +546,48 @@ Polymer screeds <br><br>
 	  	    <div id="carouselExampleFadeInnerp" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
   <div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional4.jpg" style="width:512px; height:384px" alt="optional945" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional4.jpg" %}'style="width:512px; height:384px" alt="optional945" />
 	   <br>
 	  <p> Old concrete floor has been mechanical cleaned using a dust free blastrac machine</p>
     </div>
  
     <div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional2.jpg"  style="width:512px; height:384px" alt="optional23" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional2.jpg" %}' style="width:512px; height:384px" alt="optional23" />
 	  <br>
 	  <p> Priming the floor with a polyurethane concrete primer  </p>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional3.jpg" style="width:512px; height:384px" alt="optional934" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional3.jpg" %}'style="width:512px; height:384px" alt="optional934" />
 	   <br>
 	  <p> Primed floor with a quartz grant broadcasted into the wet primer </p>
     </div>
     <div class="carousel-item active">
-      <img class="d-block w-100 rounded" src="image/slide/optional1.jpg" style="width:512px; height:384px" alt="optional12" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional1.jpg" %}'style="width:512px; height:384px" alt="optional12" />
 	  <br>
 	  <p> All required repairs have been carried out using a polyurethane infill material   </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional5.jpg"  style="width:512px; height:384px" alt="optional956" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional5.jpg" %}' style="width:512px; height:384px" alt="optional956" />
 	   <br>
 	  <p> Polyurethane 6mm resin being applied to the primed floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional16.jpg" style="width:512px; height:384px"  alt="optional967" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional16.jpg" %}'style="width:512px; height:384px"  alt="optional967" />
 	   <br>
 	  <p> Finished 6mm polyurethane resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional7.jpg" style="width:512px; height:384px"  alt="optional978" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional7.jpg" %}'style="width:512px; height:384px"  alt="optional978" />
 	   <br>
 	  <p> Finished 6mm polyurethane resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional8.jpg" style="width:512px; height:384px" alt="optional989" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional8.jpg" %}'style="width:512px; height:384px" alt="optional989" />
 	   <br>
 	  <p> Finished 6mm polyurethane resin floor </p>
     </div>
 	<div class="carousel-item">
-      <img class="d-block w-100 rounded" src="image/slide/optional9.jpg" style="width:512px; height:384px" alt="optional999" />
+      <img class="d-block w-100 rounded" src='{% static "mydiabprod/slide/optional9.jpg" %}'style="width:512px; height:384px" alt="optional999" />
 	   <br>
 	  <p> Finished 6mm polyurethane resin floor </p>
     </div>
@@ -607,14 +606,14 @@ Polymer screeds <br><br>
 	</div>
 	<div id="tabdetail2p">
 	    <br>
-	  <img class="rounded" id="mobile_land_nav1" src="image/startpage_largey.jpg" alt="mobile_innertab2" />
+	  <img class="rounded" id="mobile_land_nav1" src='{% static "mydiabprod/startpage_largey.jpg" %}'alt="mobile_innertab2" />
 	  <br>
 	  <p> Self-smoothing epoxy resin floor  </p>
 	<a href="javascript:hometabp();" > Back </a>
 	</div>
 	<div id="tabdetail3p">
 	  <br>
-	  <img class="rounded" id="mobile_land_nav" src="image/floor4.PNG"  alt="mobile_innertab3" />
+	  <img class="rounded" id="mobile_land_nav" src='{% static "mydiabprod/floor4.png" %}' alt="mobile_innertab3" />
 	  <br>
 	  <p> Polyurethane floor screed </p>
 	  <a href="javascript:hometabp();"> Back </a>
@@ -625,7 +624,7 @@ Polymer screeds <br><br>
 	<p> Latest from CJB Resin Flooring </p>
 	</div>
 	  <div id="firstcardp" onclick="pokap()" class="card" style="width: auto">
-  <img class="card-img-top" src="image/optional8.jpg"  alt="Self-smoothing epoxy resin floor3" />
+  <img class="card-img-top" src='{% static "mydiabprod/optional8.jpg" %}' alt="Self-smoothing epoxy resin floor3" />
   <div class="card-body">
     <p class="card-text">Preparation of polyurethane resin system - STEP BY STEP</p>
   </div>
@@ -642,7 +641,7 @@ elmnt.scrollIntoView();
 	}
 	</script>
 <br> <div class="card" id="secondcardp" onclick="poka1p()" style="width: auto">
-  <img class="card-img-top" src="image/startpage_largey.jpg"  alt="Polyurethane floor screed1" />
+  <img class="card-img-top" src='{% static "mydiabprod/startpage_largey.jpg" %}' alt="Polyurethane floor screed1" />
   <div class="card-body">
     <p class="card-text">Polyurethane floor screed</p>
   </div>
@@ -660,7 +659,7 @@ elmnt.scrollIntoView();
 	</script>
 <br>
 <div class="card" id="thirdcardp" onclick="poka2p()" style="width: auto;">
-  <img class="card-img-top" src="image/floor4.PNG"  alt="Polyurethane floor screed4" />
+  <img class="card-img-top" src='{% static "mydiabprod/floor4.png" %}' alt="Polyurethane floor screed4" />
   <div class="card-body">
     <p class="card-text">Polyurethane floor screed </p>
   </div>
@@ -685,19 +684,19 @@ elmnt.scrollIntoView();
 	<hr>
  <p> We install products from leading manufactures.</p>
  <div class="row" style="display:inline"> 
- <img src="image/bottom1.jpg" style="height:auto;width:auto;margin:auto" alt="bot10" >
-  <img  src="image/bottom2.jpg" alt="bot0" >
+ <img src='{% static "mydiabprod/bottom1.jpg" %}'style="height:auto;width:auto;margin:auto" alt="bot10" >
+  <img  src='{% static "mydiabprod/bottom2.jpg" %}'alt="bot0" >
   </div>
   <br>
   <div class="row" style="display:inline"> 
-  <img  src="image/bottom3.jpg" alt="bot1" />
-    <img  src="image/bottom4.jpg" alt="bot2" />
-	 <img  src="image/bottom8.jpg" alt="bot3" />
+  <img  src='{% static "mydiabprod/bottom3.jpg" %}'alt="bot1" />
+    <img  src='{% static "mydiabprod/bottom4.jpg" %}'alt="bot2" />
+	 <img  src='{% static "mydiabprod/bottom8.jpg" %}'alt="bot3" />
 	  </div>
 	 <div class="row" style="display:inline"> 
-	  <img  src="image/bottom5.jpg" alt="bot4" />
-	    <img  src="image/bottom6.jpg" alt="bot5" />
-			  <img  src="image/bottom7.jpg" alt="bot6" />
+	  <img  src='{% static "mydiabprod/bottom5.jpg" %}'alt="bot4" />
+	    <img  src='{% static "mydiabprod/bottom6.jpg" %}'alt="bot5" />
+			  <img  src='{% static "mydiabprod/bottom7.jpg" %}'alt="bot6" />
 		  </div>
  </div>
  	<div class="container" style="float:left">
@@ -711,3 +710,4 @@ elmnt.scrollIntoView();
 </body>
 
 </html>
+
